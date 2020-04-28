@@ -1,0 +1,106 @@
+<div class="register-form-wrapper">
+    <div class="col-sm-11">
+        <h1 class="register-form-title">{{ "Welcome" | translate }} <br/> {{ "to Staff Tracker" | translate }}</h1>
+        <p class="register-form-tag">{{ "Please enter the all fields to register your company" | translate }}</p>
+    </div>
+    
+    <div class="col-sm-12 progress-bar-wrapper">
+        <div class="wizard-progress">
+            <div class="steps-progress">
+                <div class="progress-indicator" style="width: 66%;"></div>
+            </div>
+            <ul class="wizard-steps">
+                <li class="completed">
+                    <a href="javascript:;"><span>1</span></a>
+                </li>
+                <li class="completed">
+                    <a href="javascript:;"><span>2</span></a>
+                </li>
+                <li class="completed active">
+                    <a href="javascript:;"><span>3</span><p>{{ "Schedule" | translate }}</p></a>
+                </li>
+                <li>
+                    <a href="javascript:;"><span>4</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="col-xl-12 col-lg-12 col-sm-12 account-info-form-wrapper">
+        <form class="register-form scheduleform" [formGroup]="scheduleSetupForm">
+            <div class="form-group custom-width-1">
+                <span class="parent-label"><p>{{ "Pick a date" | translate }} </p> <hr></span>
+                <div class="form-group-day form-group-day-mo">
+                    <app-checkbox customID="custm-checkbox-mo" [checkBoxFormControl]="scheduleSetupForm.controls.checkboxMO" [checkBoxFormGroup]="scheduleSetupForm"></app-checkbox>
+                    <label class="label-day">{{ "Mo" | translate }}</label>
+                </div>
+                <div class="form-group-day">
+                    <app-checkbox customID="custm-checkbox-tu" [checkBoxFormControl]="scheduleSetupForm.controls.checkboxTU" [checkBoxFormGroup]="scheduleSetupForm"></app-checkbox>
+                    <label class="label-day">{{ "Tu" | translate }}</label>
+                </div>
+                <div class="form-group-day">
+                    <app-checkbox customID="custm-checkbox-we" [checkBoxFormControl]="scheduleSetupForm.controls.checkboxWE" [checkBoxFormGroup]="scheduleSetupForm"></app-checkbox>
+                    <label class="label-day">{{ "We" | translate }}</label>
+                </div>
+                <div class="form-group-day">
+                    <app-checkbox customID="custm-checkbox-th" [checkBoxFormControl]="scheduleSetupForm.controls.checkboxTH" [checkBoxFormGroup]="scheduleSetupForm"></app-checkbox>
+                    <label class="label-day">{{ "Th" | translate }}</label>
+                </div>
+                <div class="form-group-day">
+                    <app-checkbox customID="custm-checkbox-fr" [checkBoxFormControl]="scheduleSetupForm.controls.checkboxFR" [checkBoxFormGroup]="scheduleSetupForm"></app-checkbox>
+                    <label class="label-day">{{ "Fr" | translate }}</label>
+                </div>
+                <div class="form-group-day">
+                    <app-checkbox customID="custm-checkbox-sa" [checkBoxFormControl]="scheduleSetupForm.controls.checkboxSA" [checkBoxFormGroup]="scheduleSetupForm"></app-checkbox>
+                    <label class="label-day">{{ "Sa" | translate }}</label>
+                </div>
+                <div class="form-group-day">
+                    <app-checkbox customID="custm-checkbox-su" [checkBoxFormControl]="scheduleSetupForm.controls.checkboxSU" [checkBoxFormGroup]="scheduleSetupForm"></app-checkbox>
+                    <label class="label-day" >{{ "Su" | translate }}</label>
+                </div>
+            </div>
+            
+            <div class="form-group custom-width-1">
+                <span class="parent-label"><p>{{ "Pick a time" | translate }}</p> <hr></span>
+                <div class="form-group custom-width-1">
+                    <div class="schedule-start">
+                        <label utooltips [message]="getPopupMessage()">{{ "Start of work" | translate }}</label>
+                        <app-pick-time [form_control_name]="scheduleSetupForm.controls.startWorkTime" [formName]="scheduleSetupForm" minValue="10:01" maxValue="24:00"></app-pick-time>
+                    </div>
+                    <div class="schedule-end">
+                        <label utooltips [message]="getPopupMessage()">{{ "End of work" | translate }}</label>
+                        <app-pick-time [form_control_name]="scheduleSetupForm.controls.endWorkTime" [formName]="scheduleSetupForm"></app-pick-time>
+                    </div>
+                </div>
+                
+                <div class="form-group custom-width-1">
+                    <div class="schedule-start">
+                        <label utooltips [message]="getPopupMessage()">{{ "Start of lunch" | translate }}</label>
+                        <app-pick-time [form_control_name]="scheduleSetupForm.controls.startLunchTime" [formName]="scheduleSetupForm"></app-pick-time>
+                    </div>
+                    <div class="schedule-end">
+                        <label utooltips [message]="getPopupMessage()">{{ "End of lunch" | translate }}</label>
+                        <app-pick-time [form_control_name]="scheduleSetupForm.controls.endLunchTime" [formName]="scheduleSetupForm"></app-pick-time>
+                    </div>
+                </div>
+                
+                <div class="form-group custom-width-1">
+                    <div class="schedule-start">
+                        <label utooltips [message]="getPopupMessage()">{{ "Loyalty" | translate }}</label>
+                        <app-pick-time [form_control_name]="scheduleSetupForm.controls.loyalty" [formName]="scheduleSetupForm"></app-pick-time>
+                    </div>
+                    <div class="schedule-end">
+                        <label utooltips [message]="getPopupMessage()">{{ "Tracking frequency" | translate }}</label>
+                        <app-pick-time [form_control_name]="scheduleSetupForm.controls.trackingFrequency" [formName]="scheduleSetupForm"></app-pick-time>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group custom-width-1">
+                <shared-button buttonType="button" class="sign-up-back-btn" iconClass="icon-back" name="{{'Back' | translate }}" (buttonClicked)="btnBackClicked()"></shared-button>
+                <shared-button buttonType="submit" class="sign-up-next-btn" name="{{ 'Next' | translate }}" (buttonClicked)="btnNextClicked()"></shared-button>
+            </div>
+        </form>
+    </div>
+</div>
+

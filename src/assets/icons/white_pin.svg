@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Staff tracker/Icon/White pin</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Staff-tracker/Icon/White-pin" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="Group" transform="translate(3.000000, 1.000000)" stroke="#FFFFFF" stroke-width="2">
+            <path d="M18,8.99999987 C18,15.9999999 9,21.9999999 9,21.9999999 C9,21.9999999 0,15.9999999 0,8.99999987 C7.40671569e-08,4.02943717 4.0294373,-2.22044605e-16 9,0 C13.9705627,2.22044605e-16 17.9999999,4.02943717 18,8.99999987 Z" id="Shape"></path>
+            <circle id="Oval" cx="9" cy="9" r="3"></circle>
+        </g>
+    </g>
+</svg>

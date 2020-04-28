@@ -1,0 +1,6 @@
+<div class="form-search-icon" [formGroup]="inputSearchFormGroup" [ngClass]="{'new-form-search-icon':(inputSearchFormControl.invalid && (inputSearchFormControl.dirty || inputSearchFormControl.touched || formSubmitted))}">
+    <input type="text" (keyup)="inputValueChanged($event.target.value)" [formControl]="inputSearchFormControl"
+           class="form-control input-design" [placeholder]="customPlaceholder ? customPlaceholder : 'Type Here' | translate">
+    <span invalidMessage [hasSubmitted]="formSubmitted" [control]="inputSearchFormControl"></span>
+
+</div>

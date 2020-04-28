@@ -1,0 +1,354 @@
+<div class="row">
+  <form [formGroup]="scheduleForm" (ngSubmit)="toStore()" class="schedule-add-form">
+
+    <div class="col-xl-5 col-lg-12 col-md-12">
+      <h3 class="schedule-wrapper-header">{{title | translate}}</h3>
+      <div class="st-panel-default  st-panel-width">
+        <div class="st-panel-header">
+          <h4>{{cardTitle | translate}}</h4>
+          <!--          <span (click)="btnBackClicked()" class="panel-close"></span>-->
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="st-panel-body">
+              <p class="schl-info-tag">{{addeditTitle | translate}}</p>
+
+              <div class="row">
+                <div class="col-lg-4 col-sm-12 col-md-6">
+                  <div class="form-group custom-width">
+                    <label>{{"HOW WILL CALL YOUR SCHEDULE?" | translate}}</label>
+                    <input class="form-control" placeholder="{{'Enter schedule name' | translate}}"
+                           formControlName="scheduleName"/>
+                    <span invalidMessage [control]="scheduleForm.controls.scheduleName"></span>
+
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-12">
+                                <span class="label-wid-line">
+                                    <p>{{"PICK A DATE" | translate}}</p><hr>
+                                </span>
+                  <div class="form-group-wrapper schl-custom-width-days">
+                    <label class="lbl-working-day">{{"Working days" | translate}}</label>
+                    <div class="days">
+                      <div class="form-group-day form-group-day-mo">
+                        <app-checkbox customID="custm-checkbox-mo"
+                                      [checkBoxFormControl]="scheduleForm.controls.checkboxMO"
+                                      [checkBoxFormGroup]="scheduleForm"
+                                      (checkboxChanged)="checkBox($event,1)"></app-checkbox>
+                        <label class="label-day">{{"Mo" | translate}}</label>
+                      </div>
+                      <div class="form-group-day">
+                        <app-checkbox customID="custm-checkbox-tu"
+                                      [checkBoxFormControl]="scheduleForm.controls.checkboxTU"
+                                      [checkBoxFormGroup]="scheduleForm"
+                                      (checkboxChanged)="checkBox($event,2)"></app-checkbox>
+                        <label class="label-day">{{"Tu" | translate}}</label>
+                      </div>
+                      <div class="form-group-day">
+                        <app-checkbox customID="custm-checkbox-we"
+                                      [checkBoxFormControl]="scheduleForm.controls.checkboxWE"
+                                      [checkBoxFormGroup]="scheduleForm"
+                                      (checkboxChanged)="checkBox($event,3)"></app-checkbox>
+                        <label class="label-day">{{"We" | translate}}</label>
+                      </div>
+                      <div class="form-group-day">
+                        <app-checkbox customID="custm-checkbox-th"
+                                      [checkBoxFormControl]="scheduleForm.controls.checkboxTH"
+                                      [checkBoxFormGroup]="scheduleForm"
+                                      (checkboxChanged)="checkBox($event,4)"></app-checkbox>
+                        <label class="label-day">{{"Th" | translate}}</label>
+                      </div>
+                      <div class="form-group-day">
+                        <app-checkbox customID="custm-checkbox-fr"
+                                      [checkBoxFormControl]="scheduleForm.controls.checkboxFR"
+                                      [checkBoxFormGroup]="scheduleForm"
+                                      (checkboxChanged)="checkBox($event,5)"></app-checkbox>
+                        <label class="label-day">{{"Fr" | translate}}</label>
+                      </div>
+                      <div class="form-group-day">
+                        <app-checkbox customID="custm-checkbox-sa"
+                                      [checkBoxFormControl]="scheduleForm.controls.checkboxSA"
+                                      [checkBoxFormGroup]="scheduleForm"
+                                      (checkboxChanged)="checkBox($event,6)"></app-checkbox>
+                        <label class="label-day">{{"Sa" | translate}}</label>
+                      </div>
+                      <div class="form-group-day">
+                        <app-checkbox customID="custm-checkbox-su"
+                                      [checkBoxFormControl]="scheduleForm.controls.checkboxSU"
+                                      [checkBoxFormGroup]="scheduleForm"
+                                      (checkboxChanged)="checkBox($event,7)"></app-checkbox>
+                        <label class="label-day">{{"Su" | translate}}</label>
+                      </div>
+                    </div>
+                    <div class="form-group custom-width">
+                      <input type="hidden" class="form-control"
+                             formControlName="checkbox"/>
+                      <span style=" left: 110px;top: -92px;" invalidMessage
+                            [control]="scheduleForm.controls.checkbox"></span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-sm-12">
+                                <span class="label-wid-line">
+                                    <p>{{"PICK A TIME" | translate}}</p><hr>
+                                </span>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-xl-12 col-lg-6 col-sm-12 col-md-6 time-picker-align-center">
+                  <div class="form-group schl-custom-width">
+                    <div class="schedule-start">
+                      <label>{{"Start of work" | translate}}</label>
+                      <app-pick-time [form_control_name]="scheduleForm.controls.startWorkTime"
+                                     [formName]="scheduleForm" minValue="10:01"
+                                     maxValue="24:00"></app-pick-time>
+                      <span style="bottom:25px;left:8px;" invalidMessage
+                            [control]="scheduleForm.controls.startWorkTime"></span>
+                    </div>
+
+                    <div class="schedule-end">
+                      <label>{{"End of work" | translate}}</label>
+                      <app-pick-time [form_control_name]="scheduleForm.controls.endWorkTime"
+                                     [formName]="scheduleForm"></app-pick-time>
+                      <span style="bottom:25px;left:8px;" invalidMessage
+                            [control]="scheduleForm.controls.endWorkTime"></span>
+
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="col-xl-12 col-lg-6 col-sm-12 col-md-6 time-picker-align-center">
+                  <div class="form-group schl-custom-width">
+                    <div class="schedule-start">
+                      <label>{{"Start of lunch" | translate}}</label>
+                      <app-pick-time [form_control_name]="scheduleForm.controls.startLunchTime"
+                                     [formName]="scheduleForm"></app-pick-time>
+                      <span style="bottom:25px;left:8px;" invalidMessage
+                            [control]="scheduleForm.controls.startLunchTime"></span>
+
+                    </div>
+                    <div class="schedule-end">
+                      <label>{{"End of lunch" | translate}}</label>
+                      <app-pick-time [form_control_name]="scheduleForm.controls.endLunchTime"
+                                     [formName]="scheduleForm"></app-pick-time>
+                      <span style="bottom:25px;left:8px;" invalidMessage
+                            [control]="scheduleForm.controls.endLunchTime"></span>
+
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xl-12 col-lg-6 col-sm-12 col-md-6 time-picker-align-center">
+                  <div class="form-group schl-custom-width">
+                    <div class="schedule-start">
+                      <label>{{"Loyalty" | translate}}</label>
+                      <app-pick-time [form_control_name]="scheduleForm.controls.loyalty"
+                                     [formName]="scheduleForm"></app-pick-time>
+                      <span style="bottom:25px;left:8px;" invalidMessage
+                            [control]="scheduleForm.controls.loyalty"></span>
+
+
+                    </div>
+                    <div class="schedule-end">
+                      <label>{{"Tracking Frequency" | translate}}</label>
+                      <app-pick-time [form_control_name]="scheduleForm.controls.track_freq"
+                                     [formName]="scheduleForm"></app-pick-time>
+                      <span style="bottom:25px;left:8px;" invalidMessage
+                            [control]="scheduleForm.controls.track_freq"></span>
+
+
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-xl-7 col-lg-12 col-md-12 right-block-margin">
+      <div class="st-panel-default">
+        <div class="st-panel-header">
+          <h4>{{cardTitle2 | translate}}</h4>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="st-panel-body">
+              <p class="schl-info-tag">{{addeditTitle2 | translate}}</p>
+              <div class="row mn-top-20">
+                <div class="col-sm-12">
+                                <span class="label-wid-line">
+                                    <p>{{"CHOOSE GROUP OR EMPLOYEES" | translate}}</p><hr>
+                                </span>
+                </div>
+              </div>
+
+              <div class="row mn-top-25">
+
+                <div class="col-xl-6 col-lg-6 col-sm-12 col-md-6">
+                  <div class="">
+                    <label>
+                      {{"Group" | translate}}
+                      <span class="count-label">{{selectedGroups.length}}</span>
+                    </label>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="searchGroupWrapper">
+                          <app-search-icon-form
+                            (inputChanged)="inputGrpFilterChanged.next($event)"
+                            [inputSearchFormGroup]="searchGrpForm"
+                            [inputSearchFormControl]="searchGrpForm.controls.name"
+                            [customPlaceholder]="'Search'"></app-search-icon-form>
+                        </div>
+                        <div class="searchGroupTableWrapper" appScrollPagination
+                             (scrollPage)="setPageByScrollForGrp($event)">
+                          <div *ngIf="selectedGrpListloader"
+                               class="round-loading-image"></div>
+                          <ul class="selected-group-list">
+                            <li *ngFor="let group of selectedGroups">
+                              <div class="group-item selected"
+                                   (click)="deselectGroup(group.id)">
+                                <img height="20px" width="20px"
+                                     src="{{imageURL}}{{group.icon_url}}">
+                              </div>
+                            </li>
+                          </ul>
+                          <span style="bottom:auto;right:42px" invalidMessage
+                                [control]="scheduleForm.controls.groups"></span>
+
+                          <table class="tbl-schl-group">
+                            <thead>
+                            <tr>
+                              <th></th>
+                              <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let group of filteredGroups">
+                              <td>
+                                <div class="grp-img-wrapper">
+                                  <img src="{{imageURL}}{{group.icon_url}}"
+                                       class="grp-image-design">
+                                </div>
+                                <ul class="grp-info-list">
+                                  <li>{{group.name}}</li>
+                                  <li>{{group.nr_employees}} employees</li>
+                                </ul>
+                                <div class="clearfix"></div>
+                              </td>
+                              <td>
+                                <div class="chosen" (click)="selectGroup(group.id)">
+                                  {{"Chosen" | translate}}
+                                </div>
+                              </td>
+                            </tr>
+                            </tbody>
+                          </table>
+                          <div *ngIf="grpListloader" class="loading-image"></div>
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="col-xl-6 col-lg-6 col-sm-12 col-md-6 emp-margin-top-20">
+                  <div class="">
+                    <label>
+                      {{"Employees" | translate}}
+                      <span class="count-label">{{selectedEmployee.length}}</span>
+                    </label>
+
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="searchEmpWrapper">
+                          <app-search-icon-form
+                            (inputChanged)="inputEmpFilterChanged.next($event)"
+                            [inputSearchFormGroup]="searchEmpForm"
+                            [inputSearchFormControl]="searchEmpForm.controls.name"
+                            [customPlaceholder]="'Search'">>
+                          </app-search-icon-form>
+                        </div>
+                        <div class="searchEmpTableWrapper" appScrollPagination
+                             (scrollPage)="setPageByScrollForEmp($event)">
+                          <div *ngIf="selectedEmpListloader"
+                               class="round-loading-image"></div>
+
+                          <ul class="selected-emp-list">
+                            <li *ngFor="let employee of selectedEmployee">
+                              <div class="emp-item selected"
+                                   (click)="deselectEmployee(employee.id)">
+                                <img height="20px" width="20px"
+                                     src="{{imageURL}}{{employee.icon_url}}">
+                              </div>
+                            </li>
+                          </ul>
+                          <span style="bottom:auto;right:42px" invalidMessage
+                                [control]="scheduleForm.controls.employees"></span>
+                          <table class="tbl-schl-emp">
+                            <thead>
+                            <tr>
+                              <th></th>
+                              <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr *ngFor="let employee of filteredEmployees">
+                              <td>
+                                <img src="{{imageURL}}{{employee.icon_url}}"
+                                     class="emp-image-design">
+                                <ul class="emp-info-list">
+                                  <li>{{ employee.name }}</li>
+                                  <li>{{ employee.position }}</li>
+                                </ul>
+                                <div class="clearfix"></div>
+                              </td>
+                              <td>
+                                <div class="chosen"
+                                     (click)="selectEmployee(employee.id)">{{"Chosen" | translate}}
+                                </div>
+                              </td>
+                            </tr>
+                            </tbody>
+                          </table>
+                          <div *ngIf="empListloader" class="loading-image"></div>
+                        </div>
+
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="row button-wrapper mn-top-15">
+                <div class="col-md-12 text-align-right">
+                  <div *ngIf="insertLoader" class="round-loading-image"></div>
+
+                  <button type="button" class="employee-add-back-btn" (click)="btnBackClicked()"><img
+                    src="./assets/icons/red_arrow_left.svg"/>{{btnBack|translate}}</button>
+
+                  <button [disabled]="btnDisabled" class="employee-add-next-btn" type="submit">
+                    {{btnName|translate}}</button>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+</div>

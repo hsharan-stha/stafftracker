@@ -1,0 +1,246 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: Rubik;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.li-class {
+    /*line-height: 100px;*/
+    /*padding: 16px 0;*/
+    border-left: 3px solid white;
+    display: flex;
+    height: 56px;
+}
+
+.li-class a {
+    color: gray;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.svg-img {
+    padding: 0 17px 0 24px;
+}
+
+.li-class:hover, .active {
+    background: #E9EFFF;
+    color: #2E5BFF;
+    border-left: 3px solid #2E5BFF;
+    outline: none;
+    cursor: pointer;
+}
+
+:focus {
+    outline: none !important;
+}
+
+.notification-toggle {
+    background: #E9EFFF;
+    color: #2E5BFF;
+    border-left: 3px solid #2E5BFF;
+}
+
+.li-class span {
+    float: left;
+    padding-top: 3px;
+    font-size: 15px;
+    color: #B0BAC9;
+    letter-spacing: 0;
+    font-family: Rubik;
+    font-weight: 400;
+    text-align: left;
+    margin: auto 0px;
+}
+
+.li-class .svg-img {
+    float: left;
+}
+
+
+@media (max-width: 767px) {
+    .sidebar {
+        display: none;
+    }
+}
+
+
+.monitor-container {
+    max-height: 135px;
+}
+
+.monitor-container span {
+    font-size: 12px;
+    color: #B0BAC9;
+    letter-spacing: 1.12px;
+    text-align: center;
+    font-family: Rubik;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+
+.h-container {
+    display: flex;
+    margin-top: 135px;
+    position: absolute;
+}
+
+.h-container > div:first-child {
+    margin-right: auto;
+    visibility: hidden;
+}
+
+.h-container > div:last-child {
+    margin-right: auto;
+    margin-left: 9px;
+}
+
+.monitor-container div:nth-child(3) {
+    flex: 0 0 46.666667%;
+    max-width: 46.666667%;
+}
+
+.minimized.h-container > div:last-child {
+    margin-right: auto;
+    margin-left: 0px;
+    flex: 0 0 0%;
+    max-width: 0%;
+}
+
+/* .li-class toggle-switch{
+   float:left;
+} */
+
+
+@media (max-height: 750px) {
+    .h-container {
+        margin-top: 15px;
+    }
+}
+
+@media (max-height: 810px) {
+    .h-container {
+        position: absolute;
+        bottom: 10px;
+    }
+}
+
+
+.mobile-menu {
+    padding-left: 0px;
+    background: white;
+}
+
+.mobile-menu .li-class {
+    padding: 15px;
+    display: block;
+    background: white;
+    border-left: none !important;
+}
+
+.mobile-menu .li-class a {
+    text-decoration: none;
+    font-family: Rubik;
+}
+
+.mobile-menu .li-class span {
+    color: #B0BAC9;
+}
+
+.mobile-menu {
+    box-shadow: 0 10px 20px 0 rgba(196, 202, 226, 0.53);
+    width: 230px;
+    position: fixed;
+    border-left: 1px solid rgb(228, 232, 240);
+    border-right: 1px solid rgb(228, 232, 240);
+    border-bottom: 1px solid rgb(228, 232, 240);
+    z-index: 99;
+}
+
+
+@media (min-width: 768px) {
+
+    .mobile-menu {
+        display: none;
+    }
+}
+
+
+ul {
+    margin-top: 19px
+}
+
+
+.st-com-logo-wrapper {
+    margin-top: 41px;
+    padding-left: 24px;
+    float: left;
+    width: 100%;
+    padding-top: 12px;
+    padding-bottom: 12px;
+    border-left: 3px solid white;
+}
+
+.st-com-logo-wrapper.active {
+    background: #E9EFFF;
+    color: #2E5BFF;
+    /*padding-left: 21px !important;*/
+    border-left: 3px solid #2E5BFF;
+}
+
+.st-com-logo-wrapper ul {
+    margin-bottom: 0px;
+    margin-top: 0px;
+}
+
+.st-com-logo-wrapper a:hover {
+    text-decoration: none;
+}
+
+.logo {
+    width: 32px;
+    height: 32px;
+    float: left;
+    border-radius: 5px;
+}
+
+.fnt-size-15 {
+    font-size: 15px;
+}
+
+.line-h-16 {
+    line-height: 16px;
+}
+
+.dark-grey {
+    color: #2E384D;
+}
+
+.light-grey {
+    color: #BFC5D2;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    float: left;
+    width: 100%;
+}
+
+.mobile-menu .st-com-logo-wrapper {
+    padding-left: 35px !important;
+}

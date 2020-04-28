@@ -1,0 +1,5 @@
+  <label [ngClass]="['switch', customClass]">
+    <input type="checkbox" [checked]="isChecked" (change)="onChange($event)">
+    <span #spanEle [ngClass]="['slider', 'round']"></span>
+  </label>
+

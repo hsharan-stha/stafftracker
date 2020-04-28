@@ -1,0 +1,17 @@
+<!--<div  class="alert-message alert alert-{{ data.alertType }} alert-dismissible" role="alert">-->
+<!--    {{ data.message }}-->
+<!--    <button (click)="dismiss()" type="button" class="close" data-dismiss="alert" aria-label="Close" data-notify="dismiss" > &times; </button>-->
+<!--</div>-->
+<div id="MessageTypeDiv" class="modal-dialog modal-alerts modal-alert-succes"
+     style="animation-name: moveDown; animation-duration: 1s; animation-fill-mode: forwards;">
+    <div class="modal-content">
+        <div class="modal-body clearfix">
+            <div class="alerts-icon"></div>
+            <div class="alerts-text">
+                <h3 id="MessageType">{{data.alertType}}</h3>
+
+                <p id="Message"> {{ data.message }}</p>
+            </div>
+        </div>
+    </div>
+</div>

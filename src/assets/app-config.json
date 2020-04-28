@@ -1,0 +1,5 @@
+{
+    "base_url": "http://172.16.197.148:30736/StaffTracker/webApi.php",
+    "base_ip": "http://172.16.197.148:30736/",
+    "map_url": "https://nominatim.openstreetmap.org/reverse"
+}

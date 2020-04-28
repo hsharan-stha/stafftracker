@@ -1,0 +1,88 @@
+div {
+    line-height: 0px;
+    text-align: center;
+}
+
+div input {
+    text-align: center;
+    line-height: 1em;
+}
+
+.without_ampm::-webkit-datetime-edit-ampm-field {
+    display: none;
+}
+
+input[type=number]::-webkit-clear-button {
+    -webkit-appearance: none;
+    margin: -10px;
+}
+
+input[type=number] {
+    -webkit-appearance: button;
+    font-size: 15px;
+    color: #2E384D;
+    letter-spacing: 4px;
+    text-align: center;
+    font-family: Rubik;
+    font-weight: 500;
+    height: 40px;
+    width: 75px;
+    background: #F9FAFF;
+    border: solid 1px #E0E7FF;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+span {
+    font-size: 15px;
+    color: #2E384D;
+    text-align: center;
+    font-family: Rubik;
+    font-weight: 500;
+    position: absolute;
+    top: 88px;
+    left: 168px;
+}
+
+#hrs[type=number] {
+    border-right: #f9faff;
+}
+
+#min[type=number] {
+    border-left: #f9faff;
+}
+
+input[type=number]:focus {
+    outline: -webkit-focus-ring-color auto 0px;
+    overflow: hidden;
+
+}
+
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+}
+
+div label:first-child {
+    font-size: 12px;
+    color: #B0BAC9;
+    letter-spacing: 1.12px;
+    text-align: center;
+    font-family: Rubik;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+div label:not(:nth-child(1)) {
+    font-size: 10px;
+    color: #B0BAC9;
+    letter-spacing: 0;
+    text-align: center;
+    line-height: 12px;
+    font-family: Rubik;
+    font-weight: 400;
+    margin-left: 10px;
+    margin-top: 3px;
+    margin-bottom: 2px;
+}

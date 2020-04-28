@@ -1,0 +1,15 @@
+<div id="notifications" *ngIf="notification">
+  <div class="notification-icon block">
+    <div class="card-icon selected">
+      <div class="selected-checked">
+        <div class="checked"></div>
+      </div>
+      <span [ngClass]="className"></span>
+    </div>
+  </div>
+  <div class="block">
+    <h6>{{ notification.type }}</h6>
+    <p>{{ notification.text }}</p>
+    <p class="time">{{ notification.time | dateAgo }}</p>
+  </div>
+</div>

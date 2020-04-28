@@ -1,0 +1,122 @@
+<div class="title">
+    <h1>{{pageTitle1}}</h1>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+        <div class="card">
+            <div class="position-form-header">
+                <div class="sub-title">
+                    {{pageTitle2}}
+                </div>
+                <div class="right-toggle-container">
+                    <div class="sub-title-2 mr-4">
+                        Notification&nbsp; <span *ngIf="isChecked" class="green fw-500">Activated</span><span *ngIf="!isChecked" class="fw-500">Deactivated</span> 
+                    </div>
+                    <toggle-switch [customClass]="'width-38'" [isChecked]="true" (checkEvent)="onToggleChange($event)"></toggle-switch>
+                </div>
+                
+                <!-- <a routerLink="/main/notification">
+                    <img class="close-btn" src="./assets/icons/closeX.svg" height="24px" width="24px" />
+                </a> -->
+            </div>
+            <form class="create-form" [formGroup]="positionForm" (ngSubmit)="storePosition()">
+                <p class="mb-0">
+                    {{pageTitle3}}
+                </p>
+                <div class="warning-message">
+                    <img src="/assets/icons/warning.png" style="width: 19px; height: 16px;margin-bottom: 4px;" />
+                    <span>
+                        {{pageTitle4}}
+                    </span>
+                </div>
+                
+                <!-- <div class="row col-sm-12 ticker-container">
+                    <div class="checkbox-container mr-4">
+                        <app-checkbox customID="custm-checkbox" [checkBoxFormGroup]="positionForm"
+                            [checkBoxFormControl]="positionForm.controls.name"></app-checkbox>
+                        <span class="ml-2">Notify by email</span>
+                    </div>
+                    <div class="checkbox-container">
+                        <app-checkbox customID="custm-checkbox2" [checkBoxFormGroup]="bySMSForm"
+                            [checkBoxFormControl]="bySMSForm.controls.name"></app-checkbox>
+                        <span class="ml-2">Notify by SMS</span>
+                    </div>
+                </div> -->
+                <div class="row ml-0">
+                    <div class="row col-sm-12 col-md-12 col-lg-12 txt-area">
+                        <div class="row col-sm-12 col-md-12 col-lg-4">
+                            <div class="form-group custom-width0 form-search-icon" style="width: inherit;">
+                                <label>Text Notifications</label>
+                                <br>
+                                <text-area-placeholder>
+                                    <span class="emo-container">☺</span>
+                                    <span class="placeholder-container">Type message</span>
+                                </text-area-placeholder>
+                            </div>
+                        </div>
+                        <div class="row col-sm-12 col-md-12 col-lg-4">
+                            <div class="form-group custom-width0" style="width: inherit;">
+                                <label>Short Code</label>
+                                <br>
+                                <text-area-placeholder>
+                                    <div class="short-code-container">
+                                        <div class="col p-0">
+                                            <span class="short-code-key">&lt;FullName&gt;</span>
+                                            <span>&nbsp;&nbsp;&nbsp; Description</span>
+                                        </div>
+                                        <div class="col p-0">
+                                            <span class="short-code-key">&lt;TimeLimit&gt;</span>
+                                            <span>&nbsp;&nbsp;&nbsp; Description</span>
+                                        </div>
+                                        <div class="col p-0">
+                                            <span class="short-code-key">&lt;DateTime&gt;</span>
+                                            <span>&nbsp;&nbsp;&nbsp; Description</span>
+                                        </div>
+                                        <div class="col p-0">
+                                            <span class="short-code-key">&lt;Subscriber&gt;</span>
+                                            <span>&nbsp;&nbsp;&nbsp; Description</span>
+                                        </div>
+                                    </div>
+                                </text-area-placeholder>
+                            </div>
+                        </div>
+                        <div class="row col-sm-12 col-md-12 col-lg-4 editNotificationform scheduleform">
+                            <div class="form-group custom-width0 mb-0" style="width: inherit;">
+                                <div class="form-group min-custom-width m-0">
+                                    <div class="schedule-end">
+                                        <label>ALLOWABLE VIOLATION TIME</label>
+                                        <app-pick-time [form_control_name]="scheduleSetupForm.controls.endWorkTime"
+                                            [formName]="scheduleSetupForm"></app-pick-time>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group custom-width position-container hidden-search-form">
+                                <div class="input-margin">
+                                    <label class="form-label">Critically Level</label>
+                                    <!-- <app-select-input [selectInputGroup]="positionForm"
+                                        [selectInputControl]="positionForm.controls.position"
+                                        [selectOptions]="empPositionList"></app-select-input> -->    
+                                        <!-- <type-ahead (inputChanged)="ddEmpChanged($event)" [formName]="positionForm" [form_control_name]="positionForm.controls.position" dataGroupName="Position" [allowedMaxItem]="1" [placeholder]="'+Empl'"></type-ahead> -->
+                                        <div class="input-margin">
+                                
+                                <app-select-input [selectInputGroup]="positionForm" [selectInputControl]="positionForm.controls.position" [selectOptions]="empGroupList"></app-select-input>
+                            </div>
+                              
+                                </div>
+                                <span invalidMessage [control]="positionForm.controls.name"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row col-sm-12 col-md-12 col-lg-12 btn-area">
+                        <div class="row col position-form-footer">
+                            <button class="position-back-btn" (click)="btnBackClicked()"><img
+                                    src="./assets/icons/red_arrow_left.svg" />Back</button>
+                            <button class="btn-green" type="submit">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>

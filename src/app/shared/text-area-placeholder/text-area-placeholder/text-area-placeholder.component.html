@@ -1,0 +1,7 @@
+<div>
+    <textarea #textArea rows="8" [(ngModel)]="textStr" (input)="onChange($event)"></textarea>
+    <div *ngIf="isCusPlaceholder" (click)="onClick($event)" class="content-container">
+        <ng-content>
+        </ng-content>
+    </div>
+</div>

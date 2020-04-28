@@ -1,0 +1,38 @@
+<sidebar></sidebar>
+<div class="main-container">
+  <div class="sub-container-padding">
+    <div class="sub-container">
+      <h1 class="header-title">{{ "How to track Employees" | translate }}?</h1>
+      <h3 class="sub-header-title">{{ "1st Step" | translate }}. {{ "Add the Employees" | translate }}</h3>
+      <p class="p-content">{{ "Add the Employees" | translate }}, {{ "which you want to monitor" | translate }}.<br>
+        {{ "For convenience of the further adjustment and tracking" | translate }}.<br>
+        {{ "unite Employees in groups" | translate }}
+      </p>
+      <a href="" class="skip-deco">{{ "Skip" | translate}}</a>
+      <button class="sign-in-btn btn-style margin-lef-32" [routerLink]="['/main/geozones']">{{ "Got it" | translate }}!</button>
+      <div class="arrow-design"></div>
+    </div>
+    <div class="progress-bar-design">
+
+      <div class="progress-wizard">
+        <div class="progress-steps">
+          <div class="indicator-progress" style="width: 0%;"></div>
+        </div>
+        <ul class="steps-wizard">
+          <li class="completed active">
+            <a href="javascript:;"><span>1</span></a>
+          </li>
+          <li>
+            <a href="javascript:;"><span>2</span></a>
+          </li>
+          <li>
+            <a href="javascript:;"><span>3</span></a>
+          </li>
+
+        </ul>
+        <span class="text-design">{{ "Add the Employees" | translate }}</span>
+      </div>
+    </div>
+  </div>
+
+</div>

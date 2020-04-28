@@ -1,0 +1,67 @@
+<div class="register-form-wrapper">
+  <div class="col-sm-10">
+    <h1 class="register-form-title">{{ "Welcome" | translate }} <br/>{{ "to Staff Tracker" | translate }}</h1>
+    <p class="register-form-tag">{{ "Please enter the all fields to register your company" | translate }}</p>
+  </div>
+
+  <div class="col-sm-11 progress-bar-wrapper">
+    <div class="wizard-progress">
+      <div class="steps-progress">
+        <div class="progress-indicator" style="width: 100%;"></div>
+      </div>
+      <ul class="wizard-steps">
+        <li class="completed">
+          <a href="javascript:;"><span>1</span></a>
+        </li>
+        <li class="completed">
+          <a href="javascript:;"><span>2</span></a>
+        </li>
+        <li class="completed">
+          <a href="javascript:;"><span>3</span></a>
+        </li>
+        <li class="completed active">
+          <a href="javascript:;"><span>4</span>
+            <p>{{ "Geozone info" | translate }}</p></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-xl-12 col-lg-12 col-sm-12 account-info-form-wrapper">
+    <form [formGroup]="geozone" class="register-form">
+      <div class="form-group">
+        <label>{{ "Geozone name" | translate }}</label>
+        <input class="form-control" value="Main Office" formControlName="geozone"/>
+      </div>
+
+      <div class="form-group">
+        <label>{{ "Address" | translate }}</label>
+        <div class="geozone-address">
+          <input class="form-control geozone-address-input" formControlName="address"/>
+          <span (click)="clickLocationMarker()" class="geozone-icon"><i></i></span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>{{ "Radius" | translate }}</label>
+        <div class="slider-container">
+          <input type="range" min="100" max="10000" step="100" class="slider-range dynamicCssClass form-control"
+                 formControlName="radius" (change)="radiusRangeChanged()">
+        </div>
+        <span class="radius-value">{{ this.geozone.value.radius }}</span><span class="radius-unit">M</span>
+      </div>
+
+      <div class="form-group">
+        <color-picker label="{{ 'Choose color for geozone' | translate }}" [colors]="colors"
+                      [selectedColor]="this.geozone.value.color" (inputChanged)="onColorChange($event)"></color-picker>
+      </div>
+
+
+      <div class="form-group custom-width">
+        <shared-button buttonType="button" class="sign-up-back-btn" iconClass="icon-back"
+                       name="{{ 'Back' | translate }}" (buttonClicked)="btnBackClicked()"></shared-button>
+        <shared-button buttonType="submit" [disabledCondition]="!geozone.valid" class="sign-up-next-btn"
+                       name="{{ 'Save' | translate }}" (buttonClicked)="btnNextClicked()"></shared-button>
+      </div>
+    </form>
+  </div>
+</div>

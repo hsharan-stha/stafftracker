@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Staff tracker/Icon/Gray Schedule</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Staff-tracker/Icon/Gray-Schedule" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <circle id="Oval" stroke="#BFC5D2" stroke-width="2" cx="12" cy="12" r="10"></circle>
+        <polyline id="Shape" stroke="#BFC5D2" stroke-width="2" points="12 6 12 11.3333333 16 14"></polyline>
+    </g>
+</svg>

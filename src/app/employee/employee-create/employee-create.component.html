@@ -1,0 +1,191 @@
+<div class="row emp-info-wrapper">
+    <div class="col-md-12">
+        <h3 class="employee-wrapper-header">{{PageTitle|translate}}</h3>
+        <div class="st-panel-default">
+            <div class="st-panel-header">
+                <h4>{{"PERSONAL DATA"|translate}}</h4>
+                <span (click)="btnBackClicked()" class="panel-close"></span>
+                <div *ngIf="loader" class="loading-image"></div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="st-panel-body">
+                        <p class="emp-info-tag">{{"Use this page to update your contact information and change your password"|translate}}. </p>
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <span class="label-wid-line">
+                                    <p>{{"1st Step"|translate}}</p><hr>
+                                </span>
+                            </div>
+                        </div>
+                        <form class="employee-add-form" [formGroup]="newEmployeeForm">
+                            <input type="hidden" formControlName="id"/>
+                            <div class="row mn-top-15">
+                                <div class="col-lg-4 col-sm-12 col-md-6">
+                                    <section class="card-wrapper">
+                                        <div class="card card-purple" [ngClass]="{'active-card': isAdmin}" (click)="togglePermissionType(2)">
+                                            <div class="card-icon">
+                                                <span class="emp-permission"></span>
+                                            </div>
+                                            <div class="card-body">
+                                                <h2>{{"Administrator"|translate}}</h2>
+                                                <p>{{"Full access to all settings"|translate}}</p>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+
+                                <div class="col-lg-4 col-sm-12 col-md-6">
+                                    <section class="card-wrapper">
+                                        <div class="card card-purple" [ngClass]="{'active-card': isOperator}" (click)="togglePermissionType(3)">
+                                            <div class="card-icon">
+                                                <span class="emp-permission"></span>
+                                            </div>
+                                            <div class="card-body">
+                                                <h2>{{"Operator"|translate}}</h2>
+                                                <p>{{"Service desk and chat permissions"|translate}}</p>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+
+                                <div class="col-lg-4 col-sm-12 col-md-6">
+                                    <section class="card-wrapper">
+                                        <div class="card card-purple" [ngClass]="{'active-card': isEmployee}" (click)="togglePermissionType(4)">
+                                            <div class="card-icon">
+                                                <span class="emp-permission"></span>
+                                            </div>
+                                            <div class="card-body">
+                                                <h2>{{"Employee" | translate}}</h2>
+                                                <p>{{"Tracking, without access to the interface" | translate}} </p>
+                                            </div>
+                                        </div>
+                                    </section>
+                                </div>
+                            </div>
+
+
+                            <div class="row mn-top-30">
+                                <div class="col-sm-12">
+                                    <span class="label-wid-line">
+                                        <p>{{"2nd Step"|translate}}</p><hr>
+                                    </span>
+                                </div>
+                            </div>
+
+                            <div class="row mn-top-15">
+                                <div class="col-lg-4 col-sm-12 col-md-6">
+                                    <div class="form-group max-input-wrapper-width">
+                                        <label>{{"MSISDN" | translate}}</label>
+                                        <input class="form-control" placeholder="06 XX XXX XXX" formControlName="msisdn" [textMask]="{mask: mask}"/>
+                                        <span invalidMessage [control]="newEmployeeForm.controls.msisdn"></span>
+                                    </div>
+
+                                    <div class="form-group max-input-wrapper-width">
+                                        <label>{{"Group" | translate}}</label>
+                                        <app-select-input selectorId="id" [selectInputGroup]="newEmployeeForm" [selectInputControl]="newEmployeeForm.controls.group_id" [selectOptions]="groupList"></app-select-input>
+                                    </div>
+
+                                    <div class="form-group max-input-wrapper-width">
+                                        <label>{{"Email" | translate}}</label>
+                                        <input class="form-control" formControlName="email"/>
+                                        <span invalidMessage [control]="newEmployeeForm.controls.email"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-sm-12 col-md-6">
+                                    <div class="form-group max-input-wrapper-width">
+                                        <label>{{"Full name" | translate}}</label>
+                                        <input class="form-control" value="Takamaru Ayako" formControlName="full_name"/>
+                                        <span invalidMessage [control]="newEmployeeForm.controls.full_name"></span>
+                                    </div>
+
+                                    <div class="form-group max-input-wrapper-width">
+                                        <label>{{"Position" | translate}}</label>
+                                        <app-select-input [formSubmitted]="isSubmited" selectorId="id" [selectInputGroup]="newEmployeeForm" [selectInputControl]="newEmployeeForm.controls.position_id" [selectOptions]="positionList"></app-select-input>
+                                        <span controlType="select" invalidMessage [control]="newEmployeeForm.controls.position_id"></span>
+                                    </div>
+
+                                    <div class="form-group max-input-wrapper-width">
+                                        <label>{{"About employee" | translate}}</label>
+                                        <input class="form-control" value="Short description" formControlName="description"/>
+                                        <span controlType="select" invalidMessage [control]="newEmployeeForm.controls.description"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-sm-12 col-md-6">
+                                    <div class="form-group max-input-wrapper-width">
+                                        <label>{{"Avatar" | translate}}</label>
+                                        <app-image-upload [formSubmitted]="isSubmited" [form_control_name]="newEmployeeForm.controls.image" [form_group_name]="newEmployeeForm" [imgUrl]="avatarUrl" (inputChanged)="changeAvatar($event)" customID="select_file" detailLabel="{{'File format .png.jpg Max upload file size 5MB' | translate}}" labelUpload="{{'Choose file' | translate}}"></app-image-upload>
+                                        <span invalidMessage position="topWithAbs" [control]="newEmployeeForm.controls.image"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row mn-top-17">
+                                <div class="col-sm-12">
+                                    <div class="info-icon-wrapper">
+                                        <span class="info-icon"></span>
+                                    </div>
+                                    <p class="info-dtl">
+                                        {{"The default work schedule will be applied to this employee added. namely" | translate}} - <b>{{infoText}}</b><br/>
+                                        {{"In order to change the schedule for an employee" | translate}},<br/>
+                                        {{"go to the page" | translate}} - <b class="color-blue">{{"Schedule" | translate}}</b>
+                                    </p>
+                                </div>
+                            </div>
+
+
+                            <div class="row mn-top-30">
+
+                              <div class="col-lg-4 col-sm-12" *ngIf="!isEmployee">
+                                    <span class="label-wid-line">
+                                        <p>{{"3rd Step" | translate}}</p><hr>
+                                    </span>
+                              </div>
+                                <div class="col-lg-4 col-sm-12 password-change" *ngIf="employeeID>0 && role!=4 && showChangedPassword">
+                                        <label class="checkbox-label-password-change">{{"Change Password" | translate  }}</label>
+                                        <app-checkbox customID="custm-checkbox-mo" (checkboxChanged)="changePassword($event)" [checkBoxFormControl]="newEmployeeForm.controls.changedPassword" [checkBoxFormGroup]="newEmployeeForm"></app-checkbox>
+                                </div>
+
+                            </div>
+
+                            <div class="row mn-top-15" *ngIf="!isEmployee">
+                                <div class="col-lg-4 col-sm-12 col-md-6">
+                                    <div class="form-group max-input-wrapper-width">
+                                        <label>{{"Password"|translate}}</label>
+                                        <input #password class="form-control" type="password"  value="" formControlName="password"/>
+                                        <span invalidMessage [control]="newEmployeeForm.controls.password"></span>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-4 col-sm-12 col-md-6">
+                                    <div class="form-group max-input-wrapper-width">
+                                        <label>{{"Confirm Password" | translate}}</label>
+                                        <input #confirm_password class="form-control"  type="password" value="" formControlName="confirm_password"/>
+                                        <span invalidMessage [control]="newEmployeeForm.controls.confirm_password"></span>
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="row button-wrapper">
+                                <div class="col-md-12 text-align-right">
+                                    <shared-button buttonType="button" class="employee-add-back-btn" iconClass="icon-back-red" name="{{'Back' | translate}}" (buttonClicked)="btnBackClicked()"></shared-button>
+                                    <shared-button [disabledCondition]="btnDisabled" buttonType="submit"  class="employee-add-next-btn" name="{{BtnTitle|translate}}" (buttonClicked)="btnNextClicked()"></shared-button>
+                                </div>
+                            </div>
+
+
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

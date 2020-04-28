@@ -1,0 +1,93 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="title">
+      <h1>Track moving</h1>
+    </div>
+
+    <div class="margin-top-22">
+      <div class="card">
+        <form class="form-tracking custom-type-ahead" [formGroup]="trackMovementForm"
+          (ngSubmit)="getTrackedMovements()">
+          <div class="search-input">
+            <div class="form-group">
+              <label>Chose Employee</label>
+              <type-ahead [formName]="trackMovementForm" [form_control_name]="trackMovementForm.controls.employee"
+                dataGroupName="Employee" [allowedMaxItem]="1" [placeholder]="'+Employee'"></type-ahead>
+            </div>
+          </div>
+
+          <div class="search-input">
+            <div class="form-group">
+              <label>Chose Date</label>
+              <date-picker [inputFormGroup]="trackMovementForm" [inputFormControl]="trackMovementForm.controls.date">
+              </date-picker>
+            </div>
+          </div>
+          <div class="search-input">
+          </div>
+          <div class="search-input-btn">
+            <div class="form-group" style="float: right;">
+              <button class="btn btn-search" type="submit">
+                Get data
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="export-wrap">
+      <button class="btn btn-export" (click)="exportData()">
+        Export
+      </button>
+    </div>
+
+    <div class="row map-container db-bottom-wrapper margin-top-15" #mapWrapper *ngIf="showActivityMap">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header">
+            <div *ngIf="!trackedMovements else events">
+              <h3>Interactive Map</h3>
+            </div>
+            <ng-template #events>
+              <div class="list-title">
+                <img *ngIf="!showMovementDetails; else closeMovementDetails"
+                  (click)="showMovementDetails=!showMovementDetails" src="./assets/icons/blue_hamburger.svg">
+                <ng-template #closeMovementDetails>
+                  <img (click)="showMovementDetails=!showMovementDetails" src="./assets/icons/blue_close.svg">
+                </ng-template>
+                <h3>List of Movements Track</h3>
+              </div>
+            </ng-template>
+            <img src="./assets/icons/closeX.svg">
+          </div>
+          <div class="map-content" [style.height]="mapHeight">
+            <div class="event-container" *ngIf="trackedMovements">
+              <div class="event-item">
+                <div class="event-icon" [ngStyle]="{'background': 'rgba(51,172,46,0.2)'}">
+                  <img src="./assets/icons/green_checkout.svg">
+                </div>
+                <div class="event-detail"
+                  [ngStyle]="{'display': showMovementDetails ? 'flex' : '', 'width': showMovementDetails ? '240px' : ''}">
+                  <div class="event-name">Worked Started</div>
+                  <div class="event-time">8:01</div>
+                </div>
+              </div>
+              <div class="event-item" *ngFor="let movement of movementLists">
+                <div class="event-icon" [ngStyle]="{'background': 'rgba(11,107,242,0.2)'}">
+                  <img src="./assets/icons/blue_navigate.svg">
+                </div>
+                <div class="event-detail"
+                  [ngStyle]="{'display': showMovementDetails ? 'flex' : '', 'width': showMovementDetails ? '240px' : ''}">
+                  <div class="event-name">{{ movement.event }}</div>
+                  <div class="event-time">{{ movement.time }}</div>
+                </div>
+              </div>
+            </div>
+            <map *ngIf="isMapShow"></map>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

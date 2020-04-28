@@ -1,0 +1,14 @@
+<ng-template #rt let-r="result" let-t="term">
+    <span class="" [ngClass]="{'dp-img-wrapper':dataGroupName=='Geozone' || dataGroupName=='Group'}">
+        <img [src]="'./assets/icons/' + r['flag']">
+    </span>
+    <ngb-highlight [result]="r.name" [term]="t"></ngb-highlight>
+</ng-template>
+
+<div [formGroup]="formName" class="form-search-icon">
+    <input id="typeahead-template" type="text" [formControl]="form_control_name" placeholder="Search"
+        class="form-control" [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter"
+        (focus)="focus$.next($event.target.value)" (click)="click$.next($event.target.value)" #instance="ngbTypeahead"
+        #searchInput (change)="inputValueChanged()" />
+    <span class="searchIcon" (click)="searchIconClicked()"></span>
+</div>

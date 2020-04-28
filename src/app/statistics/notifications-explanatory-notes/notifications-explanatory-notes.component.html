@@ -1,0 +1,193 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="title">
+      <h1>Notification and explanatary notes</h1>
+    </div>
+
+    <div class="margin-top-22">
+      <div class="card">
+        <form class="form-monitor custom-type-ahead" [formGroup]="notificationAndExplanatoryForm"
+              (ngSubmit)="getNotificationAndExplanatoryList()">
+          <!-- <div class="row"> -->
+
+          <div class="search-input">
+            <div class="form-group">
+              <label>{{ "Phone number or Name" | translate }}</label>
+              <div class="form-search-icon-wrapper">
+                <type-ahead (inputChanged)="ddEmpChanged($event)"
+                            [formName]="notificationAndExplanatoryForm"
+                            [image_path]="imageURL()"
+                            [isValid]="true"
+                            [form_control_name]="notificationAndExplanatoryForm.controls.employee"
+                            dataGroupName="Employee"
+                            [allowedMaxItem]="1"
+                            [placeholder]="'Phone number or name'"
+                            [statesWithFlags]="employees"
+                            [totalStatesWithFlags]="employees.length"
+                            [onlyFromAutocomplete]="false"
+                            (onRemoveEmit)="onRemove()"
+                >
+                </type-ahead>
+                <!-- <span invalidMessage [control]="notificationAndExplanatoryForm.controls.employee"></span> -->
+              </div>
+              <!-- <label>Search</label>
+              <div class="form-search-icon-wrapper">
+                  <app-search-icon-form [inputSearchFormGroup]="notificationAndExplanatoryForm"
+                                        [inputSearchFormControl]="notificationAndExplanatoryForm.controls.notificationAndExplanatory"
+                                        [customPlaceholder]="'Phone number or name'"
+                  ></app-search-icon-form>
+              </div> -->
+            </div>
+          </div>
+
+
+          <div class="search-input">
+            <div class="form-group">
+              <label>{{ "Select Group" | translate }}</label>
+              <div class="form-search-icon-wrapper">
+                <app-select-input (inputChanged)="groupChanged($event)"
+                                  [selectInputGroup]="notificationAndExplanatoryForm"
+                                  [selectInputControl]="notificationAndExplanatoryForm.controls.group"
+                                  [selectOptions]="groups"></app-select-input>
+              </div>
+            </div>
+          </div>
+
+          <div class="search-input-date">
+            <div class="form-group">
+              <label>Date From</label>
+              <date-picker [inputFormGroup]="notificationAndExplanatoryForm"
+                           [inputFormControl]="notificationAndExplanatoryForm.controls.fromDate"
+                           [maxDate]="notificationAndExplanatoryForm.value.toDate">
+              </date-picker>
+            </div>
+          </div>
+
+          <div class="search-input-date">
+            <div class="form-group">
+              <label>Date To</label>
+              <date-picker [inputFormGroup]="notificationAndExplanatoryForm"
+                           [inputFormControl]="notificationAndExplanatoryForm.controls.toDate"
+                           [minDate]="notificationAndExplanatoryForm.value.fromDate">
+              </date-picker>
+            </div>
+          </div>
+
+
+          <div class="search-input-btn">
+            <div class="form-group">
+              <button [disabled]="!notificationAndExplanatoryForm.valid" class="btn btn-search" type="submit">
+                Get data
+              </button>
+            </div>
+          </div>
+          <!-- </div> -->
+        </form>
+      </div>
+    </div>
+
+    <div class="export-wrap">
+      <button [disabled]="!notificationAndExplanatoryForm.valid" class="btn btn-export" (click)="exportData()">
+        Export
+      </button>
+    </div>
+
+    <div class="row" *ngIf="filteredEvents.length > 0">
+      <div class="col-md-12">
+        <div class="notificationAndExplanatory-table-container">
+          <table class='notificationAndExplanatory-table' #reportTable>
+            <thead>
+            <tr>
+              <th>
+                Date/Time
+                <img src="./assets/icons/blue_arrow_down.svg" width="16px" height="16px"/>
+              </th>
+              <th>Employee</th>
+              <th>Groups</th>
+              <th>M-GE direction</th>
+              <th>Critically level</th>
+              <th>Message text</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr
+              *ngFor="let data of filteredEvents | paginate: { itemsPerPage: perPageItem, currentPage: p }">
+              <td width="10%">
+                <ul class="date-time">
+                  <li class="date">{{ data.date }}</li>
+                  <li class="time">{{ data.time }}</li>
+                </ul>
+              </td>
+              <td width="15%">
+                <div class="td-emp">
+                  <img class="avatar-image" src="./assets/icons/punc_employee2.JPG"/>
+                  <ul class="emp-info">
+                    <li>{{ data.name }}</li>
+                    <li>{{ data.position }}</li>
+                  </ul>
+                </div>
+              </td>
+
+              <td width="15%">
+                <div class="td-emp">
+                  <img class="avatar-image" src="./assets/icons/blue_group"/>
+                  <ul class="emp-info">
+                    <li>{{ data.groupname }}</li>
+                    <li>{{ data.groupposition }}</li>
+                  </ul>
+                </div>
+              </td>
+              <!--                            <td width="20%">-->
+              <!--                                <div class="td-event">-->
+              <!--                                    <img *ngIf="employee.status; else checkout" class="event-icon" src="./assets/icons/green_checkout.svg"/>-->
+              <!--                                    <ng-template #checkout>-->
+              <!--                                        <img class="event-icon" src="./assets/icons/red_checkout.svg" width="24px" height="24px"/>-->
+              <!--                                    </ng-template>-->
+              <!--                                    <div class="event-info">-->
+              <!--                                        {{ employee.event }}-->
+              <!--                                    </div>-->
+              <!--                                </div>-->
+              <!--                            </td>-->
+              <td width="12%">
+                <img *ngIf="data.direction; else arrowDown" class="event-icon"
+                     src="./assets/icons/arrow_up.svg" width="24px" height="24px"/>
+                <ng-template #arrowDown>
+                  <img class="event-icon" src="./assets/icons/arrow_down.svg" width="24px"
+                       height="24px"/>
+                </ng-template>
+              </td>
+              <td width="12%">
+                <img *ngIf="data.critical; else criticalblur" class="event-icon"
+                     src="./assets/icons/critical_bright.svg" width="24px" height="24px"/>
+                <ng-template #criticalblur>
+                  <img class="event-icon" src="./assets/icons/critical_blur.svg" width="24px"
+                       height="24px"/>
+                </ng-template>
+              </td>
+              <td width="30%" class="notificationAndExplanatory-address">
+                {{ data.message }}
+              </td>
+
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pagination-wrapper">
+          <div class="custom-pagination">
+            <pagination-controls (pageChange)="p = $event" previousLabel="" nextLabel="">
+            </pagination-controls>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card employee_empty" *ngIf="filteredEvents.length == 0">
+      <img class="emp-action-btn" src="./assets/icons/gray_docs.svg"/>
+      <p><span>{{ "Notification and explanatary notes" | translate }}</span> {{ "table is empty" |translate}}
+        <br>{{"Any new records will appear here" |translate}}
+      </p>
+    </div>
+
+  </div>
+</div>

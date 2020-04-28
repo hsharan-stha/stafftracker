@@ -1,0 +1,184 @@
+.main-container{
+    margin-left: 216px;
+    /*background: #F4F6FC;*/
+}
+.sub-container-padding{
+    padding: 111px 249px 0px 77px;
+}
+.sub-container{
+    width: 594px;
+    height: 327px;
+    padding:28px 32px ;
+    background: white;
+
+}
+.header-title{
+    font-size: 48px;
+    color: #454D60;
+    text-align: center;
+    font-weight: 300;
+    font-family: Rubik;
+    word-spacing: -6.6px;
+}
+.sub-header-title{
+    font-size: 34px;
+    color: #454D60;
+    text-align: left;
+    font-weight: 300;
+    font-family: Rubik;
+    line-height: 32px;
+}
+.p-content{
+    font-size: 15px;
+    color: #8798AD;
+    line-height: 22px;
+    font-family: Rubik;
+    font-weight: 400;
+}
+.btn-style{
+    width: 200px;
+    height: 40px;
+}
+.margin-lef-32{
+    margin-left: 32px;
+}
+.skip-deco{
+
+    font-size: 15px;
+    color: #2E5BFF;
+    font-family: Rubik;
+    font-weight: 500;
+    word-spacing: 0;
+    font-style: medium;
+    text-align: left;
+
+}
+.progress-bar-design{
+    width:594px ;
+    padding-top: 2%;
+    padding-left: 10%;
+    padding-right: 10%;
+
+}
+.arrow-design{
+    width: 70px;
+    background: #BFC5D2;
+    height: 2px;
+    position: relative;
+    top: -139px;
+    left: -108px;
+}
+.arrow-design:before{
+    content: '';
+    display: block;
+    width: 9px;
+    height: 9px;
+    transform: rotate(-50deg);
+    position: absolute;
+    border-top: 2px solid #BFC5D2;
+    border-left: 2px solid #BFC5D2;
+    top: -4px;
+    left: 0px;
+
+}
+.arrow-design:after{
+    content: '';
+    display: block;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #BFC5D2;
+    position: absolute;
+    top: -4px;
+    right: -9px;
+
+}
+
+
+
+.progress-wizard {
+    margin: 0 0px 0 30px;
+}
+.progress-wizard .progress-steps {
+    height: 4px;
+    margin:0 91px 0 14px;
+    position: relative;
+    top: 15px;
+    background: #E5EAFE;
+}
+.progress-wizard .progress-steps .indicator-progress {
+    background: #2E5BFF;
+}
+.progress-wizard .progress-steps .indicator-progress {
+    height: 100%;
+    width: 0;
+    background: #E5EAFE;
+    transition: width 0.2s ease-in;
+}
+.progress-wizard .steps-wizard {
+    list-style: none;
+    margin: 0;
+    padding: 15px 0 0;
+    display: inline-block;
+    width: 100%;
+    font-size: 0;
+    text-align: justify;
+    -ms-text-justify: distribute-all-lines;
+    height: 0px;
+}
+.progress-wizard .steps-wizard li {
+    display: inline-block;
+    vertical-align: top;
+    width: 33.33%;
+}
+.progress-wizard .steps-wizard li a {
+    position: relative;
+    display: block;
+    padding: 25px 0px 0;
+    text-decoration: none;
+    word-break: break-all;
+    cursor: default;
+    font-size: 12px;
+    color: #8798AD;
+    letter-spacing: 0;
+    line-height: 5px;
+    font-family: Rubik;
+    font-weight: 400;
+    text-align: center;
+}
+.progress-wizard .steps-wizard li.completed a span {
+    border-color: #2E5BFF;
+    background: #2E5BFF;
+    color: #FFFFFF;
+}
+.text-design{
+    font-size: 12px;
+    color: #8798AD;
+    word-spacing: 0;
+    font-weight: 400;
+    text-align: left;
+    font-family: Rubik;
+
+}
+.progress-wizard .steps-wizard li a span {
+    position: absolute;
+    top: 0;
+    left: 18%;
+    display: block;
+    background: #E5EAFE;
+    line-height: 17px;
+    margin-top: -15px;
+    margin-left: -15px;
+    width: 20px;
+    height: 20px;
+    border-radius: 35px;
+    text-indent: -1px;
+    border: 2px solid #E5EAFE;
+    transition: all 0.2s ease-in;
+    font-size: 12px;
+    color: #8798AD;
+    letter-spacing: 0;
+    text-align: center;
+    font-family: Rubik;
+    font-weight: 500;
+}

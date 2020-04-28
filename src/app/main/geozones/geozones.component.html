@@ -1,0 +1,38 @@
+<sidebar></sidebar>
+<div class="main-container">
+  <div class="sub-container-padding">
+    <div class="sub-container">
+
+      <h3 class="sub-header-title">{{ "2nd Step" | translate }}. {{ "Create Geozones" | translate }}</h3>
+      <p class="p-content">{{ "Create Geozones" | translate }}, {{ "according to which the movements of" | translate }}<br>
+        {{ "Employees will be tracked" | translate }}<br>
+        {{ "Set up time for the presence control in workplace" | translate }}
+      </p>
+      <a href="" class="skip-deco">{{ "Skip" | translate }}</a>
+      <button class="sign-in-btn btn-style margin-lef-32" [routerLink]="['/main/statistics']">{{ "Got it" | translate }}!</button>
+      <div class="arrow-design"></div>
+    </div>
+    <div class="progress-bar-design">
+
+      <div class="progress-wizard">
+        <div class="progress-steps">
+          <div class="indicator-progress" style="width: 50%;"></div>
+        </div>
+        <ul class="steps-wizard">
+          <li class="completed active">
+            <a href="javascript:;"><span>1</span></a>
+          </li>
+          <li class="completed active">
+            <a href="javascript:;"><span>2</span></a>
+          </li>
+          <li>
+            <a href="javascript:;"><span>3</span></a>
+          </li>
+
+        </ul>
+        <div class="text-design">{{ "Create geozone" | translate }}</div>
+      </div>
+    </div>
+  </div>
+
+</div>

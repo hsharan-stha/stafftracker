@@ -1,0 +1,27 @@
+<div class="register-form-wrapper">
+<div class="col-sm-12">
+    <h1 class="register-form-title">{{"Sign up" | translate }} <br/>{{"to Staff Tracker" | translate}}</h1>
+    <p class="register-form-tag">{{ "Please enter your MSISDN to proceed" | translate }}</p>
+</div>
+
+<div class="col-xl-12 col-lg-12 col-sm-12 activation-code-wrapper">
+    <form class="register-form" [formGroup]="activationForm" >
+        <div class="form-group custom-width">
+            <label>{{ "Phone number" | translate }}</label>
+            <input class="form-control" placeholder="06 XX XXX XXX" formControlName="phoneNumber" [textMask]="{mask: mask}"/>
+            <span [control]="activationForm.controls.phoneNumber" invalidMessage></span>
+        </div>
+        <div class="form-group custom-width">
+            <label>{{ "Activation code" | translate }}</label>
+            <input class="form-control" value="" formControlName="activationCode"/>
+            <span [control]="activationForm.controls.activationCode" invalidMessage [invalidMessages]="errorMessage"></span>
+        </div>
+        
+        <div class="form-group custom-width">
+            <shared-button buttonType="submit" [disabledCondition]="!activationForm.valid" class="sign-in-btn" name="{{'Sign up' | translate}}" (buttonClicked)="btnClicked()"></shared-button>
+        </div>
+    </form>
+</div>
+</div>
+
+

@@ -1,0 +1,146 @@
+<div class="row">
+    <div class="col-lg-9 emp-monitor-wrapper" style="float: left">
+        <h1 class="emp-monitor-title">Data on Employee
+            <div class="clearfix"></div>
+        </h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="emp-panel">
+            <div class="row">
+                <form class="search-emp-monitor-form form-inline custom-type-ahead" [formGroup]="empMonitorSearchForm">
+                <div class="col-md-6 col-lg-6">
+                    <div class="form-group input-margin">
+                        <label>Date From</label>
+                        <div class="form-search-icon-wrapper">
+                            <date-picker 
+                                [inputFormGroup]="empMonitorSearchForm" 
+                                [inputFormControl]="empMonitorSearchForm.controls.fromDate">
+                            </date-picker>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-6 col-lg-6">
+                    <button class="btn-search">Get data</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mn-top-32">
+    <div class="col-lg-12">
+        <button class="export-btn">
+            Export
+        </button>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
+<div class="row mn-bottom-30">
+    <div class="col-sm-12 col-lg-5 col-md-12 col-xl-5">
+        <div class="pie-chart-panel">
+            <div class="pie-chart-header">
+                <h4>Employee Monitoring</h4>
+            </div>
+            <div class="pie-chart-body">
+                <div style="position: relative">
+                    <div class="container info-container">
+                        
+
+                        <div class="center-info-container">
+                                <div class="hover-number">
+                                        {{infoMessage.value}}
+                                </div>
+                            <div class="hover-text">
+                                    {{infoMessage.item}}
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+                
+                <google-chart 
+                    [data]="pieChart" #pieChartView (mouseOver)="onMouseOver($event)"
+                    (chartSelect)='chartSelect($event)'> 
+                </google-chart> 
+                
+                <div style="position: relative">
+                    <div class="container legend-container">
+                        <div *ngFor="let item of dataTableDATA | slice:1; let i = index" class="row">
+                            <div class="col-sm-12 custom-padding-1">
+                                <div class="circle" [ngStyle]="getDotColor(i)"></div>
+                                <p>
+                                {{item[0]}}
+                                </p>
+                                <span class="number">
+                                {{item[1]}}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-sm-12 col-lg-7 col-md-12 col-xl-7 responsive-mn-top">
+        <div class="pie-chart-panel">
+            <div class="pie-chart-header">
+                <h4>Employee Monitoring Statistics</h4>
+                <span class="action-btn"></span>
+            </div>
+            <div class="pie-chart-body">
+                <div class="emp-monitoring-tbl-wrapper">
+                    <table class="emp-monitoring-tbl">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span>991</span>
+                                    <p>
+                                        Total number of employees registered in the system
+                                    </p>
+                                </td>
+                                <td>
+                                    <span>325</span>
+                                    <p>
+                                        Number of employees who allowed themselves to look for
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>67</span>
+                                    <p>
+                                        Number of employees included in the Employees Group
+                                    </p>
+                                </td>
+                                <td>
+                                    <span>334</span>
+                                    <p>
+                                      Number of employees for whom the rating was successful (monitoring is available)  
+                                    </p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span>124</span>
+                                    <p>
+                                        Number of employees not monitored
+                                    </p>
+                                </td>
+                                <td>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

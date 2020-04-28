@@ -1,0 +1,75 @@
+.avatar-carousel-container{
+    position : relative;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.avatar-list{
+    margin:0 4px;
+    white-space: nowrap;
+    overflow : hidden ;
+    scroll-behavior: smooth;
+    overflow: hidden;
+
+}
+
+.slide-arrow {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 20px;
+    height: 20px;
+    background: #FAFBFF;
+    border: 1px solid #E0E7FF;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.slide-left {
+    float: left;
+}
+
+.slide-right {
+    float: right;
+}
+
+.slider-item {
+    height: 40px;
+    width: 40px;
+    background: #EEF3F5;
+    border-radius: 20px;
+    float: left;
+    margin-left: 4px;
+    cursor: pointer;
+}
+
+.slider-item img {
+    margin: 10px;
+}
+
+.selected {
+    border: 1px solid #33AC2E;
+}
+
+.selected .selected-checked {
+    position: relative;
+}
+
+.selected-checked .checked {
+    position: absolute;
+    background: #33AC2E;
+    border-radius: 5px;
+    width: 10px;
+    height: 10px;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selected-checked .checked img {
+    margin: 0;
+}

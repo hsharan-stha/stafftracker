@@ -1,0 +1,380 @@
+/*for violators employee list*/
+.panel {
+  width: 100%;
+  display: block;
+  float: left;
+  background-color: white;
+  border: 1px solid rgba(46, 91, 255, 0.08);
+  box-shadow: 0 10px 20px 0 rgba(46, 91, 255, 0.07);
+}
+
+.card-wrapper {
+  cursor: pointer;
+  width: 100%;
+  /* padding: 0px 30px 20px 0px; */
+}
+
+.card-wrapper.last-card {
+  /* padding: 0px 0px 20px 0px; */
+}
+
+.loading-image {
+  position: absolute;
+}
+
+.top-violators-wrapper {
+  margin-bottom: 15px;
+}
+
+.bordered-card {
+  border: 1px solid #BFC5D2;
+  width: 100%;
+  float: left;
+  border-radius: 5px;
+  position: relative;
+  max-width: 340px;
+}
+
+.bordered-card-icon {
+  /* width: 15%; */
+  float: left;
+  margin: 33px 9px 33px 17px;
+}
+
+.bordered-card-body {
+  padding: 1.25rem;
+  /* width: 70%; */
+  /* float: left; */
+  padding-left: 0px;
+}
+
+.top-violators-wrapper .panel {
+  padding: 21px 21px 25px 21px;
+}
+
+.bordered-card-body h2 {
+  font-size: 15px;
+  color: #2E384D;
+  letter-spacing: 0;
+  line-height: 22px;
+  font-family: Rubik;
+  font-weight: 500;
+  text-align: left;
+  margin: 14px 0px 0px 0px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bordered-card-body p {
+  font-size: 15px;
+  color: #8798AD;
+  letter-spacing: 0;
+  line-height: 22px;
+  font-family: Rubik;
+  font-weight: 400;
+  text-align: left;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.top-violators-wrapper h3 {
+  font-size: 28px;
+  color: #2E384D;
+  letter-spacing: 0;
+  line-height: 32px;
+  font-family: Rubik;
+  font-weight: 300;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.top-list {
+  border: 1px solid #D63649;
+}
+
+.violators-tag {
+  position: absolute;
+  font-size: 12px;
+  color: #D63649;
+  letter-spacing: 1.12px;
+  text-align: center;
+  font-family: Rubik;
+  font-weight: 500;
+  text-transform: uppercase;
+  bottom: -10px;
+  left: 50%;
+  margin-left: -60px;
+  background: white;
+  padding: 0px 6px;
+}
+
+.violators-percentage {
+  position: absolute;
+  background-color: #D63649;
+  font-size: 11px;
+  color: #FFFFFF;
+  letter-spacing: 1.12px;
+  text-align: center;
+  font-family: Rubik;
+  font-weight: 500;
+  text-transform: uppercase;
+  top: 6px;
+  right: 6px;
+  border-radius: 4px;
+  width: 38px;
+  height: 15px;
+}
+
+.btn-view-violators {
+  font-size: 15px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  text-align: center;
+  font-family: Rubik;
+  font-weight: 500;
+  background-color: #2E5BFF;
+  border-radius: 4px;
+  border: 1px solid #2E5BFF;
+  width: 200px;
+  height: 40px;
+  margin-top: 20px;
+  position: relative;
+  left: 50%;
+  margin-left: -100px;
+}
+
+.btn-view-violators:disabled {
+  background-color: #8798AD;
+  pointer-events: none;
+  border: 1px solid #8798AD;
+}
+
+.violators-table {
+  width: 100%;
+  margin-bottom: 5px;
+}
+
+.violators-table tbody tr {
+  height: 75px;
+  border-bottom: 12px solid #eef3f5;
+}
+
+.violators-table tbody tr td {
+  background-color: white;
+  padding-top: 5px;
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.violators-table tbody tr td:not(.serial-number):not(.violators-per-dtl) {
+  font-size: 15px;
+  color: #2E384D;
+  letter-spacing: 0;
+  line-height: 15px;
+  font-family: Rubik;
+  font-weight: 400;
+  text-align: left;
+}
+
+.serial-number {
+  font-size: 15px;
+  color: #2E384D;
+  letter-spacing: 0;
+  font-family: Rubik;
+  font-weight: 500;
+  text-align: left;
+}
+
+
+.employee-info {
+  float: left;
+}
+
+.employee-info h2 {
+  font-size: 15px;
+  color: #2E384D;
+  letter-spacing: 0;
+  font-family: Rubik;
+  font-weight: 500;
+  text-align: left;
+  margin: 0px 0px 0px 0px;
+}
+
+.employee-info p {
+  font-size: 15px;
+  color: #8798AD;
+  letter-spacing: 0;
+  line-height: 22px;
+  font-family: Rubik;
+  font-weight: 400;
+  text-align: left;
+  margin-bottom: 0px;
+}
+
+.emp-img {
+  height: 34px;
+  width: 34px;
+  float: left;
+  margin-right: 10px;
+}
+
+.violators-per-dtl {
+  font-size: 15px;
+  color: #D63649;
+  letter-spacing: 0;
+  font-family: Rubik;
+  font-weight: 500;
+  text-align: left;
+}
+
+@media (max-width: 992px) {
+  .panel .row div:nth-child(2) .card-wrapper {
+    padding: 0px 0px 20px 0px;
+  }
+
+  .bordered-card {
+    margin: 10px 0px;
+  }
+}
+
+@media (max-width: 767px) {
+  .card-wrapper {
+    padding: 0px;
+  }
+}
+
+
+@media (max-width: 1545px) and (min-width: 1159px) {
+  table tbody tr td:last-child {
+    width: 11%;
+  }
+}
+
+@media (max-width: 1160px) and (min-width: 1000px) {
+  table tbody tr td:last-child {
+    width: 13%;
+  }
+}
+
+@media (max-width: 1000px) {
+  table tbody tr td:last-child {
+    width: 17%;
+  }
+}
+
+@media (max-width: 870px) {
+  table tbody tr td:last-child {
+    width: 20%;
+  }
+
+  table tbody tr td {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+}
+
+.hidden-button {
+  display: none;
+}
+
+.emp-action-btn {
+  cursor: pointer;
+  content: url(/assets/icons/blue_menu_dot.svg);
+  text-align: right;
+  margin-top: 5px;
+  margin-right: 25px;
+  cursor: pointer;
+}
+
+.text-align-right {
+  text-align: right !important;
+}
+
+
+@media (max-width: 1040px) {
+  .violators-table thead tr th:last-child {
+    width: 126px;
+    display: block;
+  }
+}
+
+@media (max-width: 819px) {
+  .violators-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+}
+
+
+.table-image-design {
+  width: 34px;
+  height: 34px;
+  border-radius: 17px;
+  float: left;
+  margin-top: 4px;
+}
+
+.violators-table .emp-info-list {
+  list-style: none;
+  list-style-position: inside;
+  margin-bottom: 0px;
+}
+
+.violators-table .emp-info-list li:first-child {
+  line-height: 20px;
+  color: #2E384D;
+  font-size: 15px;
+  font-family: Rubik;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-align: left;
+}
+
+.violators-table .emp-info-list li:last-child {
+  font-size: 15px;
+  font-family: Rubik;
+  font-weight: 400;
+  color: #8798AD;
+  line-height: 20px;
+  letter-spacing: 0;
+  text-align: left;
+}
+
+
+@media (max-width: 400px) {
+  .btn-view-violators {
+    width: 100%;
+    left: 0;
+    margin-left: 0;
+  }
+}
+
+
+.violators-table::-webkit-scrollbar {
+  height: 4px;
+  background-color: #F5F5F5;
+}
+
+.violators-table::-webkit-scrollbar-thumb {
+  background-color: #95a1b282;
+}
+
+.violators-table::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.12);
+  background-color: #f5f5f5;
+}
+
+.svg-img {
+  height: 40px;
+  width: 40px;
+  border-radius: 20px;
+}
+
+
+.active-bordered-card {
+  border: 1px solid #2E5BFF;
+}

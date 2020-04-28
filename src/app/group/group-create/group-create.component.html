@@ -1,0 +1,251 @@
+<div class="create-group-container">
+  <div class="title">
+    <h1>{{ pageTitle1 | translate}}</h1>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-6">
+      <div class="card create-card">
+        <div class="group-form-header">
+          <div class="sub-title">
+            {{ pageTitle2 | translate}}
+          </div>
+        </div>
+        <form class="create-group-form" [formGroup]="groupForm" (ngSubmit)="verifyCaptcha()">
+          <p class="add-group-tag">
+            {{ pageTitle3 | translate }}
+          </p>
+          <div class="row">
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <div class="label-wid-line">
+                <p>{{"Give a name to your group" | translate}}</p>
+                <hr>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <div class="form-group custom-width">
+                <label>{{"Name of the group" | translate}}</label>
+                <input type="text" class="form-control" formControlName="name" placeholder="Group Name">
+                <span invalidMessage [control]="groupForm.controls.name"></span>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <div class="label-wid-line">
+                <p>{{"Choose avatar" | translate}}</p>
+                <hr>
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <div class="avatar-wrapper">
+                <avatar-carousel class="avatar-carousel">
+                  <div class="slider-item" *ngFor="let avatar of avatars"
+                       [ngClass]="{'selected' : avatarSelected === avatar.name}"
+                       (click)="selectAvatar(avatar.name)">
+                    <div *ngIf="avatarSelected === avatar.name" class="selected-checked">
+                      <div class="checked"><img src="./assets/icons/white_check.svg" width="8px"
+                                                height="8px"/></div>
+                    </div>
+                    <img src="{{imageURL}}{{avatar.name}}" width="20px" height="20px"/>
+                  </div>
+                </avatar-carousel>
+                <span invalidMessage [control]="groupForm.controls.avatar"></span>
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <div class="form-group">
+                <label class="no-css-text">{{"Or upload your own"|translate}}</label>
+                <div class="choose-file">
+                  <input type="file" #inputFile (change)="imageFileChange($event)"
+
+                         class="form-control" accept="image/*">
+                  <!--                                    formControlName="image"-->
+                  <span invalidMessage [control]="groupForm.controls.image"></span>
+                  <button type="button" class="btn-choose-img" (click)="inputFile.click()">
+                    <img src="{{this.selectedImage?this.selectedImage:'./assets/icons/white_photo.svg'}}"
+                         width="16px" height="16px"/>
+                    <span>{{"Choose file" | translate}}</span>
+                  </button>
+                  <div
+                    class="file-name">{{selectedFilename ? selectedFilename : 'File format .png .jpg, (Size < 5MB)' | translate}}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <div class="label-wid-line">
+                <p>{{"selected employees" | translate}}</p>
+                <hr>
+              </div>
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12">
+              <div class="form-group">
+                <div class="select-employee">
+                  <!--                    {{chosenEmployees.length}}-->
+                  <label>{{"Employees in the group" | translate}}<span
+                    class="count-label">{{countChosenEmployees}}</span></label>
+                  <span invalidMessage [control]="groupForm.controls.employees"></span>
+                </div>
+                <ul class="selected-emp-list">
+                  <li *ngFor="let employee of chosenEmployees">
+                    <div class="emp-item selected"
+                         (click)="unSelectEmployee(employee.id)">
+                      <img height="20px" width="20px"
+                           src="{{imageURL}}{{employee.icon_url}}">
+                    </div>
+                  </li>
+                  <li *ngIf="loaderChosenEmp" class="round-loading-image"></li>
+                </ul>
+                <!--                <div class="chosen-emp-table-wrapper">-->
+                <!--                  <table class='emp-table'>-->
+                <!--                    <tbody>-->
+                <!--                    <tr *ngFor="let employee of chosenEmployees">-->
+                <!--                      <td width="40%">-->
+                <!--                        <img class="avatar" src="{{imageURL}}{{employee.icon_url}}"/>-->
+                <!--                        <ul class="emp-info-list">-->
+                <!--                          <li>{{ employee.name }}</li>-->
+                <!--                          <li>{{ employee.position }}</li>-->
+                <!--                        </ul>-->
+                <!--                      </td>-->
+                <!--                      <td width="40%">-->
+                <!--                        <div class="td_emp_phone">{{ employee.msisdn }}</div>-->
+                <!--                      </td>-->
+                <!--                      <td width="20%">-->
+                <!--                        <div class="chosen"-->
+                <!--                             (click)="unSelectEmployee(employee.id)">{{"Chosen" | translate}}</div>-->
+                <!--                      </td>-->
+                <!--                    </tr>-->
+                <!--                    </tbody>-->
+                <!--                  </table>-->
+                <!--                  <div *ngIf="loaderChosenEmp" class="loading-image"></div>-->
+                <!--                </div>-->
+              </div>
+
+            </div>
+            <div class="col-sm-12 col-md-12 col-lg-12 footer-wrapper">
+              <div class="group-form-footer">
+                <div *ngIf="insertLoader" class="round-loading-image"></div>
+                <button type="button" class="group-back-btn" (click)="btnBackClicked()"><img
+                  src="./assets/icons/red_arrow_left.svg"/>{{btnBack|translate}}</button>
+
+                <button [disabled]="btnDisabled" class="btn-green" type="submit">
+                  {{btnName|translate}}</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <div class="col-sm-12 col-md-12 col-lg-6 set-margin-top">
+      <div class="row height-100">
+        <!--                <div class="col-sm-12 col-md-12 col-lg-12">-->
+        <!--                    <div #top_card class="card">-->
+        <!--                        <div class="group-form-header">-->
+        <!--                            <div class="sub-title">-->
+        <!--                                {{"List of employees" | translate}}-->
+        <!--                            </div>-->
+        <!--                        </div>-->
+        <!--                        <div class="group-create-info add-group-tag">-->
+        <!--                            <div>-->
+        <!--                                {{"Use this field to add employees to the new group" | translate}}.-->
+        <!--                            </div>-->
+        <!--                            <span>-->
+        <!--                  {{"You can find quickly necessary worker by using search field" | translate}}-->
+        <!--                                . <br>{{"There is two type of searching: by name and by phone number" | translate}}.<br>-->
+        <!--                                {{"Also, you can use button choose all, if you need add all employees to the group" | translate}}-->
+        <!--                                .-->
+        <!--              </span>-->
+        <!--                        </div>-->
+        <!--                    </div>-->
+        <!--                </div>-->
+        <!-- </div>
+        <div class="row"> -->
+        <!--        [style.height]="sanitizer.bypassSecurityTrustStyle('calc(100% - '+topCardHeight+'px)')"-->
+        <div class="col-sm-12 col-md-12 col-lg-12"
+             [style.max-height]="sanitizer.bypassSecurityTrustStyle('calc(100% - '+'0px)')">
+          <div class="card list-card ">
+            <div class="group-form-header">
+              <div class="sub-title">
+                {{"List of available employees" | translate}}
+              </div>
+            </div>
+            <div class="emp-list-wrapper">
+              <form class="emp-search-form" [formGroup]="searchForm">
+                <p class="title2">{{"Use this list to add employees to the new  group." | translate}}</p>
+
+                <div class="row">
+                  <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                    <div class="form-group">
+                      <app-search-icon-form (inputChanged)="inputFilterChanged.next($event)"
+                                            [inputSearchFormGroup]="searchForm"
+                                            [inputSearchFormControl]="searchForm.controls.employee_name"
+                                            [customPlaceholder]="'Employees name'"
+                      ></app-search-icon-form>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-5 col-md-5 col-lg-5">
+                    <div class="form-group">
+                      <app-search-icon-form (inputChanged)="inputFilterChanged.next($event)"
+                                            [inputSearchFormGroup]="searchForm"
+                                            [inputSearchFormControl]="searchForm.controls.employee_phone"
+                                            [customPlaceholder]="'Employees phone'"
+                      ></app-search-icon-form>
+                    </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                    <div class="form-group">
+                      <app-checkbox customID="custm-checkbox"
+                                    (checkboxChanged)="selectFreeEmployees($event.target.checked)"
+                                    [checkBoxFormGroup]="searchForm"
+                                    (hoverBox)="setCheckBoxHover($event)"
+                                    [checkBoxFormControl]="searchForm.controls.isChecked"
+                      ></app-checkbox>
+                    </div>
+                    <span *ngIf="hoverCheckBox" class="drop-down-invalid-dialog check-box-toolpit"><invalid-message
+                      text="{{'Show all employees' | translate}}" type="message" width="160px"></invalid-message></span>
+                  </div>
+                </div>
+              </form>
+              <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                  <div class="emp-table-wrapper" appScrollPagination
+                       (scrollPage)="setPageByScroll($event)">
+                    <table class='emp-table'>
+                      <tbody>
+                      <tr *ngFor="let employee of filteredEmployees">
+                        <td width="40%" style="position: relative">
+                          <img class="avatar" src="{{imageURL}}{{employee.icon_url}}"/>
+                          <img *ngIf="employee.group_id && employee.group_icon_url"
+                               class="avatar-of-group"
+                               src="{{imageURL}}{{employee.group_icon_url}}"/>
+                          <ul class="emp-info-list">
+                            <li>{{ employee.name }}</li>
+                            <li>{{ employee.position ? employee.position : 'position' }}</li>
+                          </ul>
+                        </td>
+                        <td width="40%">
+                          <div class="td_emp_phone">{{ employee.msisdn }}</div>
+                        </td>
+                        <td width="20%">
+                          <div class="choose"
+                               (click)="selectEmployee(employee.id)">{{"Choose" | translate}}</div>
+                        </td>
+                      </tr>
+
+                      </tbody>
+                    </table>
+                    <div *ngIf="empListloader" class="loading-image"></div>
+                  </div>
+
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

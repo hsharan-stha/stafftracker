@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Staff tracker/Icon/Notification Grey</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Staff-tracker/Icon/Notification-Grey" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M2,19 C3.80952381,18.0724638 4.71428571,15.5217391 4.71428571,11.3478261 C4.71428571,5.08695652 8.78571429,3 11.5,3 C14.2142857,3 18.2857143,5.08695652 18.2857143,11 C18.2857143,14.942029 19.1904762,17.6086957 21,19 L2,19 Z" id="Path-2" stroke="#BFC5D2" stroke-width="2" stroke-linejoin="round" fill-rule="nonzero"></path>
+        <path d="M10,3.0104678 C10,2.3368226 10.5034893,2 11.5104678,2 C12.5174463,2 13.0209356,2.3368226 13.0209356,3.0104678 L10,3.0104678 Z" id="Path-3" stroke="#BFC5D2" stroke-width="2" fill-rule="nonzero"></path>
+        <path d="M5,15.335078 L18.4031186,15.335078" id="Path-4" stroke="#BFC5D2" stroke-width="2" fill-rule="nonzero"></path>
+        <path d="M9,19 C9,21 9.83333333,22 11.5,22 C13.1666667,22 14,21 14,19 L9,19 Z" id="Path-5" stroke="#BFC5D2" stroke-width="2" fill-rule="nonzero"></path>
+    </g>
+</svg>

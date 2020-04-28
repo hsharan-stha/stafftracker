@@ -1,0 +1,80 @@
+<div [class]="customClass">
+    <div class="clearfix"></div>
+    <div class="st-com-logo-wrapper" [ngClass]="{'active': isCompanyInfoActive}" [routerLink]="['/main/company-info']" style="cursor: pointer;outline: none;">
+        <img class="logo" src="./assets/unifun_log.png">
+
+        <ul style="padding-left: 12px;    width: auto" *ngIf="hideData == true">
+            <li class="fnt-size-15 line-h-16 dark-grey">{{ "Welcome" | translate }}</li>
+            <li class="fnt-size-15 line-h-16 light-grey">Unifun</li>
+        </ul>
+    </div>
+
+    <ul>
+        <li class="li-class" routerLinkActive="active" [routerLink]="['/main/positions']">
+            <img class="svg-img"
+                 src="./assets/icons/gray_position.svg"/>
+            <span *ngIf="hideData == true">{{ "Positions" | translate }}</span>
+        </li>
+        <li class="li-class" routerLinkActive="active" [routerLink]="['/main/employee']">
+            <img class="svg-img"
+                 src="./assets/icons/gray_employee.svg"/>
+            <span *ngIf="hideData == true">{{ "Employees" | translate }}</span></li>
+        <li class="li-class" routerLinkActive="active" [routerLink]="['/main/groups']">
+            <img class="svg-img"
+                 src="./assets/icons/gray_group.svg"/>
+            <span *ngIf="hideData == true">{{ "Groups" | translate }}</span>
+        </li>
+        <li class="li-class" routerLinkActive="active" [routerLink]="['/main/schedule']">
+            <img class="svg-img"
+                 src="./assets/icons/gray_schedule.svg"/>
+            <span *ngIf="hideData == true">{{ "Schedules" | translate }}</span>
+        </li>
+        <li class="li-class" routerLinkActive="active" [routerLink]="['/main/geozones']">
+            <img class="svg-img"
+                 src="./assets/icons/gray_geoloc.svg"/>
+            <span *ngIf="hideData == true">{{ "Geozones" | translate }}</span>
+        </li>
+        <li class="li-class" routerLinkActive="active" [routerLink]="['/main/notification/list']">
+            <img class="svg-img"
+                 src="./assets/icons/gray_notification.svg"/>
+            <span *ngIf="hideData == true">{{ "Notifications" | translate }}</span>
+        </li>
+        <li class="li-class" routerLinkActive="active" [routerLink]="['/main/sms']">
+            <img class="svg-img"
+                 src="./assets/icons/gray_message.svg"/><span
+                *ngIf="hideData == true">{{ "SMS" | translate }}</span>
+        </li>
+        <li class="li-class" routerLinkActive="active" [routerLink]="['/main/statistics']">
+            <img class="svg-img" src="./assets/icons/gray_bar_chart.svg"/>
+            <span *ngIf="hideData == true">{{ "Statistics" | translate }}</span>
+        </li>
+
+        <div style="margin-left: 20px; margin-top:35px">
+            <div class="h-container monitor-container" [ngClass]="{'minimized':hideData == false}">
+                <div></div>
+                <div>
+                    <toggle-switch [customClass]="'width-38'" [isChecked]="true"
+                                   (checkEvent)="onToggleChange($event)">
+                    </toggle-switch>
+                </div>
+                <div>
+                    <span *ngIf="hideData == true">{{ "Monitoring" | translate }}</span>
+                </div>
+            </div>
+        </div>
+
+    </ul>
+
+</div>
+<div class="clearfix"></div>
+
+
+<!-- <div>
+        <div class="monitor-container">
+
+            <toggle-switch [customClass]="'width-38'" [isChecked]="true" (checkEvent)="onToggleChange($event)">
+            </toggle-switch>
+            <span *ngIf="hideData == true">Monitoring</span>
+
+        </div>
+    </div> -->

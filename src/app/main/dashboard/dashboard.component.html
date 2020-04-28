@@ -1,0 +1,177 @@
+<div class="row" *ngIf="!dashboardDisabled" [ngStyle]="{'pointer-events':(mapLoader || punvoiloader)?'none':''}">
+  <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+    <section class="card-wrapper">
+      <div class="card card-blue" [ngClass]="{'active-card': showSearch}" (click)="toggleSearchMap()">
+        <div class="card-icon">
+          <img class="svg-img" src="./assets/icons/blue_rosshair.svg"/>
+        </div>
+        <div class="card-body">
+          <h2>{{"Search"|translate}}</h2>
+          <p>{{"Employee"|translate}}</p>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+    <section class="card-wrapper">
+      <div class="card card-purple small-sn-float-right" [ngClass]="{'active-card': showMovement}"
+           (click)="toggleMovement()">
+        <div class="card-icon">
+          <img class="svg-img" src="./assets/icons/purple_tracks.svg"/>
+        </div>
+        <div class="card-body">
+          <h2>{{"Movement" | translate}}</h2>
+          <p>{{"Tracking" | translate}}</p>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+    <section class="card-wrapper">
+      <div class="card card-green" [ngClass]="{'active-card': showPunctual}" (click)="togglePunctual()">
+        <div class="card-icon">
+          <img class="svg-img" src="./assets/icons/intime.svg"/>
+        </div>
+        <div class="card-body">
+          <h2>{{"Punctual" | translate }}</h2>
+          <p>{{ "Employee" | translate }}</p>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="col-12 col-sm-6 col-md-6 col-lg-3">
+    <section class="card-wrapper last-card">
+      <div class="card card-red small-sn-float-right" [ngClass]="{'active-card': showViolators}"
+           (click)="toggleViolators()">
+        <div class="card-icon">
+          <img class="svg-img" src="./assets/icons/late.svg"/>
+        </div>
+        <div class="card-body">
+          <h2>{{ "Violating" | translate}}</h2>
+          <p>{{ "Employee" | translate}}</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<app-punctual-employee *ngIf="!dashboardDisabled" [showTopPunctualParam]="showPunctual"
+                       (buttonClicked)="toggleFleetActivityMap()" (topLoaderPunVoi)="PunVoiLoader($event)"
+                       (loadMap)="refreshMap()"
+                       [loading]="mapLoader"
+                       (mapLoader)="setMapLoader($event)"></app-punctual-employee>
+
+<app-violating-employee *ngIf="!dashboardDisabled" [showTopViolators]="showViolators"
+                        (buttonClicked)="toggleFleetActivityMap()" (topLoaderPunVoi)="PunVoiLoader($event)"
+                        (loadMap)="refreshMap()"
+                        [loading]="mapLoader"
+                        (mapLoader)="setMapLoader($event)"></app-violating-employee>
+
+<movement-tracking *ngIf="showMovement && !dashboardDisabled" (buttonClicked)="toggleFleetActivityMap()"
+                   [viewTrackingFlag]="viewTrackingFlag">
+</movement-tracking>
+
+<div class="row" *ngIf="showSearch && !dashboardDisabled">
+  <div class="col-md-12">
+    <h3 class="search-title">{{"Search" | translate }}</h3>
+  </div>
+</div>
+
+<div #mapWrapper>
+  <div class="row db-bottom-wrapper"
+       [ngClass]="{'margin-top-10': dashboardDisabled, 'margin-top-30': !dashboardDisabled}"
+       *ngIf="showFleetActivityMap">
+    <div class="col-md-12">
+      <div class="panel">
+        <div class="search-wrapper" *ngIf="!dashboardDisabled">
+          <div class="dh-search-form-wrapper" *ngIf="!showPunctual && !showViolators"
+               [ngClass]="{'box-shadow':!hideSearchForm}">
+            <div class="hidden-search-form row">
+              <form class="form-inline" *ngIf="!hideSearchForm" [formGroup]="searchForm">
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                  <div class="form-group">
+                    <label>{{ "Where is employee" | translate }}</label>
+                    <div class="form-search-icon-wrapper">
+                      <type-ahead (inputChanged)="ddEmpChanged($event)" [formName]="searchForm"
+                                  [image_path]="imageURL()" [isValid]="searchForm.controls.employee.valid + isempvalid"
+                                  [form_control_name]="searchForm.controls.employee" dataGroupName="Employee"
+                                  [allowedMaxItem]="10" [placeholder]="'+Empl'"></type-ahead>
+                      <span invalidMessage [control]="searchForm.controls.employee"></span>
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                  <div class="form-group">
+                    <label>{{ "Where is group" | translate }}</label>
+                    <div class="form-search-icon-wrapper">
+                      <type-ahead (inputChanged)="ddGroupChanged($event)" [formName]="searchForm"
+                                  [image_path]="imageURL()" [isValid]="searchForm.controls.group.valid + isgrpvalid"
+                                  [form_control_name]="searchForm.controls.group" dataGroupName="Group"
+                                  [allowedMaxItem]="1">
+                      </type-ahead>
+                      <span invalidMessage [control]="searchForm.controls.group"></span>
+
+                    </div>
+
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                  <div class="form-group">
+                    <label>{{ "Find geozone" | translate }}</label>
+                    <div class="form-search-icon-wrapper">
+                      <type-ahead (inputChanged)="ddGeozoneChanged($event)" [formName]="searchForm"
+                                  [isValid]="searchForm.controls.geozone.valid + isgeovalid"
+                                  [form_control_name]="searchForm.controls.geozone" dataGroupName="Geozone"
+                                  [allowedMaxItem]="1">
+                      </type-ahead>
+                      <span invalidMessage [control]="searchForm.controls.geozone"></span>
+
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                  <div class="form-group">
+                    <button (click)="searchEmployee()" [disabled]="mapLoader"
+                            class="search-button">{{ "Find" | translate }}</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+
+            <span class="show-hide-label">
+              <a (click)="showSearchForm()">
+                <label>{{hideSearchForm ? "Search bar" : "Hide" | translate}}</label>
+                <img [ngClass]="{'array-down': hideSearchForm, 'array-up': !hideSearchForm}"
+                     src="./assets/icons/gray_arrow_up.svg">
+              </a>
+            </span>
+          </div>
+
+          <div class="card-header" *ngIf="showPunctual || showViolators">
+            <h3>{{ "Interactive Map" | translate }}</h3>
+            <img class="close-icon" src="./assets/icons/closeX.svg" (click)="toggleFleetActivityMap()">
+          </div>
+
+        </div>
+
+        <div class="panel-body" [ngClass]="{'margin-top-24': !dashboardDisabled}">
+          <div class="dh-map-wrapper" [style.height]="mapHeight">
+            <map [clickableMarker]="true"
+                 (markerClickEvent)="coordinateIconClicked($event)"
+                 *ngIf="isMapShow"></map>
+            <div *ngIf="mapLoader" class="map-round-loading-image"></div>
+          </div>
+
+          <div *ngIf="!dashboardDisabled">
+            <info-card *ngIf="showInfoDetail"
+                       (btnCloseClicked)="closeEmpInfoCard()" (btnSendMsgClicked)="sendMsgForEmp()"
+                       (btnViewTrackClicked)="viewTracking($event)"
+                       [coordinateDtl]="coordinateDetail"></info-card>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

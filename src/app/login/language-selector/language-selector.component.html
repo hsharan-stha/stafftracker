@@ -1,0 +1,9 @@
+<label>{{ "Want to change language?" | translate }}</label>
+            <ul class="list-group list-group-horizontal">
+                <li class="list-group-item active" [ngClass]="{'active':selectedLanguage == 'En'}"
+                    (click)="languageChanges('En' , $event)">English</li>
+                <li class="list-group-item" [ngClass]="{'active':selectedLanguage == 'Ru'}"
+                    (click)="languageChanges('Ru' , $event)">Русский</li>
+                <li class="list-group-item" [ngClass]="{'active':selectedLanguage == 'Fr'}"
+                    (click)="languageChanges('Fr' , $event)">Français</li>
+            </ul>

@@ -1,0 +1,171 @@
+<div class="row">
+  <div class="col-lg-9 schedule-tbl-wrapper" style="float: left">
+    <h1 class="schedule-title">{{"Schedule Table" | translate}}
+      <span class="schedule-title-sub">{{countRow}} Total</span>
+      <button class="btn btn-add" (click)="addNewSchedule()">
+        <div class="btn-add-content">
+          <img src="assets/icons/white_time.svg" class="btn-lcon">
+          <span class="btn-text">{{"Add Schedule" | translate}}</span>
+        </div>
+      </button>
+      <div class="clearfix"></div>
+    </h1>
+
+    <div *ngIf="!laptopSize else scheduleFilterForm"></div>
+
+    <div class="card schedule-empty" *ngIf="countRow <= 0; else scheduleList">
+      <img src="./assets/icons/gray_docs.svg"/>
+      <p><span>{{"Schedule" | translate}}</span> {{"table is empty"|translate}}
+        <br>{{"Any new schedule will appear here"|translate}}
+      </p>
+      <button class="btn btn-add" (click)="addNewSchedule()">
+        {{"Add Schedule" | translate}}
+      </button>
+    </div>
+    <ng-template #scheduleList>
+      <table class="table tbl-main-schedule" #scheduleTable>
+        <thead>
+        <tr>
+          <th appDataList style="cursor: pointer;width:20%;padding-left: 24px;"
+              (currentSortOrder)="sortItems($event)"
+              [attr.aria-name]="fieldName">
+
+            <img class="schedule-title-img show" src="./assets/icons/blue_arrow_down.svg"
+                 width="16px"
+                 height="16px"/>
+            <img class="schedule-title-img hide" src="./assets/icons/Icon_arrow up.svg"
+                 width="16px"
+                 height="16px"/>
+            <label class="sdl-lbl-name">{{"Name" | translate}}</label>
+            <!--                    <span class="down-arrow"></span>-->
+          </th>
+          <th width="30%" class="text-align-center th-schedule-list">
+            <label>{{"Schedule" | translate}}</label>
+          </th>
+          <th width="17%" class="text-align-center th-emp-counter">
+            <label>{{"Employees" | translate}}</label>
+          </th>
+          <th width="17%" class="text-align-center th-grp-counter">
+            <label>{{"Groups" | translate}}</label>
+          </th>
+          <th width="15%"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr
+          *ngFor="let schedule of filteredSchedules | paginate: { itemsPerPage: perPageItem, currentPage: p,totalItems: countRow }">
+          <td>
+            <p class="shdl-name">{{schedule.name}}</p>
+          </td>
+          <td>
+            <ul class="schedule-list">
+              <li>
+                <span class="calender"></span>
+                <p>
+                  {{(schedule.days).includes("1") ? "Mo," : ''}}
+                  {{(schedule.days).includes("2") ? "Tu," : ''}}
+                  {{(schedule.days).includes("3") ? "We," : ''}}
+                  {{(schedule.days).includes("4") ? "Th," : ''}}
+                  {{(schedule.days).includes("5") ? "Fr," : ''}}
+                  {{(schedule.days).includes("6") ? "Sa," : ''}}
+                  {{(schedule.days).includes("7") ? "Su" : ''}}
+                </p>
+              </li>
+              <li>
+                <span class="clock"></span>
+                <!--                            <p>8.00 - 17.00</p>-->
+                <p>{{schedule.start_work}} - {{schedule.end_work}}</p>
+              </li>
+            </ul>
+          </td>
+          <td>
+            <div class="emp-counter">
+              <span class="com-employee"></span>
+              <p>{{schedule.nr_employees}}</p>
+            </div>
+          </td>
+          <td>
+            <div class="emp-counter">
+              <span class="com-employee-group"></span>
+              <p>{{schedule.nr_groups}}</p>
+            </div>
+          </td>
+          <td class="text-align-right">
+                         <span class="action-more-btn"
+                               dbempaction
+                               wrapperClass="scheduleActionWrapper"
+                               firstBtnName="blue_edit"
+                               secondBtnName="blue_remove"
+                               outerWidth="120"
+                               outerWidthForSMS="145"
+                               viewMessage="Edit schedule"
+                               sendMessage="Delete schedule"
+                               (viewBtnClicked)="editSchedule(schedule.id)"
+                               (sendMsgbtnClicked)="deleteSchdeule(schedule.id)"></span>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="pagination-wrapper">
+        <div *ngIf="!showExpandBtn" class="custom-pagination">
+          <pagination-controls (pageChange)="pageNumber($event)" autoHide="true" previousLabel=""
+                               nextLabel=""></pagination-controls>
+        </div>
+
+        <div class="expand" *ngIf="showExpandBtn && perPageItem < countRow">
+          <hr>
+          <p (click)="expandTable()">{{"Expand Table" | translate}}</p>
+          <hr>
+        </div>
+        <div *ngIf="loader" class="loading-image"></div>
+
+      </div>
+    </ng-template>
+  </div>
+
+  <div class="col-lg-3" style="float: right">
+    <div *ngIf="laptopSize else scheduleFilterForm"></div>
+    <div class="clearfix"></div>
+  </div>
+
+  <ng-template #scheduleFilterForm>
+    <div class="st-panel-default">
+      <div class="st-panel-header">
+        <h4>{{"Filter" | translate}}</h4>
+        <div class="cross-icon-wrapper">
+            <span (click)="scheduleSearchForm.reset()" (mouseover)="setCheckBoxHover(true)" (mouseout)="setCheckBoxHover(false)" class="panel-close"></span>
+            <span *ngIf="hoverCheckBox" class="drop-down-invalid-dialog check-box-toolpit"><invalid-message
+                      text="{{'Clear filters' | translate}}" type="message" width="120px"></invalid-message></span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="st-panel-body">
+            <form [formGroup]="scheduleSearchForm">
+
+              <div class="input-margin">
+                <label class="form-label">{{"Schedule Name" | translate}}</label>
+                <app-search-icon-form [inputSearchFormGroup]="scheduleSearchForm"
+                                      [inputSearchFormControl]="scheduleSearchForm.controls.scheduleName"
+                                      (inputChanged)="filterValue($event)"></app-search-icon-form>
+              </div>
+
+              <div class="input-margin">
+                <label class="form-label">{{"Employee Name" | translate}}</label>
+                <app-search-icon-form [inputSearchFormGroup]="scheduleSearchForm"
+                                      [inputSearchFormControl]="scheduleSearchForm.controls.employeeName"
+                                      (inputChanged)="filterValue($event)"></app-search-icon-form>
+              </div>
+
+              <button class="sign-in-btn submit-btn-design"
+                      (click)="findSchedule()">{{"Apply" | translate}}</button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+<router-outlet></router-outlet>

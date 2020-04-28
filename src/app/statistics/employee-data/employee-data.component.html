@@ -1,0 +1,164 @@
+<div [style.display]="getControlsOnStyleDisplay()">
+    <div class="row">
+        <div class="col-lg-9 emp-data-wrapper" style="float: left">
+            <h1 class="emp-data-title">{{"Data on Employee"|translate}}
+                <div class="clearfix"></div>
+            </h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="emp-panel">
+                <div class="row">
+                    <form #mainform class="search-emp-data-form form-inline custom-type-ahead"
+                        [formGroup]="empDataSearchForm">
+                        <div class="col-md-6 col-lg-3">
+                            <div class="form-group input-margin">
+                                <label>{{"Date From"|translate}}</label>
+                                <div class="form-search-icon-wrapper">
+                                    <date-picker [formSubmitted]="isSubmited" [inputFormGroup]="empDataSearchForm"
+                                        [inputFormControl]="empDataSearchForm.controls.fromDate"
+                                        [maxDate]="empDataSearchForm.value.toDate">
+                                    </date-picker>
+                                    <span invalidMessage [control]="empDataSearchForm.controls.fromDate"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-3">
+                            <div class="form-group input-margin">
+                                <label>{{"Date To"|translate}}</label>
+                                <div class="form-search-icon-wrapper">
+                                    <date-picker [formSubmitted]="isSubmited" [inputFormGroup]="empDataSearchForm"
+                                        [inputFormControl]="empDataSearchForm.controls.toDate"
+                                        [minDate]="empDataSearchForm.value.fromDate">
+                                    </date-picker>
+                                    <span invalidMessage [control]="empDataSearchForm.controls.toDate"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-3">
+                            <div class="form-group input-margin">
+                                <label>{{"Choose employee"|translate}}</label>
+                                <div class="form-search-icon-wrapper">
+                                    <app-select-input selectorId="msisdn" [formSubmitted]="isSubmited"
+                                        (inputChanged)="ddEmpChanged($event)" [selectInputGroup]="empDataSearchForm"
+                                        [selectInputControl]="empDataSearchForm.controls.employee"
+                                        [selectOptions]="employees"></app-select-input>
+                                    <span controlType="select" invalidMessage
+                                        [control]="empDataSearchForm.controls.employee"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6 col-lg-3">
+                            <button class="btn btn-search" [disabled]="!empDataSearchForm.valid || searchBtnDisabled"
+                                (click)="searchEmployeeData()">{{"Get data"|translate}}</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mn-top-32">
+        <div class="col-lg-12">
+            <h1 class="emp-data-title-2">{{selectedEmployee}}
+                <button class="btn emp-data-export-btn" (click)="exportData()"
+                    [disabled]="!empDataSearchForm.valid || exportBtnDisabled">
+                    {{"Export"|translate}}
+                </button>
+                <div class="clearfix"></div>
+            </h1>
+        </div>
+    </div>
+
+    <div class="row mn-bottom-30">
+        <div class="col-sm-12 col-lg-5 col-md-12 col-xl-5">
+            <div class="pie-chart-panel">
+                <div class="pie-chart-header">
+                    <h4>{{"Punctuality"|translate}}</h4>
+                    <div *ngIf="loader" class="loading-image"></div>
+                </div>
+                <div class="card employee_empty" *ngIf="totalPieRows <= 0; else reportPieChartWrapper">
+                    <img class="emp-action-btn" src="./assets/icons/gray_docs.svg" />
+                    <p><span>{{ "Data on this employee" | translate }}</span> {{ " is empty" |translate}}
+                        <br>{{"Any new records for pie chart will appear here" |translate}}
+                    </p>
+                </div>
+                <ng-template #reportPieChartWrapper>
+                    <div class="pie-chart-body" style="padding: 0px 8px 0px 8px;">
+
+                        <div style="position: relative">
+                            <div class="container info-container">
+
+
+                                <div class="center-info-container">
+                                    <div class="hover-number">
+                                        {{infoMessage.value}}
+                                    </div>
+                                    <div class="hover-text">
+                                        {{infoMessage.item}}
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <google-chart #pieChartView [data]="pieChart" (mouseOver)="onMouseOver($event)"
+                            (chartSelect)='chartSelect($event)' (chartReady)='chartReady($event)'>
+                        </google-chart>
+
+                        <div style="position: relative" *ngIf="showLegendPieChart">
+                            <div class="container legend-container">
+
+
+                                <div *ngFor="let item of dataTableDATA | slice:1; let i = index" class="row">
+                                    <div class="col-sm-12 custom-padding-1">
+                                        <div class="circle" [ngStyle]="getDotColor(i)"></div>
+                                        <p>
+                                            {{item[0]}}
+                                        </p>
+                                        <span class="number">
+                                            {{item[1]}}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+
+        <div class="col-sm-12 col-lg-7 col-md-12 col-xl-7 responsive-mn-top">
+            <div class="pie-chart-panel">
+                <div class="pie-chart-header">
+                    <h4>Trips by weekday</h4>
+                    <span class="panel-close"></span>
+                    <div *ngIf="loader" class="loading-image"></div>
+                </div>
+                <div class="card employee_empty" *ngIf="totalColRows <= 0; else reportColChartWrapper">
+                    <img class="emp-action-btn" src="./assets/icons/gray_docs.svg" />
+                    <p><span>{{ "Data on this employee" | translate }}</span> {{ " is empty" |translate}}
+                        <br>{{"Any new records for column chart will appear here" |translate}}
+                    </p>
+                </div>
+
+                <ng-template #reportColChartWrapper>
+                    <div class="pie-chart-body">
+                        <div class="chart">
+                            <google-chart #columnChartView [data]="columnChart">
+                            </google-chart>
+
+                        </div>
+                    </div>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+
+</div>

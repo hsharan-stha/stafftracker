@@ -1,0 +1,26 @@
+<div [formGroup]="form_group_name">    
+    <div class="upload-box" [ngClass]="{'form-control-invalid':(form_control_name.invalid && (form_control_name.dirty || form_control_name.touched || formSubmitted))}">
+
+        <input [formControl]="form_control_name" [id]="customID" #imageInput type="file" accept="image/*" class="select-file" (change)="processFile(imageInput)"/>
+
+        <label for="{{customID}}" id="selected" class="select-file-wraper">
+            <div class="camera-wrapper">
+                <span class="camera" [style.padding]="(imgUrl!='' && imgUrl!=null)?'0px':''">
+                    <img 
+                        [ngClass]="{'img-border-radius':(imgUrl!='' && imgUrl!=null)}"
+                        [src]="(imgUrl!='' && imgUrl!=null) ? imgUrl : './assets/icons/gray_photo.svg'"
+                        [style.width]="(imgUrl!='' && imgUrl!=null)?'100%':''"
+                        [style.height]="(imgUrl!='' && imgUrl!=null)?'100%':''"
+                        (error)=errorImgHandler($event);
+                        >
+                </span>
+            </div>
+            <div class="upload-wrapper">
+                <label class="label-for-camera">{{detailLabel}}</label>
+                <p><span class="upload-img"></span>{{labelUpload}}</p> 
+                <span class="selectedFile"> {{fileName}}</span>
+            </div>
+        </label>
+    </div>
+</div>
+    

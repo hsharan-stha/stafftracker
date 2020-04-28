@@ -1,0 +1,42 @@
+<div class="title">
+    <h1>{{pageTitle1 | translate}}</h1>
+</div>
+<div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+
+        <div class="card">
+            <div class="position-form-header">
+                <div class="sub-title">
+                    {{pageTitle2 | translate}}
+                </div>
+                <a [routerLink]="mainPage">
+                    <img class="close-btn" src="./assets/icons/closeX.svg" height="24px" width="24px"/>
+                </a>
+            </div>
+            <form class="create-form" [formGroup]="positionForm" (submit)="storePosition()">
+                <p>
+                    {{pageTitle3 | translate}}
+                </p>
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="form-group custom-width">
+                            <label>{{"Position Name" | translate }}</label>
+                            <input type="text" class="form-control" formControlName="name" placeholder="Position Name">
+                            <span invalidMessage [control]="positionForm.controls.name"></span>
+                        </div>
+                        <div *ngIf="loader" class="loading-image"></div>
+                    </div>
+                    <div class="col-sm-12 col-md-12 col-lg-12">
+                        <div class="position-form-footer">
+                            <div *ngIf="insertLoader" class="round-loading-image"></div>
+                            <button type="button" class="position-back-btn" (click)="btnBackClicked()"><img
+                                    src="./assets/icons/red_arrow_left.svg"/>{{btnBack | translate}}</button>
+                            <button [disabled]="btnDisabled" class="btn-green" type="submit">
+                                {{btnSaveUpdate|translate}}</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

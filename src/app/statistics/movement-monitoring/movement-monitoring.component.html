@@ -1,0 +1,164 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="title">
+        <h1>{{"Movements monitoring"| translate}}</h1>
+    </div>
+
+    <div class="margin-top-22">
+      <div class="card">
+        <form class="form-monitor" [formGroup]="movementMonitorForm" (ngSubmit)="searchMonitoringData()">
+          <!-- <div class="row"> -->
+            <div class="search-input-date">
+              <div class="form-group max-input-wrapper-width">
+                <label>{{"Date From"|translate}}</label>
+                <date-picker
+                  [formSubmitted]="isSubmited"
+                  [inputFormGroup]="movementMonitorForm"
+                  [inputFormControl]="movementMonitorForm.controls.fromDate"
+                  [maxDate]="movementMonitorForm.value.toDate">
+                </date-picker>
+                <span  invalidMessage [control]="movementMonitorForm.controls.fromDate"></span>
+              </div>
+            </div>
+
+            <div class="search-input-date">
+              <div class="form-group max-input-wrapper-width">
+                <label>{{"Date To"|translate}}</label>
+                <date-picker
+                    [formSubmitted]="isSubmited"
+                    [inputFormGroup]="movementMonitorForm"
+                    [inputFormControl]="movementMonitorForm.controls.toDate"
+                    [minDate]="movementMonitorForm.value.fromDate">
+                </date-picker>
+                <span  invalidMessage [control]="movementMonitorForm.controls.toDate"></span>
+              </div>
+            </div>
+
+            <div class="search-input">
+              <div class="form-group max-input-wrapper-width">
+                <label>{{"Select Group"|translate}}</label>
+                <div class="form-search-icon-wrapper">
+                    <app-select-input
+                        selectorId="id"
+                        (inputChanged)="groupChanged($event)"
+                        [selectInputGroup]="movementMonitorForm"
+                        [selectInputControl]="movementMonitorForm.controls.group"
+                        [selectOptions]="groups">
+                    </app-select-input>
+                    <span controlType="select" invalidMessage [control]="movementMonitorForm.controls.group"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="search-input">
+              <div class="form-group max-input-wrapper-width">
+                <label>{{"Select Employee"|translate}}</label>
+                <div class="form-search-icon-wrapper">
+                    <app-select-input
+                        selectorId="id"
+                        (inputChanged)="employeeChanged($event)"
+                        [selectInputGroup]="movementMonitorForm"
+                        [selectInputControl]="movementMonitorForm.controls.employee"
+                        [selectOptions]="employees"
+                    ></app-select-input>
+                    <span controlType="select" invalidMessage [control]="movementMonitorForm.controls.employee"></span>
+                </div>
+              </div>
+            </div>
+
+            <div class="search-input-btn" >
+              <div class="form-group">
+                <button [disabled]="searchBtnDisabled || !movementMonitorForm.valid" class="btn btn-search" type="submit">
+                  {{"Get data"|translate}}
+                </button>
+              </div>
+            </div>
+          <!-- </div> -->
+        </form>
+      </div>
+    </div>
+
+    <div class="export-wrap">
+      <button [disabled]="exportBtnDisabled || !movementMonitorForm.valid" class="btn btn-export" (click)="exportData()">
+        {{"Export"|translate}}
+      </button>
+    </div>
+
+    <div #reportTable>
+        <div class="card employee_empty" *ngIf="totalRows <= 0; else reportTblWrapper">
+            <img class="emp-action-btn" src="./assets/icons/gray_docs.svg"/>
+            <p><span>{{ "Movement Monitoring" | translate }}</span> {{ "table is empty" |translate}}
+                <br>{{"Any new records will appear here" |translate}}
+            </p>
+        </div>
+
+        <ng-template #reportTblWrapper>
+            <div  class="row">
+                <div class="col-md-12">
+                    <div class="movement-table-container">
+                        <table class='movement-table'>
+                            <thead>
+                                <tr>
+                                    <th>
+                                        <label class="tbl-lbl-date">
+                                            {{"Date"|translate}}/{{"Time"|translate}}
+                                        </label>
+                                        <span appDataList (currentSortOrder)="sortItems($event)" [attr.aria-name]="'created'">
+                                            <span class="blue-down-arrow show"></span>
+                                            <span class="blue-up-arrow hide"></span>
+                                        </span>
+                                    </th>
+                                    <th>{{"Employee"|translate}}</th>
+                                    <th>{{"Event"|translate}}</th>
+                                    <th>{{"Address"|translate}}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                              <tr *ngFor="let employee of filteredEvents | paginate: { itemsPerPage: perPageItem, currentPage: p,totalItems: totalRows }">
+                                <td width="15%">
+                                  <ul class="date-time">
+                                    <li class="date">{{employee.created | date:'yyyy/MM/dd'}}</li>
+                                    <li class="time">{{ employee.created | date:'HH:mm:ss'}}</li>
+                                  </ul>
+                                </td>
+                                <td width="20%">
+                                  <div class="td-emp">
+                                      <img src="{{BASEIPURL}}{{ employee.icon_url }}"
+                                            (error)="errorImgHandler($event)"
+                                           class="avatar-image">
+                                      <ul class="emp-info">
+                                        <li>{{ employee.name }}</li>
+                                        <li>{{ employee.position }}</li>
+                                      </ul>
+                                  </div>
+                                </td>
+                                <td width="20%">
+                                  <div class="td-event">
+                                    <img *ngIf="employee.event=='out'; else checkout" class="event-icon" src="./assets/icons/check_out_red.svg"/>
+                                    <ng-template #checkout>
+                                        <img class="event-icon" src="./assets/icons/check_in_green.svg" width="24px" height="24px"/>
+                                    </ng-template>
+                                    <div class="event-info">
+                                        {{ employee.event }}
+                                    </div>
+                                  </div>
+                                </td>
+                                <td width="40%" class="movement-address">
+                                    {{ employee.address }}
+                                </td>
+                              </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="pagination-wrapper">
+                        <div class="custom-pagination" *ngIf="totalRows>0 && perPageItem < totalRows">
+                            <pagination-controls (pageChange)="pageChanged($event)" previousLabel="" nextLabel=""></pagination-controls>
+                        </div>
+                        <div *ngIf="loader" class="loading-image"></div>
+                    </div>
+                </div>
+            </div>
+        </ng-template>
+    </div>
+</div>
+</div>

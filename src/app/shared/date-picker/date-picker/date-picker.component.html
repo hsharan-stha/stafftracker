@@ -1,0 +1,12 @@
+<div class="input-group form-date-picker" [formGroup]="inputFormGroup"
+     [ngClass]="{'form-group-invalid':(inputFormControl.invalid && (inputFormControl.dirty || formSubmitted))}"
+     >
+  <input class="form-control input-design" placeholder="dd/mm/yyyy" readonly
+         name="dp" ngbDatepicker #d="ngbDatepicker" [formControl]="inputFormControl" 
+         [ngClass]="{'form-control-invalid':(inputFormControl.invalid && (inputFormControl.dirty || formSubmitted))}"
+         [minDate]="minDate" [maxDate]="maxDate" 
+         (click)="d.toggle()">
+  <!-- <div class="input-group-append">
+    <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"></button>
+  </div> -->
+</div>

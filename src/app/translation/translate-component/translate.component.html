@@ -1,0 +1,9 @@
+    <a  class="nav-link-cus dropdown-toggle-cus selected-language" id="languageDropDown"
+         aria-haspopup="true" aria-expanded="false" [style.color]="color">
+        <img (click)="toggleLanguage()" class="language-icon" src="assets/icons/gray_language.svg" />
+        <!-- {{ selectedLanguage  }} -->
+    </a>
+    <ul #langPanelWrapper closePanel targetClass="language-icon" class="dropdown-menu dropdown-menu-right languageDropDown close-panel" aria-labelledby="languageDropDown">
+        <li><a class="dropdown-item" href="#" (click)="languageChanges('Ru' , $event)">Ru</a></li>
+        <li><a class="dropdown-item" href="#" (click)="languageChanges('En' , $event)">En</a></li>
+    </ul>

@@ -1,0 +1,161 @@
+
+.sh-employee-dtl {
+  background-color: white;
+  height: auto;
+  width: 470px;
+  border: 1px solid rgba(46, 91, 255, 0.08);
+  padding: 20px;
+  float: left;
+  position: absolute;
+  right: 30px;
+  bottom: 30px;
+}
+
+.sh-emp-dtl-header {
+  float: left;
+  width: 100%;
+}
+
+.sh-emp-img {
+  height: 60px;
+  width: 60px;
+  float: left;
+  border-radius: 30px;
+  margin-right: 10px;
+}
+
+.sh-geo-img{
+  margin-top: 15px;
+  height: 30px;
+  width: 60px;
+}
+
+.sh-emp-info {
+  float: left;
+}
+
+.sh-emp-info h2 {
+  font-size: 15px;
+  color: #2E384D;
+  letter-spacing: 0;
+  line-height: 22px;
+  font-family: Rubik;
+  font-weight: 500;
+  text-align: left;
+  margin: 10px 0px 0px 0px;
+}
+
+.sh-emp-info p {
+  font-size: 15px;
+  color: #8798AD;
+  letter-spacing: 0;
+  line-height: 22px;
+  font-family: Rubik;
+  font-weight: 400;
+  text-align: left;
+  margin-bottom: 0px
+}
+
+.sh-emp-close-icon {
+  float: right;
+  cursor: pointer;
+}
+
+.sh-emp-dtl-body {
+  float: left;
+  width: 100%;
+  height: auto;
+}
+
+.sh-emp-dtl-body label {
+  font-size: 12px;
+  color: #2E5BFF;
+  letter-spacing: 1.12px;
+  font-family: Rubik;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: left;
+  width: 70%;
+  margin-top: 20px;
+}
+
+.sh-emp-dtl-body label hr {
+  border-top: 1px solid #2E5BFF;
+  float: left;
+  width: 65%;
+  margin-bottom: 0px;
+  margin-top: 9px;
+}
+
+.sh-emp-dtl-body label p {
+  float: left;
+  width: 15%;
+  margin-bottom: 0px;
+}
+
+.info-list {
+  list-style: none;
+  padding-left: 0px;
+}
+
+.info-list li {
+  margin-top: 4px;
+  width: 100%;
+  float: left;
+}
+
+.info-list li span {
+  width: 63%;
+  float: left;
+  padding-top: 8px;
+}
+
+.info-list li span img {
+  float: left;
+}
+
+.info-list li span p {
+  float: left;
+  font-size: 15px;
+  color: #8798AD;
+  letter-spacing: 0;
+  line-height: 22px;
+  font-family: Rubik;
+  font-weight: 400;
+  text-align: left;
+  margin-left: 10px;
+  margin-top: 2px;
+  max-width: 215px;
+}
+
+.info-list li button {
+  width: 155px;
+  float: left;
+  height: 40px;
+}
+
+.info-list li button.send-msg-btn {
+  font-size: 15px;
+  color: #2E5BFF;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 21px;
+  font-family: Rubik;
+  font-weight: 500;
+  background-color: #d5deff;
+  border-radius: 4px;
+  border: none;
+}
+
+.info-list li button.view-tracking-btn {
+  font-size: 15px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 21px;
+  font-family: Rubik;
+  font-weight: 500;
+  background-color: #2E5BFF;
+  border-radius: 4px;
+  border: none;
+}

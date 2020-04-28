@@ -1,0 +1,4 @@
+<app-account-info *ngIf="showCurrent=='accountInfo'" (nextClicked)="onAccountInfoClick($event)"></app-account-info>
+<app-company-info *ngIf="showCurrent=='companyInfo'" (nextClicked)="onCompanyInfoClick($event)" (backClicked)="onCompanyInfoBackClick($event)"></app-company-info>
+<app-schedule *ngIf="showCurrent=='schedule'" (nextClicked)="onScheduleClick($event)" (backClicked)="onScheduleBackClick($event)"></app-schedule>
+<app-geozone-info *ngIf="showCurrent=='geozone'" (nextClicked)="onGeozoneClick($event)" (backClicked)="onGeozoneBackClick($event)"></app-geozone-info>

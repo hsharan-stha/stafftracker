@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Staff tracker/Icon/Purple Track</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Staff-tracker/Icon/Purple-Track" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(4.000000, 5.000000)" fill-rule="nonzero" stroke="#8C54FF">
+            <circle id="Oval" fill="#8C54FF" cx="16" cy="1" r="1"></circle>
+            <circle id="Oval" fill="#8C54FF" cx="1" cy="13" r="1"></circle>
+            <path d="M12,1 L4,1 C1.33333333,1 0,2 0,4 C0,6 1.33333333,7 4,7 L13,7 C15.6666667,7 17,8 17,10 C17,12 15.6666667,13 13,13 L5,13" id="Path-6" stroke-width="2" stroke-linecap="round"></path>
+        </g>
+    </g>
+</svg>

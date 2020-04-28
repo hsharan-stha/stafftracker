@@ -1,0 +1,15 @@
+<ng-container *ngIf="position == 'bottom'">
+    <div class="tooltips-container" role="tooltip" [style.transform]="transformD">
+        <div [style.width]="width+'px'" [style.max-width]="maxWidth+'px'" class="tooltips-body" [ngClass]="'tooltips-body-'+position">
+            {{  text | translate }}
+        </div>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="position == 'top'">
+    <div  class="tooltips-container" role="tooltip" [style.transform]="transformD">
+        <div [style.width]="width+'px'" [style.max-width]="maxWidth+'px'" class="tooltips-body" [ngClass]="'tooltips-body-'+position">
+            {{  text | translate}}
+        </div>
+    </div>
+</ng-container>

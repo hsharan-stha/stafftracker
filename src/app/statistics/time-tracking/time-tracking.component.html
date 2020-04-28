@@ -1,0 +1,169 @@
+<div class="row">
+    <div class="col-lg-9 time-tracking-wrapper" style="float: left">
+        <h1 class="time-tracking-title">Worked time tracking
+            <div class="clearfix"></div>
+        </h1>
+    </div>
+</div>
+
+<div class="margin-top-22">
+    <div class="card">
+        <form class="form-report" [formGroup]="timeTrackingSearchForm" (ngSubmit)="searchMonitoringData()">
+            <div class="search-input-date">
+                <div class="form-group max-input-wrapper-width">
+                    <label>Date From</label>
+                    <div class="form-search-icon-wrapper">
+                        <date-picker 
+                            [inputFormGroup]="timeTrackingSearchForm" 
+                            [inputFormControl]="timeTrackingSearchForm.controls.fromDate"
+                            [maxDate]="timeTrackingSearchForm.value.toDate">
+                        </date-picker>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-input-date">
+                <div class="form-group max-input-wrapper-width">
+                    <label>Date To</label>
+                    <div class="form-search-icon-wrapper">
+                        <date-picker 
+                            [inputFormGroup]="timeTrackingSearchForm" 
+                            [inputFormControl]="timeTrackingSearchForm.controls.toDate"
+                            [minDate]="timeTrackingSearchForm.value.fromDate">
+                        </date-picker>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-input">
+                <div class="form-group max-input-wrapper-width">
+                    <label>{{"Select Group"|translate}}</label>
+                    <div class="form-search-icon-wrapper">
+                        <app-select-input 
+                             selectorId="id" 
+                             (inputChanged)="groupChanged($event)"
+                             [selectInputGroup]="timeTrackingSearchForm" 
+                             [selectInputControl]="timeTrackingSearchForm.controls.group" 
+                             [selectOptions]="groups">
+                         </app-select-input>
+                         <span controlType="select" invalidMessage [control]="timeTrackingSearchForm.controls.group"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-input">
+                <div class="form-group max-input-wrapper-width">
+                    <label>{{"Select Employee"|translate}}</label>
+                    <div class="form-search-icon-wrapper">
+                        <app-select-input 
+                            selectorId="id" 
+                            (inputChanged)="employeeChanged($event)"
+                            [selectInputGroup]="timeTrackingSearchForm" 
+                            [selectInputControl]="timeTrackingSearchForm.controls.employee" 
+                            [selectOptions]="employees"
+                        ></app-select-input>
+                        <span controlType="select" invalidMessage [control]="timeTrackingSearchForm.controls.employee"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="search-input-btn" >
+                <div class="form-group">
+                  <button [disabled]="searchBtnDisabled || !timeTrackingSearchForm.valid" class="btn btn-search" type="submit">
+                    {{"Get data"|translate}}
+                  </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="export-wrap">
+    <button [disabled]="exportBtnDisabled || !timeTrackingSearchForm.valid" class="btn btn-export" (click)="exportData()">
+      {{"Export"|translate}}
+    </button>
+</div>
+
+<div #reportTable>
+    <div class="card employee_empty" *ngIf="totalRows <= 0; else reportTblWrapper">
+        <img class="emp-action-btn" src="./assets/icons/gray_docs.svg"/>
+        <p><span>{{ "Time Tracking" | translate }}</span> {{ "table is empty" |translate}}
+            <br>{{"Any new records will appear here" |translate}}
+        </p>
+    </div>
+    <ng-template #reportTblWrapper>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="table-responsive">
+                    <table class="table tbl-time-tracking">
+                    <thead>
+                        <tr>
+                            <th scope="row" width="15%">
+                                <label class="tbl-lbl-emp-name">
+                                    Name
+                                </label>
+                                <span appDataList (currentSortOrder)="sortItems($event)" [attr.aria-name]="'name'">
+                                    <span class="blue-down-arrow show"></span>
+                                    <span class="blue-up-arrow hide"></span>
+                                </span>
+                            </th>
+                            <th scope="row" width="15%" class="text-align-center"><label>Group</label></th>
+                            <th scope="row" width="40%" class="text-align-center monitored-thead"><label>Monitored days</label></th>
+                            <th scope="row" width="10%" class="text-align-center"><label>Schedule</label></th>
+                            <th scope="row" width="10%" class="text-align-center"><label>Hours worked</label></th>
+                            <th scope="row" width="5%" class="text-align-center"><label>Lateness</label></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr  *ngFor="let employee of filteredEvents | paginate: { itemsPerPage: perPageItem, currentPage: p,totalItems: totalRows }">
+                            <td>
+                                <img src="{{BASEIPURL}}{{ employee.icon_url }}" 
+                                            (error)="errorImgHandler($event)"
+                                           class="table-image-design">
+                                
+                                <ul class="emp-info-list">
+                                    <li>{{employee.name}}</li>
+                                    <li>{{employee.position}}</li>
+                                </ul>
+                                <div class="clearfix"></div>
+                            </td>
+                            <td class="text-align-center tbl-group-label"> 
+                                <span>
+                                    <div class="avatar">
+                                        <img src="{{BASEIPURL}}{{ employee.group_url }}" 
+                                            (error)="errorGrpImgHandler($event)">
+                                    </div>
+                                    <p>{{employee.group}}</p> 
+                                </span>
+                            </td>
+                            <td>
+                                <ul class="days-list">
+                                    <li  *ngFor="let monitoredDays of employee.summary | keyvalue">
+                                        <span [ngClass]="{'days-color-gray': (monitoredDays.value==2), 'days-color-red':(monitoredDays.value==1), 'days-color-green':(monitoredDays.value==0)}" ></span>
+                                        <p>{{monitoredDays.key | date:"dd/MM"}}</p>
+                                    </li>
+                                </ul>
+                            </td>
+                            <td class="text-align-center text-bold">{{employee.schedule}}</td>
+                            <td class="text-align-center"> 
+                                {{employee.hours_worked}}
+                            </td>
+                            <td class="text-align-right">
+                                {{employee.lateness}}
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+
+                 <div class="pagination-wrapper">
+                    <div class="custom-pagination" *ngIf="totalRows>0 && perPageItem < totalRows">
+                        <pagination-controls (pageChange)="pageChanged($event)" previousLabel="" nextLabel=""></pagination-controls>
+                    </div>
+                    <div *ngIf="loader" class="loading-image"></div>
+                </div>
+
+            </div>
+        </div>
+    </ng-template>
+</div>

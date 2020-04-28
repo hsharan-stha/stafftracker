@@ -1,0 +1,6 @@
+[
+  {"display": "Warehouse", "flag": "gray_geozone.svg","value":1},
+  {"display": "Dev Office", "flag": "gray_geozone.svg","value":2},
+  {"display": "Main Office", "flag": "gray_geozone.svg","value":3},
+  {"display": "Central Store", "flag": "gray_geozone.svg","value":4}
+]

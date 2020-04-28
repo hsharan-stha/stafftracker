@@ -1,0 +1,529 @@
+.main-container-background {
+  background-color: #EEF3F5;
+}
+
+.sub-container {
+  /*padding: 42px 152px 0px 72px;*/
+}
+
+.sub-container-width {
+  width: 1136px;
+}
+
+.employee-title {
+  font-size: 28px;
+  color: #2E384D;
+  word-spacing: 0px;
+  line-height: 32px;
+  font-weight: 300;
+  text-align: left;
+  font-family: Rubik;
+  margin-bottom: 5px;
+}
+
+.employee-title-sub {
+  font-size: 15px;
+  color: #8798AD;
+  word-spacing: 0px;
+  line-height: 22px;
+  font-weight: 400;
+  text-align: left;
+  font-family: Rubik;
+  margin-left: 4px;
+}
+
+.btn-text {
+  /*font-size: 15px;*/
+  /*color: #ffffff;*/
+  /*text-align: center;*/
+  /*font-weight: 500;*/
+  /*margin-left: 15px;*/
+
+}
+
+.btn-add-content {
+  margin-left: 6px;
+  float: left;
+}
+
+.btn-lcon {
+  width: 16px;
+  height: 16px;
+}
+
+.tbl-employee-list thead tr th {
+  padding: .75rem 1.75rem 0px;
+  border: none;
+}
+
+.tbl-employee-list thead tr th label {
+  font-size: 12px;
+  font-family: Rubik;
+  color: #BFC5D2;
+  letter-spacing: 1.12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: left;
+  padding-bottom: 0px;
+  margin-bottom: 10px;
+}
+
+.tbl-employee-list thead {
+  border: none;
+}
+
+.table-image-design {
+  width: 34px;
+  height: 34px;
+  border-radius: 17px;
+  float: left;
+  margin-top: 4px;
+}
+
+.tbl-employee-list tbody tr td {
+  padding-bottom: 9px;
+  padding-top: 8px;
+  vertical-align: middle;
+  border-top: none;
+  border-bottom: 10px solid #EEF3F5;
+  font-size: 15px;
+  color: #2E384D;
+  letter-spacing: 0;
+  line-height: 22px;
+  font-family: Rubik;
+  font-weight: 400;
+  text-align: left;
+}
+
+.tbl-employee-list tbody tr {
+  height: 73px;
+  background-color: white;
+}
+
+.input-margin {
+  margin-bottom: 20px;
+  max-width: 320px;
+}
+
+.st-panel-default {
+  padding: 27px 24px 32px 24px;
+}
+
+.st-panel-body {
+  padding: 16px 6px 0px 6px;
+}
+
+.form-label {
+  font-size: 15px;
+  color: #2E384D;
+  word-spacing: 0px;
+  line-height: 22px;
+  font-weight: 400;
+  text-align: left;
+  margin: 0px;
+  font-family: Rubik;
+  margin-bottom: 7px;
+}
+
+.submit-btn-design {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 0px;
+  margin-top: 5px;
+}
+
+
+.position-filter-wrapper {
+  background-color: white;
+  padding: 30px;
+}
+
+.tbl-lbl-emp-name {
+  float: left;
+  margin-right: 10px;
+}
+
+.emp-add-btn {
+  width: 200px;
+  height: 40px;
+  float: right;
+  margin: 0px;
+}
+
+.btn {
+  font-size: 15px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  text-align: center;
+  font-family: Rubik;
+  font-weight: 500;
+  background-color: #2E5BFF;
+  border-radius: 4px;
+  border: 1px solid #2E5BFF;
+  width: 200px;
+  height: 40px;
+}
+
+.btn-add {
+  float: right;
+}
+
+.btn-add .btn-add-content {
+  margin-left: 6px;
+  float: left;
+}
+
+.btn span {
+  padding-left: 20.5px;
+  color: #FFFFFF;
+}
+
+.tbl-employee-list .emp-info-list {
+  list-style: none;
+  list-style-position: inside;
+  margin-bottom: 0px;
+}
+
+.tbl-employee-list .emp-info-list li:first-child {
+  line-height: 20px;
+  color: #2E384D;
+  font-size: 15px;
+  font-family: Rubik;
+  font-weight: 500;
+  letter-spacing: 0;
+  text-align: left;
+}
+
+.tbl-employee-list .emp-info-list li:last-child {
+  font-size: 15px;
+  font-family: Rubik;
+  font-weight: 400;
+  color: #8798AD;
+  line-height: 20px;
+  letter-spacing: 0;
+  text-align: left;
+}
+
+.tbl-employee-list .emp-tracking-list {
+  list-style: none;
+  padding-left: 0px;
+  list-style-position: inside;
+  margin-bottom: 0px;
+  margin: auto;
+  width: 130px;
+}
+
+.tbl-employee-list .emp-tracking-list li:first-child {
+  line-height: 20px;
+  font-family: Rubik;
+  font-weight: 500;
+  font-size: 12px;
+  color: #B0BAC9;
+  letter-spacing: 1.12px;
+  font-family: Rubik;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.tbl-employee-list .emp-tracking-list li:last-child {
+  font-family: Rubik;
+  font-weight: 400;
+  line-height: 20px;
+  font-size: 13px;
+  color: #8798AD;
+  letter-spacing: 1.21px;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.tbl-action-grp, .tbl-action-grp img {
+  padding-left: 10px;
+  padding-top: 5px;
+}
+
+.action-more-btn {
+  content: url(/assets/icons/blue_menu_dot.svg);
+  text-align: right;
+  margin-top: 5px;
+  margin-right: 25px;
+  cursor: pointer;
+}
+
+.text-align-center {
+  text-align: center !important;
+}
+
+.text-align-right {
+  text-align: right !important;
+}
+
+.expand {
+  display: flex;
+  position: absolute;
+  bottom: 0px;
+  width: 100%;
+  padding-right: 30px;
+}
+
+.expand p {
+  font-size: 12px;
+  color: #B0BAC9;
+  letter-spacing: 1.12px;
+  text-align: center;
+  font-family: Rubik;
+  font-weight: 500;
+  text-transform: uppercase;
+  background-color: #F4F6FC;
+  white-space: nowrap;
+  padding: 3px 17px;
+  cursor: pointer;
+
+}
+
+.expand hr {
+  width: 100%;
+  margin-top: 12px;
+  border: 0;
+  border-top: 1px solid #BFC5D2;
+}
+
+.tbl-employee-list {
+  margin-bottom: 10px;
+  float: left;
+  width: 100%;
+}
+
+
+@media (max-width: 1100px) {
+  .employee-tbl-wrapper {
+    max-width: 100% !important;
+    flex: 0 0 100% !important;
+  }
+
+  .input-margin {
+    margin-bottom: 20px;
+    width: 23%;
+    float: left;
+    margin-right: 2%;
+  }
+
+  .submit-btn-design {
+    width: 23%;
+    height: 40px;
+    margin-bottom: 0px;
+    margin-right: 2%;
+    float: right;
+
+  }
+
+  .st-panel-default {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+}
+
+
+@media (max-width: 1016px) {
+  .input-margin {
+    width: 43%;
+    margin-right: 4%;
+  }
+
+  .submit-btn-design {
+    width: 43%;
+    margin-right: 10%;
+  }
+
+  .st-panel-default form {
+    margin-left: 7%;
+  }
+}
+
+@media (max-width: 768px) {
+  .st-panel-default {
+    margin-bottom: 15px;
+  }
+}
+
+@media (max-width: 817px) {
+  .input-margin {
+    width: 46%;
+    margin-right: 4%;
+  }
+
+  .st-panel-default form {
+    margin-left: 3%;
+  }
+
+  .submit-btn-design {
+    width: 46%;
+    margin-right: 4%;
+  }
+
+  .emp-add-btn {
+    /*width:190px;*/
+    margin-left: 10px;
+  }
+}
+
+@media (max-width: 670px) {
+  .input-margin {
+    width: 48%;
+    margin-right: 4%;
+  }
+
+  .st-panel-default form {
+    margin-left: 0%;
+  }
+
+  .st-panel-default form .input-margin:nth-child(2), .st-panel-default form .input-margin:nth-child(4) {
+    margin-right: 0%;
+  }
+
+  /*.emp-add-btn{*/
+  /*     !*margin-top: 20px;*!*/
+  /*    !*float:unset*!*/
+  /* }*/
+  .submit-btn-design {
+    width: 48%;
+    margin-right: 0%;
+  }
+}
+
+@media (max-width: 618px) {
+  .emp-add-btn {
+    margin: 10px 0px 0px 0px;
+    float: unset
+  }
+}
+
+@media (max-width: 615px) {
+  .input-margin {
+    width: 85%;
+  }
+
+  .submit-btn-design {
+    margin-left: 0%;
+    float: left;
+    width: 85%;
+  }
+
+  .st-panel-default form {
+    margin-left: 10%;
+  }
+}
+
+@media (max-width: 576px) {
+  .input-margin {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .submit-btn-design {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .st-panel-default form {
+    margin-left: 0%;
+  }
+}
+
+
+@media (max-width: 819px) {
+  .tbl-employee-list {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+
+  }
+
+  .tbl-employee-list thead tr th:last-child {
+    width: 136px;
+    display: block;
+  }
+}
+
+
+.tbl-employee-list::-webkit-scrollbar {
+  height: 4px;
+  background-color: #F5F5F5;
+}
+
+.tbl-employee-list::-webkit-scrollbar-thumb {
+  background-color: #95a1b282;
+}
+
+.tbl-employee-list::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.12);
+  background-color: #f5f5f5;
+}
+
+.employee-tbl-wrapper {
+  min-height: calc(100vh - 130px);
+  /*padding-bottom: 30px;*/
+}
+
+.emp-add-btn {
+  max-width: 200px !important;
+}
+
+
+.img-error {
+  background-color: #EEF3F5;
+  padding: 7px;
+}
+
+.card {
+  width: 100%;
+  background-color: white;
+  border: 1px solid rgba(46, 91, 255, 0.08);
+  box-shadow: 0 10px 20px 0 rgba(46, 91, 255, 0.07);
+  border-radius: 0px;
+}
+
+
+.employee_empty {
+  height: Calc(100vh - 247px);
+  margin-top: 34px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.employee_empty p {
+  font-size: 15px;
+  color: #8798AD;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 22px;
+  font-family: Rubik;
+  font-weight: 400;
+  margin-top: 36px;
+  margin-bottom: 28px;
+}
+
+.employee_empty p span {
+  font-weight: 700;
+}
+
+
+.employee_empty .btn {
+  font-size: 15px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  text-align: center;
+  font-family: Rubik;
+  font-weight: 500;
+  background-color: #2E5BFF;
+  border-radius: 4px;
+  border: 1px solid #2E5BFF;
+  width: 200px;
+  height: 40px;
+}
+
+.check-box-toolpit {
+    position: relative;
+    top: 5px;
+    right: 60px;
+}

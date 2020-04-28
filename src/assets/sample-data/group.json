@@ -1,0 +1,6 @@
+[
+  {"display": "Accountants", "flag": "accountant.png","value":1},
+  {"display": "Drivers", "flag": "driver.png","value":2},
+  {"display": "Operators", "flag": "operators.png","value":3},
+  {"display": "Admins", "flag": "admins.png","value":4}
+]

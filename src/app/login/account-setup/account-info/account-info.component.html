@@ -1,0 +1,66 @@
+<div class="register-form-wrapper">
+    <div class="col-sm-12">
+        <h1 class="register-form-title">{{ "Sign up" | translate }} <br/>{{ "to Staff Tracker" | translate }}</h1>
+        <p class="register-form-tag">{{ "Please enter your MSISDN to proceed" | translate }}</p>
+    </div>
+    
+    <div class="col-sm-12 progress-bar-wrapper">
+        <div class="wizard-progress">
+            <div class="steps-progress">
+                <div class="progress-indicator" style="width: 0%;"></div>
+            </div>
+            <ul class="wizard-steps">
+                <li class="completed active">
+                    <a href="javascript:;"><span>1</span>{{ "Account Info" | translate }}</a>
+                </li>
+                <li>
+                    <a href="javascript:;"><span>2</span></a>
+                </li>
+                <li>
+                    <a href="javascript:;"><span>3</span></a>
+                </li>
+                <li>
+                    <a href="javascript:;"><span>4</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="col-xl-12 col-lg-12 col-sm-12 account-info-form-wrapper">
+        <form class="register-form" [formGroup]="accountInfoForm">
+            <div class="form-group custom-width">
+                <label>{{ "Phone number" | translate }}</label>
+                <input class="form-control" placeholder="06 XX XXX XXX" formControlName="phoneNumber" [textMask]="{mask: mask}"/>
+                <span invalidMessage [control]="accountInfoForm.controls.phoneNumber"></span>
+            </div>
+            <div class="form-group custom-width">
+                <label>{{ "Activation code" | translate }}</label>
+                <input class="form-control"  formControlName="activationCode"/>
+                <span  [control]="accountInfoForm.controls.activationCode"  invalidMessage></span>
+            </div>
+
+            <div class="form-group custom-width">
+                <label>{{ "Email" | translate }}</label>
+                <input class="form-control" formControlName="email"/>
+                <span  [control]="accountInfoForm.controls.email" invalidMessage></span>
+            </div>
+
+            <div class="form-group custom-width">
+                <label>{{ "Password" | translate}}</label>
+                <input type="password" class="form-control" formControlName="pwd"/>
+                <span [control]="accountInfoForm.controls.pwd" invalidMessage [customMessage]="customMessage"></span>
+            </div>
+
+            <div class="form-group custom-width">
+                <label>{{ "Confirm password" | translate}}</label>
+                <input type="password" class="form-control {{accountInfoForm.controls.confirmPwd.errors?.mustMatch? 'form-control-invalid confirm-msg-error':''}}" formControlName="confirmPwd"/>
+                <span [control]="accountInfoForm.controls.confirmPwd" invalidMessage [customMessage]="customMessage"></span>
+            </div>
+
+            <div class="form-group custom-width">
+                <shared-button buttonType="button" class="sign-up-back-btn" iconClass="icon-back" name="{{ 'Back' | translate }}" (buttonClicked)="btnBackClicked()"></shared-button>
+                <shared-button buttonType="submit" [disabledCondition]="!accountInfoForm.valid" class="sign-up-next-btn" name="{{ 'Next' | translate}}" (buttonClicked)="btnNextClicked()"></shared-button>
+            </div>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,105 @@
+.upload-box{
+    max-width: 320px;
+    height: 126px;
+    border: 1px solid #E0E7FF;
+    border-radius: 5px;
+}
+
+.select-file{
+    display:none;
+}
+
+.camera{
+    /*background-image: url(/assets/icons/gray_photo.svg);*/
+    height:90px;
+    width:90px;
+    border-radius: 50px;
+    /*background-size:auto 100%;*/
+    background-position:center;
+    background-repeat: no-repeat;
+    float:left;
+    background-color:#f4f6fc;
+    padding: 30%;
+}
+
+.camera .img-border-radius{
+    border-radius: 50px;
+}
+
+.upload-img{
+    background-image: url(/assets/icons/blue_upload.svg);
+    height:18px;
+    width:24px;
+    background-size:auto 100%;
+    background-position:center;
+    background-repeat: no-repeat;
+    float:left;
+    margin-right:10px;
+}
+
+.select-file-wraper{
+    height: 100%;
+    width: 100%;
+    cursor: pointer;
+    position:relative;
+}
+
+.label-for-camera{
+     font-size: 15px !important; 
+    color: #8798AD !important; 
+    letter-spacing: 0 !important;
+    line-height: 22px !important; 
+    font-family: Rubik; 
+    font-weight: 400 !important;  
+    text-align: left; 
+    text-transform:none !important;
+    margin-bottom: 5px;
+}
+
+.select-file-wraper p{
+    color:#2E5BFF;
+    text-transform:none;
+}
+
+.camera-wrapper{
+    width:40%;
+    float:left;
+    padding: 17px 0px 0px 17px;
+}
+
+.upload-wrapper{
+    width:60%;
+    float:left;
+    padding:16px 9px 5px;
+}
+
+.upload-wrapper p{
+    font-size: 15px;
+    color: #2E5BFF;
+    letter-spacing: 0;
+    font-family: Rubik;
+    font-weight: 500;
+    text-align: left;
+    padding: 15px 15px 0px 15px;
+    margin-bottom: 0px;
+}
+
+.selectedFile{
+    position: absolute;
+    top: 103px;
+    left: 0;
+    width: 40%;
+    overflow-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 13px;
+    font-family: Rubik;
+    font-weight: 400 !important;
+    text-align: center;
+    padding-left:10px;
+}
+
+img{
+    object-fit: contain;
+}

@@ -1,0 +1,133 @@
+<div class="row">
+  <div class="col-lg-9 geozone-tbl-wrapper">
+    <div class="title">
+      <div class="title-wrap">
+        <h1>{{"Geozones table"|translate}}</h1>
+        <span class="list-count">{{ (totalRows<=0)?0:totalRows }} {{"Total"|translate}}</span>
+      </div>
+      <button type="button" (click)="addGeozone()" class="btn btn-add">
+        <div class="btn-add-content">
+          <img class="geozone-add-btn-img" src="./assets/icons/white_geozone.svg" width="16px" height="16px"/>
+          <span>{{"Add geozone"|translate}}</span>
+        </div>
+      </button>
+    </div>
+
+    <div *ngIf="!laptopSize else geozoneFilterForm"></div>
+
+    <div class="geozone-content" #geozoneTable>
+      <div class="card geozone-empty" *ngIf="totalRows <= 0; else geozoneList">
+        <img src="./assets/icons/gray_docs.svg"/>
+        <p><span>{{"Geozones"|translate}}</span> {{"table is empty"|translate}}<br>{{"Any new geozones will appear here"|translate}}
+        </p>
+        <button class="btn btn-add" (click)="addGeozoneView()">
+            {{"Add Geozone"|translate}}
+        </button>
+      </div>
+      <ng-template #geozoneList>
+        <div class="row">
+            <div class="col-md-12">
+              <div class="geozone-table-container">
+                <table class='geozone-table'>
+                    <thead>
+                        <tr>
+                            <th>
+                                <label class="tbl-lbl-geozone-name">
+                                    {{"Geozones name and address"|translate}}
+                                </label>
+                                <span appDataList (currentSortOrder)="sortItems($event)" [attr.aria-name]="'name'">
+                                    <span class="blue-down-arrow show"></span>
+                                    <span class="blue-up-arrow hide"></span>
+                                </span>
+                            </th>
+                            <th>
+                                <label>{{"Radius"|translate}}</label></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let geozone of collection | paginate: { itemsPerPage: perPageItem, currentPage: p,totalItems: totalRows  }">
+                            <td>
+                              <div class="avatar">
+                                <img src="./assets/icons/gray_geozone.svg" width="20px" height="20px"/>
+                              </div>
+                              <ul class="geo-info-list">
+                                <li>{{ geozone.name }}</li>
+                                <li>{{ geozone.address }}</li>
+                              </ul>
+                            </td>
+                            <td>
+                              <div class="td_radius">
+                                <img src="./assets/icons/blue_radius.svg" width="24px" height="24px"/>
+                                {{ geozone.radius }} m
+                              </div>
+                            </td>
+                            <td>
+                              <div class="td_action">
+                                <img class="geozone-action-btn" src="./assets/icons/blue_menu_dot.svg" dbempaction firstBtnName="blue_edit" secondBtnName="blue_remove"
+                                  (viewBtnClicked)="editGeozoneInformation(geozone.id)" (sendMsgbtnClicked)="deleteGeozone(geozone.id)" viewMessage="edit geozone information"
+                                  sendMessage="delete geozone" outerWidthForSMS="130"/>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+              </div>
+
+                <div class="pagination-wrapper">
+                    <div *ngIf="!showExpandBtn && collection.length>0" class="custom-pagination">
+                        <pagination-controls (pageChange)="pageChanged($event)" autoHide="true" previousLabel="" nextLabel=""></pagination-controls>
+                    </div>
+
+                    <div class="expand" *ngIf="showExpandBtn && perPageItem < totalRows && collection.length>0"><hr><p (click)="expandTable()">{{"Expand Table" | translate}}</p><hr></div>
+                    <div *ngIf="loader" class="loading-image"></div>
+                </div>
+            </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div *ngIf="laptopSize else geozoneFilterForm"></div>
+    <div class="clearfix"></div>
+  </div>
+  <ng-template #geozoneFilterForm>
+    <div class="geozone-search">
+      <div class="card">
+        <h3>{{"Filter"|translate}}</h3>
+        <div class="cross-icon-wrapper">
+            <span (click)="searchForm.reset()" (mouseover)="setCheckBoxHover(true)" (mouseout)="setCheckBoxHover(false)" class="panel-close"></span>
+            <span *ngIf="hoverCheckBox" class="drop-down-invalid-dialog check-box-toolpit"><invalid-message
+                      text="{{'Clear filters' | translate}}" type="message" width="120px"></invalid-message></span>
+        </div>
+        <form class="form-geozone-search" [formGroup]="searchForm">
+          <div class="search-input">
+            <div class="form-group">
+                <label>{{"Address"|translate}}</label>
+                <div class="form-search-icon-wrapper">
+                    <app-search-icon-form  [inputSearchFormGroup]="searchForm" [inputSearchFormControl]="searchForm.controls.address"></app-search-icon-form>
+                </div>
+            </div>
+          </div>
+          <div class="search-input">
+            <div class="form-group">
+                <label>{{"Geozones name"|translate}}</label>
+                <div class="form-search-icon-wrapper">
+                  <app-search-icon-form  [inputSearchFormGroup]="searchForm" [inputSearchFormControl]="searchForm.controls.name"></app-search-icon-form>
+                </div>
+            </div>
+          </div>
+          <div class="search-input">
+            <div class="form-group">
+              <button class="btn btn-search" (click)="findGeozone()">
+                {{"Apply"|translate}}
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+<router-outlet></router-outlet>

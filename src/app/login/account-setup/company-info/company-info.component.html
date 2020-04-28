@@ -1,0 +1,48 @@
+<div class="register-form-wrapper">
+    <div class="col-sm-11">
+        <h1 class="register-form-title">{{"Welcome" | translate }}<br/>{{"to Staff Tracker" | translate}}</h1>
+        <p class="register-form-tag">{{"Please enter the all fields to register your company" | translate}}</p>
+    </div>
+    
+    <div class="col-sm-12 progress-bar-wrapper">
+        <div class="wizard-progress">
+            <div class="steps-progress">
+                <div class="progress-indicator" style="width: 33%;"></div>
+            </div>
+            <ul class="wizard-steps">
+                <li class="completed">
+                    <a href="javascript:;"><span>1</span></a>
+                </li>
+                <li class="completed active">
+                    <a href="javascript:;"><span>2</span><p>{{"Company name"| translate}}</p></a>
+                </li>
+                <li>
+                    <a href="javascript:;"><span>3</span></a>
+                </li>
+                <li>
+                    <a href="javascript:;"><span>4</span></a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="col-xl-12 col-lg-12 col-sm-12 account-info-form-wrapper">
+        <form class="register-form" [formGroup]="companyInfoForm">
+            <div class="form-group custom-width">
+                <label>{{ "Company name" | translate}}</label>
+                <input class="form-control" value="Nur telecom" formControlName="companyName"/>
+                <span [control]="companyInfoForm.controls.companyName" invalidMessage></span>
+            </div>
+            <div class="form-group">
+                <label>{{ "Company's Logo" | translate}}</label>
+                <app-image-upload [formSubmitted]="false" [form_group_name]="companyInfoForm" [form_control_name]="companyInfoForm.controls.image" (inputChanged)="onImageChange($event)" customID="select_file" detailLabel="{{'File format .png.jpg Max upload file size 5MB' | translate}}" labelUpload="{{'Choose file' | translate}}"></app-image-upload>
+                
+            </div>
+
+            <div class="form-group custom-width">
+                <shared-button buttonType="button" class="sign-up-back-btn" iconClass="icon-back" name="{{ 'Back' | translate }}" (buttonClicked)="btnBackClicked()"></shared-button>
+                <shared-button buttonType="submit" class="sign-up-next-btn" [disabledCondition]="!companyInfoForm.valid"  name="{{ 'Next' | translate }}" (buttonClicked)="btnNextClicked()"></shared-button>
+            </div>
+        </form>
+    </div>
+</div>

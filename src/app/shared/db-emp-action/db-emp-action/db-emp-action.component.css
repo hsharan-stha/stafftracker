@@ -1,0 +1,25 @@
+.table-action ul{
+    list-style:none;
+    list-style-position: inside;
+    padding-left:0px;
+    padding-bottom: 12px;
+}
+
+.table-action ul li{
+    float: left;
+}
+table a{
+    cursor: pointer;
+}
+
+.table-action ul li:first-child{
+    margin-right: 20px;
+}
+
+.table-action ul li a{
+    cursor: pointer;
+}
+
+.table-action ul li:nth-child(3){
+    margin-left: 20px;
+}

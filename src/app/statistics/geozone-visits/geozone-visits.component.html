@@ -1,0 +1,158 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="title">
+      <h1>{{'Control of Geozones visits' | translate}}</h1>
+    </div>
+
+    <div class="margin-top-42">
+      <div class="card">
+        <form class="form-geozone-visit" [formGroup]="geozoneVisitForm" (ngSubmit)="getGeozonevisitBtnClicked()">
+          <!-- <div class="row"> -->
+          <div class="search-input-date">
+            <div class="form-group">
+              <label>{{"Date From"|translate}}</label>
+              <date-picker
+                [inputFormGroup]="geozoneVisitForm"
+                [inputFormControl]="geozoneVisitForm.controls.fromDate"
+                [maxDate]="geozoneVisitForm.value.toDate">
+              </date-picker>
+            </div>
+          </div>
+
+          <div class="search-input-date">
+            <div class="form-group">
+              <label>{{"Date To"|translate}}</label>
+              <date-picker
+                [inputFormGroup]="geozoneVisitForm"
+                [inputFormControl]="geozoneVisitForm.controls.toDate"
+                [minDate]="geozoneVisitForm.value.fromDate">
+              </date-picker>
+            </div>
+          </div>
+
+          <div class="search-input">
+            <div class="form-group max-input-wrapper-width">
+              <label>{{"Choose Geozone"|translate}}</label>
+              <div class="form-search-icon-wrapper">
+                <app-select-input
+                  selectorId="id"
+                  [formSubmitted]="isSubmitted"
+                  [selectInputGroup]="geozoneVisitForm"
+                  [selectInputControl]="geozoneVisitForm.controls.geozone"
+                  [selectOptions]="geozone"
+                  [isSetGeozone]="geozone_id"></app-select-input>
+                <span controlType="select" invalidMessage [control]="geozoneVisitForm.controls.geozone"></span>
+              </div>
+            </div>
+          </div>
+          <div class="search-input-btn">
+            <div class="form-group">
+              <button class="btn btn-search" type="submit" [disabled]="searchBtnDisabled">
+                {{' Get data' | translate}}
+              </button>
+            </div>
+          </div>
+          <!-- </div> -->
+        </form>
+      </div>
+    </div>
+
+    <div class="export-wrap">
+      <button class="btn btn-export" (click)="exportData()"
+              [disabled]="totalRows <= 0 || !geozoneVisitForm.controls.geozone.valid || exportBtnDisabled">
+        {{'Export' | translate}}
+      </button>
+    </div>
+
+    <div #reportTable>
+      <div class="card geozone_empty" *ngIf="totalRows <= 0; else reportTblWrapper">
+        <img src="./assets/icons/gray_docs.svg"/>
+        <div *ngIf="loader" class="round-loading-image" style="position: absolute"></div>
+        <p><span>{{ "Geozone Visits" | translate }}</span> {{ "table is empty" |translate}}
+          <br>{{"Any new records will appear here" |translate}}
+        </p>
+      </div>
+      <ng-template #reportTblWrapper>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="geozone-table-container">
+              <table class='geozone-table'>
+                <thead>
+                <tr>
+                  <th appDataList style="cursor: pointer;" (currentSortOrder)="sortItems($event)"
+                      [attr.aria-name]="fieldName">
+                    {{"Geozone" | translate}}
+                    <img class="title-img show" src="./assets/icons/blue_arrow_down.svg"
+                         width="16px"
+                         height="16px"/>
+                    <img class="title-img hide" src="./assets/icons/Icon_arrow up.svg"
+                         width="16px"
+                         height="16px"/>
+                  </th>
+                  <th>{{'Radius' | translate}}</th>
+                  <th>{{'Event' | translate}}</th>
+                  <th>{{'Employee' | translate}}</th>
+                  <th>{{'Date/Time' | translate}}</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr
+                  *ngFor="let geozoneVisit of geozoneVisits | paginate: { itemsPerPage: perPageItem, currentPage: p,totalItems: totalRows }">
+                  <td width="25%">
+                    <div class="td-emp">
+                      <div class="avatar">
+                        <img src="./assets/icons/gray_geozone.svg" width="20px" height="20px"/>
+                      </div>
+                      <ul class="emp-info">
+                        <li>{{ geozoneVisit.geo_name }}</li>
+                        <li>{{ geozoneVisit.address }}</li>
+                      </ul>
+                    </div>
+                  </td>
+                  <td width="17%">
+                    <div class="td-radius">
+                      <img src="./assets/icons/blue_radius.svg" width="24px" height="24px"/>
+                      {{ geozoneVisit.radius }} km
+                    </div>
+                  </td>
+                  <td width="17%">
+                    <div class="td-event">
+                      <img class="event-icon"
+                           src="./assets/icons/{{geozoneVisit.event==='in'?'green_checkin':'green_checkout'}}.svg"/>
+                      <div class="event-info">
+                        {{ geozoneVisit.event }}
+                      </div>
+                    </div>
+                  </td>
+                  <td width="20%">
+                    <div class="td-emp">
+                      <img class="avatar-image" src="{{imageURL()+geozoneVisit.icon_url}}"/>
+                      <ul class="emp-info">
+                        <li>{{ geozoneVisit.name }}</li>
+                        <li>{{ geozoneVisit.position }}</li>
+                      </ul>
+                    </div>
+                  </td>
+                  <td width="20%">
+                    <ul class="date-time">
+                      <li class="date">{{ geozoneVisit.created_date }}</li>
+                      <li class="time">{{ geozoneVisit.created_time }}</li>
+                    </ul>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="pagination-wrapper">
+              <div *ngIf="perPageItem < totalRows" class="custom-pagination">
+                <pagination-controls (pageChange)="pageNumber($event)" previousLabel=""
+                                     nextLabel=""></pagination-controls>
+              </div>
+              <div *ngIf="loader" class="loading-image"></div>
+
+            </div>
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>

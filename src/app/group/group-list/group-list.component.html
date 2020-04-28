@@ -1,0 +1,150 @@
+<div class="row">
+  <div class="col-lg-9 group-tbl-wrapper">
+    <div class="title">
+      <div class="title-wrap">
+        <h1>{{"Group table" | translate}}</h1>
+        <span class="list-count">{{countRow }} {{"Total" | translate}}</span>
+      </div>
+      <button type="button" (click)="addGroupView()" class="btn btn-add">
+        <div class="btn-add-content">
+          <img class="group-add-btn-img" src="./assets/icons/white_add_group.svg" width="16px" height="16px"/>
+          <span>{{"Add group" | translate}}</span>
+        </div>
+      </button>
+    </div>
+
+    <div *ngIf="!laptopSize else groupFilterForm"></div>
+
+    <div class="group-content">
+      <div class="card group-empty" *ngIf="countRow <= 0; else groupList">
+        <img src="./assets/icons/gray_docs.svg"/>
+        <p><span>{{"Groups" | translate}}</span> {{"table is empty"|translate}}
+          <br>{{"Any new groups will appear here"|translate}}
+        </p>
+        <button class="btn btn-add" (click)="addGroupView()">
+          {{"Add Group" | translate}}
+        </button>
+      </div>
+      <ng-template #groupList>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="group-table-container">
+              <table class='group-table' #groupTable>
+                <thead>
+                <tr>
+                  <th appDataList style="cursor: pointer;" (currentSortOrder)="sortItems($event)"
+                      [attr.aria-name]="fieldName">
+                    {{"Name of Group" | translate}}
+                    <img class="group-title-img show" src="./assets/icons/blue_arrow_down.svg"
+                         width="16px"
+                         height="16px"/>
+                    <img class="group-title-img hide" src="./assets/icons/Icon_arrow up.svg"
+                         width="16px"
+                         height="16px"/>
+                  </th>
+                  <th>{{"Employees" | translate}}</th>
+                  <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr
+                  *ngFor="let group of filteredGroups  |  paginate: { itemsPerPage: perPageItem, currentPage: p,totalItems: countRow }">
+                  <td>
+                    <!--                                        <img class="avatar-image" *ngIf="group.image; else avatar"-->
+                    <!--                                             src="./assets/icons/{{group.image}}"/>-->
+                    <!--                                        <ng-template #avatar>-->
+                    <div class="avatar">
+                      <img src="{{imageURL}}{{ group.icon_url }}" width="20px"
+                           height="20px"/>
+                    </div>
+                    <!--                                        </ng-template>-->
+                    <span>{{ group.name }}</span>
+                  </td>
+                  <td>
+                    <div class="td_emp_count">{{ group.nr_employees }}</div>
+                  </td>
+                  <td>
+                                <span class="group-action-btn"
+                                      dbempaction
+                                      wrapperClass="actionWrapper"
+                                      firstBtnName="blue_edit"
+                                      secondBtnName="blue_remove"
+                                      (viewBtnClicked)="editGroupInformation(group.id)"
+                                      (sendMsgbtnClicked)="deleteGroup(group.id)"
+                                      viewMessage="Edit group information" sendMessage="Delete group"></span>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="pagination-wrapper">
+              <div *ngIf="!showExpandBtn" class="custom-pagination">
+                <pagination-controls (pageChange)="pageNumber($event)" autoHide="true" previousLabel=""
+                                     nextLabel=""></pagination-controls>
+              </div>
+
+              <div class="expand" *ngIf="showExpandBtn && perPageItem < countRow">
+                <hr>
+                <p (click)="expandTable()">{{"Expand Table" | translate}}</p>
+                <hr>
+              </div>
+              <div *ngIf="loader" class="loading-image"></div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div *ngIf="laptopSize else groupFilterForm"></div>
+    <div class="clearfix"></div>
+  </div>
+  <ng-template #groupFilterForm>
+    <div class="group-search">
+      <div class="card">
+        <h3>{{"Filter" | translate}}</h3>
+        <div class="cross-icon-wrapper">
+            <span (click)="searchForm.reset()" (mouseover)="setCheckBoxHover(true)" (mouseout)="setCheckBoxHover(false)" class="panel-close"></span>
+            <span *ngIf="hoverCheckBox" class="drop-down-invalid-dialog check-box-toolpit"><invalid-message
+                      text="{{'Clear filters' | translate}}" type="message" width="120px"></invalid-message></span>
+        </div>
+        <form class="form-group-search" [formGroup]="searchForm">
+          <div class="search-input">
+            <div class="form-group">
+              <label>{{"Group name" | translate}}</label>
+              <div class="form-search-icon-wrapper">
+                <app-search-icon-form [inputSearchFormGroup]="searchForm"
+                                      [inputSearchFormControl]="searchForm.controls.group_name"
+                                      (inputChanged)="filterValue($event)"></app-search-icon-form>
+              </div>
+            </div>
+          </div>
+          <div class="search-input">
+            <div class="form-group">
+              <label>{{"Schedule" | translate}}</label>
+              <div class="form-search-icon-wrapper">
+                <app-select-input selectorId="id" (inputChanged)="filterValue($event)"
+                                  [selectInputGroup]="searchForm"
+                                  [selectInputControl]="searchForm.controls.schedule"
+                                  (dropDownScroll)="setSchedulePageByScroll($event)"
+                                  [selectOptions]="schedules"></app-select-input>
+
+              </div>
+            </div>
+          </div>
+          <div class="search-input">
+            <div class="form-group">
+              <button class="btn btn-search" (click)="findGroup()">
+                {{"Apply" | translate}}
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </ng-template>
+</div>
+<router-outlet></router-outlet>

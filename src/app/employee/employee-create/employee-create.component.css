@@ -1,0 +1,332 @@
+h3.employee-wrapper-header {
+  font-size: 28px;
+  color: #2E384D;
+  letter-spacing: 0;
+  line-height: 32px;
+  font-family: Rubik;
+  font-weight: 300;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.emp-info-tag {
+  font-size: 15px;
+  color: #2E384D;
+  letter-spacing: 0;
+  line-height: 22px;
+  font-family: Rubik;
+  font-weight: 400;
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.label-wid-line {
+  float: left;
+  width: 100%;
+}
+
+.label-wid-line p {
+  font-size: 12px;
+  color: #2E5BFF;
+  letter-spacing: 1.12px;
+  font-family: Rubik;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: left;
+  width: auto;
+  float: left;
+  margin-bottom: 0px;
+  margin-right: 15px;
+}
+
+.label-wid-line hr {
+  width: 200px;
+  float: left;
+  margin-top: 8px;
+  border: 0;
+  border-top: 1px solid #2E5BFF;
+  margin-bottom: 0px;
+}
+
+
+.employee-add-form label {
+  font-size: 12px;
+  color: #B0BAC9;
+  letter-spacing: 1.12px;
+  font-family: Rubik;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.employee-add-form input {
+  max-width: 320px;
+  border: 1px solid #E0E7FF;
+  height: 40px;
+  font-size: 15px;
+  color: #2E384D;
+  letter-spacing: 0;
+  font-family: Rubik;
+  font-weight: 400;
+  text-align: left;
+}
+
+.info-icon-wrapper {
+  height: 100%;
+  width: 24px;
+  float: left;
+  margin-right: 32px;
+  margin-left: 32px;
+}
+
+.mn-top-20 {
+  margin-top: 20px;
+}
+
+.mn-top-15 {
+  margin-top: 15px;
+}
+
+.mn-top-10 {
+  margin-top: 10px;
+}
+
+.mn-top-17 {
+  margin-top: 17px;
+}
+
+.mn-top-30 {
+  margin-top: 30px;
+}
+
+.mn-top-50 {
+  margin-top: 50px;
+}
+
+.info-icon {
+  content: url(/assets/icons/blue_notif.svg);
+  float: left;
+  margin-top: 16px;
+  margin-bottom: 15px;
+  margin-right: 32px;
+}
+
+
+.info-dtl {
+  font-size: 15px;
+  color: #8798AD;
+  letter-spacing: 0;
+  font-family: Rubik;
+  font-weight: 400;
+  text-align: left;
+  margin-bottom: 0px;
+  line-height: 19px;
+}
+
+.color-blue {
+  color: #2E5BFF;
+}
+
+.button-wrapper {
+  margin-top: 10px;
+}
+
+.text-align-right {
+  text-align: right;
+}
+
+.card-wrapper {
+  max-width: 320px;
+  width: 100%;
+  height: 100%;
+  /* padding: 0px 30px 20px 0px; */
+}
+
+.card-wrapper.last-card {
+  /* padding: 0px 0px 20px 0px; */
+}
+
+
+.card {
+  width: 100%;
+  display: block;
+  float: left;
+  height: 100%;
+  background-color: white;
+  border: 1px solid rgba(46, 91, 255, 0.08);
+  box-shadow: 0 10px 20px 0 rgba(46, 91, 255, 0.09);
+  cursor: pointer;
+  border-radius: 5px;
+  /* min-width: 216px; */
+  margin-top: 2px;
+}
+
+.card-purple .card-icon {
+  background-color: #f3edff;
+}
+
+.card-icon {
+  height: 60px;
+  width: 60px;
+  float: left;
+  border-radius: 50px;
+  margin: 26px 11px 24px 20px;
+  padding: 18px;
+}
+
+
+.card-purple .card-icon {
+  background-color: rgb(210, 223, 255);
+}
+
+
+.card-body {
+  /* width:50%; */
+  /* float:left; */
+  padding-left: 0px;
+  padding-right: 5px;
+  padding-bottom: 0px;
+}
+
+
+.card-body h2 {
+  font-size: 15px;
+  color: #2E384D;
+  letter-spacing: 0;
+  line-height: 22px;
+  font-family: Rubik;
+  font-weight: 500;
+  text-align: left;
+  margin: 16px 0px 0px 0px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.card-body p {
+  font-size: 15px;
+  color: #8798AD;
+  letter-spacing: 0;
+  line-height: 22px;
+  font-family: Rubik;
+  font-weight: 400;
+  text-align: left;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 10px;
+}
+
+
+.emp-permission {
+  content: url(/assets/icons/blue_admins.svg);
+}
+
+.active-card {
+  border: 2px solid #2E5BFF;
+}
+
+.active-card::before {
+  content: url(/assets/icons/blue_check_circle.svg);
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+
+@media (max-width: 1060px) and (min-width: 992px) {
+  .card-body h2 {
+    margin: 0px 0px 0px 0px;
+  }
+}
+
+@media (max-width: 991px) {
+  .row div:nth-child(2) .card-wrapper {
+    padding: 0px 0px 20px 0px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1140px) {
+  .card-icon {
+    margin: 21px 10px 21px 12px;
+  }
+}
+
+@media (max-width: 840px) {
+  .info-icon-wrapper {
+    margin-right: 15px;
+    margin-left: 0px;
+  }
+
+  .st-panel-body {
+    padding: 17px 0px 10px 0px;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .card-wrapper {
+    padding: 0px;
+  }
+}
+
+@media (max-width: 991px) {
+  .card {
+    height: auto !important;
+    margin-bottom: 20px;
+  }
+}
+
+.checkbox-label {
+  float: left;
+  margin-top: 4px;
+  margin-right: 15px;
+  margin-bottom: 1rem;
+}
+
+.checkbox-label-password-change {
+  float: left;
+  margin-top: 4px;
+  margin-right: 15px;
+}
+
+.password-change {
+  margin-bottom: -10px;
+}
+
+.loading-image {
+  top: 4px;
+  left: 13%;
+  position: absolute;
+}
+
+
+@media (max-width: 1950px) {
+  .emp-info-tag {
+    margin-bottom: 15px;
+  }
+
+  .mn-top-15 {
+    margin-top: 5px;
+  }
+
+  .mn-top-30 {
+    margin-top: 15px;
+  }
+
+  .mn-top-17 {
+    margin-top: 5px;
+  }
+
+  .button-wrapper {
+    margin-top: 0px;
+  }
+
+  .form-group {
+    margin-bottom: 5px;
+  }
+
+  .employee-add-form label {
+    margin-bottom: 5px;
+  }
+}

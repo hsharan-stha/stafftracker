@@ -1,0 +1,709 @@
+.title {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.title .title-wrap {
+    display: flex;
+    align-items: baseline;
+}
+
+.title h1{
+    font-size: 28px; 
+    color: #2E384D; 
+    letter-spacing: 0; 
+    line-height: 32px; 
+    font-family: Rubik; 
+    font-weight: 300; 
+    text-align: left; 
+}
+
+.title span {
+    padding-left: 4px;
+    font-size: 15px; 
+    color: #8798AD; 
+    letter-spacing: 0; 
+    line-height: 22px; 
+    font-family: Rubik; 
+    font-weight: 400; 
+    text-align: left; 
+}
+
+.btn{
+    font-size: 15px; 
+    color: #FFFFFF; 
+    letter-spacing: 0; 
+    text-align: center; 
+    font-family: Rubik; 
+    font-weight: 500; 
+    background-color:#2E5BFF;
+    border-radius:4px;
+    border:1px solid #2E5BFF;
+    width:200px;
+    height:40px;
+}
+
+.btn-add {
+    float: right;
+}
+
+.btn-add .btn-add-content {
+    margin-left: 6px;
+    float: left;
+}
+
+.btn span {
+    padding-left: 20.5px;
+    color: #FFFFFF; 
+}
+
+.center-fit {
+    display: flex;
+    justify-content: center;
+}
+
+.btn-find {
+    margin: 34px 0;
+    widows: 100%;
+}
+
+.card{
+    width:100%;
+    background-color:white;
+    border: 1px solid rgba(46,91,255,0.08);
+    box-shadow:0 10px 20px 0 rgba(46,91,255,0.07);
+    border-radius:0px;
+}
+
+.groups-search h3 {
+    font-size: 13px; 
+    color: #8798AD; 
+    letter-spacing: 1.21px; 
+    font-family: Rubik; 
+    font-weight: 400; 
+    text-transform: uppercase; 
+    text-align: left; 
+    padding-top: 32px;
+    padding-left: 24px;
+}
+
+.groups-search .form-group {
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-bottom: 0;
+}
+
+.groups-search .form-group label {
+    font-size: 15px; 
+    color: #2E384D; 
+    letter-spacing: 0; 
+    line-height: 22px; 
+    font-family: Rubik; 
+    font-weight: 400; 
+    text-align: left; 
+    margin-bottom: 7px;
+}
+
+.groups-content {
+    margin-top: 34px;
+}
+
+.groups-empty {
+    height: 745px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.groups-empty p {
+    font-size: 15px; 
+    color: #8798AD; 
+    letter-spacing: 0; 
+    text-align: center; 
+    line-height: 22px; 
+    font-family: Rubik; 
+    font-weight: 400; 
+    margin-bottom: 28px;
+}
+
+.groups-empty p span{ 
+    font-weight: 700; 
+}
+
+.groups-order{
+    padding-left: 24px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.groups-order span {
+    font-size: 12px; 
+    color: #BFC5D2; 
+    letter-spacing: 1.12px; 
+    font-family: Rubik; 
+    font-weight: 500; 
+    text-transform: uppercase; 
+    text-align: left; 
+}
+
+.groups-table{
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 23px;
+}
+
+.groups-table tbody tr{
+    height:75px;
+    border-bottom: 12px solid #eef3f5;
+}
+
+.groups-table tbody tr td{
+    background-color:white;
+    padding-top: 5px;
+    padding-left: 25px;
+    padding-right: 25px;
+}
+
+.groups-table tbody tr td span{
+    font-size: 15px; 
+    color: #2E384D; 
+    letter-spacing: 0; 
+    font-family: Rubik; 
+    font-weight: 500; 
+    text-align: left; 
+}
+
+.groups-table .groups-action-btn {
+    cursor: pointer;
+    float: right;
+}
+
+table tbody tr td:last-child {
+    width:120px;
+}
+
+.expand {
+    display: flex;
+}
+
+.expand p {
+    font-size: 12px; 
+    color: #B0BAC9; 
+    letter-spacing: 1.12px; 
+    text-align: center; 
+    font-family: Rubik; 
+    font-weight: 500; 
+    text-transform: uppercase; 
+    white-space: nowrap;
+    padding: 0 10px;
+}
+
+.expand hr {
+    width: 100%;
+    margin-top: 8px;
+    border: 0;
+    border-top: 1px solid #BFC5D2;
+}
+
+.groups-add-btn-img{
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.schedule-tbl-wrapper{
+    min-height: calc(100vh - 130px);
+    padding-bottom: 30px;
+}
+
+.schedule-title{
+    font-size: 28px;
+    color: #2E384D;
+    word-spacing: 0px;
+    line-height: 32px;
+    font-weight: 300;
+    text-align: left;
+    font-family: Rubik; 
+    margin-bottom: 5px;
+}
+
+.schedule-title-sub{
+    font-size: 15px;
+    color: #8798AD;
+    word-spacing: 0px;
+    line-height: 22px;
+    font-weight: 400;
+    text-align: left;
+    font-family: Rubik; 
+    margin-left: 4px;
+}
+
+.schedule-add-btn{
+    width: 200px;
+    height: 40px;
+    float: right;
+    margin: 0px;
+}
+
+
+.btn-lcon{
+    width: 18px;
+    height: 18px;
+}
+
+.btn-text{
+    font-size: 15px;
+    color: #ffffff;
+    text-align: center;
+    font-weight: 500;
+    margin-left:  15px;
+
+}
+
+
+.expand{
+    display: flex;
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    padding-right: 30px;
+}
+
+.expand p{
+    font-size: 12px; 
+    color: #B0BAC9; 
+    letter-spacing: 1.12px; 
+    text-align: center; 
+    font-family: Rubik; 
+    font-weight: 500; 
+    text-transform: uppercase; 
+    background-color:#F4F6FC;
+    white-space: nowrap;
+    padding: 3px 17px;
+    cursor: pointer;
+    
+}
+
+.expand hr{
+    width: 100%;
+    margin-top: 12px;
+    border: 0;
+    border-top: 1px solid #BFC5D2;
+}
+
+.input-margin{
+    margin-bottom: 20px;
+}
+
+.form-label{
+    font-size: 15px;
+    color: #2E384D;
+    word-spacing: 0px;
+    line-height: 22px;
+    font-weight: 400;
+    text-align: left;
+    margin: 0px;
+    font-family: Rubik; 
+    margin-bottom: 5px;
+}
+
+.submit-btn-design{
+    width: 100%;
+    height: 40px;
+    margin-bottom:0px;
+    margin-top: 5px;
+}
+
+
+.tbl-main-schedule thead tr th{
+    padding: .75rem .75rem 0px;
+    border: none;
+}
+.tbl-main-schedule thead tr th label{
+    font-size: 12px;
+    font-family: Rubik;
+    color: #BFC5D2;
+    letter-spacing: 1.12px;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: left;
+    padding-bottom:0px;
+    margin-bottom: 10px;
+}
+.tbl-main-schedule thead{
+    border: none;
+}
+.table-image-design{
+    width: 34px;
+    height: 34px;
+    border-radius: 17px;
+    float: left;
+    margin-top: 4px;
+}
+
+.tbl-main-schedule tbody tr td {
+    padding-bottom: 5px;
+    padding-top: 5px;
+    vertical-align: middle;
+    border-top: none;
+    border-bottom: 10px solid #EEF3F5;
+    font-size: 15px; 
+    color: #2E384D; 
+    letter-spacing: 0; 
+    line-height: 22px; 
+    font-family: Rubik; 
+    font-weight: 400; 
+    text-align: left; 
+    height: 75px;
+}
+
+.tbl-main-schedule tbody tr{
+    background-color: white;
+}
+
+.tbl-main-schedule{
+    margin-bottom:10px;
+}
+
+.sdl-lbl-name{
+    float: left;
+    margin-top: 3px;
+}
+
+.down-arrow{
+    content: url(/assets/icons/blue_arrow_down.svg); 
+}
+
+.text-align-center{
+    text-align: center;
+}
+
+.text-align-right{
+    text-align: right;
+}
+
+.shdl-name{
+    font-size: 15px; 
+    color: #2E384D; 
+    letter-spacing: 0; 
+    font-family: Rubik; 
+    font-weight: 500; 
+    text-align: left; 
+    margin-bottom:0px;
+}
+
+.schedule-list{
+    list-style: none;
+    padding-left: 0px;
+    list-style-position: inside;
+}
+
+.schedule-list li{
+    width: 100%;
+    float: left;
+}
+
+.schedule-list li p{
+    font-size: 15px; 
+    color: #2E384D; 
+    letter-spacing: 0; 
+    line-height: 22px; 
+    font-family: Rubik; 
+    font-weight: 400; 
+    text-align: left; 
+    margin-top: 2px;
+    margin-bottom: 0px;
+}
+
+
+.schedule-list li:nth-child(2){
+    margin-top: 5px
+}
+
+.calender{
+    background-image: url(/assets/icons/blue_calendar.svg);
+    float: left;
+    height: 24px;
+    width: 24px;
+    background-position: -6px -5px;
+    margin-right: 5px;
+}
+
+.clock{
+    background-image: url(/assets/icons/blue_time.svg);
+    float: left;
+    height: 24px;
+    width: 24px;
+    background-position: -6px -5px;
+    margin-right: 5px;
+}
+
+.com-employee-grey{
+    content: url(/assets/icons/grey_user.svg);
+}
+
+.com-message-grey{
+    content: url(/assets/icons/grey_message.svg);
+}
+.com-email-grey{
+    content: url(/assets/icons/gray_email.svg);
+}
+.com-grey-schedule{
+    content: url(/assets/icons/gray_schedule.svg);
+}
+.schedule-container{
+    display: flex;
+}
+
+.schedule-container div{
+    line-height: 2;
+    color: #BFC5D2;
+}
+
+.action-more-btn{
+    content:url(/assets/icons/blue_menu_dot.svg);
+    text-align: right;
+    margin-right: 25px;
+    cursor: pointer;
+    float: right;
+}
+
+.emp-counter-grey{
+    position:relative;
+    margin: auto;
+    width: 30px;
+}
+
+.emp-counter-grey p{
+    width: 24px;
+    height: 17px;
+    font-size: 8px;
+    color: #BFC5D2;
+    letter-spacing: 0;
+    font-family: Rubik;
+    font-weight: 500;
+    text-transform: uppercase;
+    background-color: #EEF3F5;
+    border-radius: 10px;
+    border: 2px solid #FFFFFF;
+    text-align: center;
+    position: absolute;
+    top: 18px;
+    left: 10px;
+    padding-top: 2px;
+    padding-left: 0px;
+    line-height: 1.5;
+}
+
+
+@media(max-width:1100px){
+    .schedule-tbl-wrapper{
+        max-width:100% !important;
+        flex: 0 0 100%!important;
+    }
+    
+    .input-margin{
+        margin-bottom: 20px;
+        width: 30%;
+        float: left;
+        margin-right: 2%;
+    }
+    
+    .submit-btn-design{
+        margin-bottom: 0px;
+        width: 30%;
+        height: 40px;
+        margin-bottom: 0px;
+        float: right;
+        margin-top: 27px;
+
+    }
+    
+    .st-panel-default{
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+}
+
+
+@media(max-width:1000px){
+    .input-margin{
+        width: 33%;
+    }
+}
+
+@media(max-width:850px){
+    .schedule-add-btn{
+        width:190px;
+        margin-left:10px;
+    }
+    
+    .input-margin{
+        width: 46%;
+        margin-right: 4%;
+    }
+    
+    
+    .submit-btn-design{
+        width: 46%;
+        margin-right: 4%;
+        margin-top: 5px;
+    }
+    
+    .st-panel-default form{
+        margin-left:3%;
+    }
+    
+    .th-emp-counter, .th-grp-counter{
+        width:13% !important;
+    }
+}
+
+@media(max-width:812px){
+    .th-schedule-list{
+        width:35% !important;
+    }
+}
+
+
+
+@media(max-width:670px){
+    .schedule-add-btn{
+        margin-top: 20px;
+    }
+    
+    .input-margin{
+        width: 48%;
+        margin-right: 4%;
+    }
+    
+    .st-panel-default form{
+        margin-left: 0%;
+    }
+    
+    
+    .st-panel-default form .input-margin:nth-child(2),.st-panel-default form .input-margin:nth-child(4){
+        margin-right:0%;
+    }
+    
+    .submit-btn-design{
+        width: 48%;
+        margin-right: 0%;
+    }
+}
+
+
+@media(max-width:615px){
+    .input-margin{
+        width: 85%;
+    }
+    
+    .submit-btn-design{
+        margin-left: 0%;
+        float: left;
+        width: 85%;
+    }
+    
+    .st-panel-default form{
+        margin-left: 10%;
+    }
+}
+
+@media(max-width:576px){
+    .input-margin{
+        width: 100%;
+        max-width: 320px;
+    }
+    
+    .submit-btn-design{
+        width: 100%;
+        max-width: 320px;
+    }
+    
+    .st-panel-default form{
+        margin-left: 0%;
+    }
+}
+
+
+@media(max-width:767px){
+    .tbl-main-schedule{
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    .tbl-main-schedule thead tr th:last-child{
+        width: 99px;
+        display: block;
+    }
+    .th-schedule-list{
+        display: block;
+        width: 205px !important;
+    }
+}
+
+
+
+.tbl-main-schedule::-webkit-scrollbar{
+    height: 4px;
+    background-color: #F5F5F5;
+} 
+
+.tbl-main-schedule::-webkit-scrollbar-thumb{
+    background-color: #95a1b282;
+}
+.tbl-main-schedule::-webkit-scrollbar-track{
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.12);
+    background-color: #f5f5f5;
+}
+
+
+.title2 {
+    font-size: 24px; 
+    color: #69707F; 
+    letter-spacing: 1.12px; 
+    font-family: Rubik; 
+    font-weight: 400; 
+    text-align: left; 
+    margin-bottom: 10px;
+}
+
+
+
+
+
+
+.cus-mt-37{
+    margin-top: 37px;
+}

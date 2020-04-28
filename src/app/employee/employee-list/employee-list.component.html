@@ -1,0 +1,175 @@
+<div class="row">
+  <div class="col-lg-9 employee-tbl-wrapper" style="float: left">
+    <h1 class="employee-title">{{ "Employees Table" | translate }}
+      <span class="employee-title-sub">{{(totalRows <= 0) ? 0 : totalRows}} {{"Total"|translate}}</span>
+      <button class="btn btn-add" (click)="addNewEmployee()">
+        <div class="btn-add-content">
+          <img src="assets/icons/White_add_user.svg" class="btn-lcon">
+          <span class="btn-text">{{"Add Employee" | translate}}</span>
+        </div>
+      </button>
+      <div class="clearfix"></div>
+    </h1>
+
+    <div *ngIf="!laptopSize else employeeFilterForm"></div>
+
+    <div class="card employee_empty" *ngIf="totalRows <= 0; else empTablWrapper">
+      <img class="emp-action-btn" src="./assets/icons/gray_docs.svg"/>
+      <p><span>{{ "Employee" | translate }}</span> {{ "table is empty" |translate}}
+        <br>{{"Any new employee will appear here" |translate}}
+      </p>
+      <button type="button" class="btn btn-add" (click)="addNewEmployee()">
+        {{"Add Employee" |translate}}
+      </button>
+
+    </div>
+
+    <ng-template #empTablWrapper>
+
+      <table class="table tbl-employee-list" #employeeTable>
+        <thead>
+        <tr>
+          <th scope="row" width="25%">
+            <label class="tbl-lbl-emp-name">
+              {{"Name"|translate}}
+            </label>
+            <span appDataList (currentSortOrder)="sortItems($event)" [attr.aria-name]="'name'">
+                            <span class="blue-down-arrow show"></span>
+                            <span class="blue-up-arrow hide"></span>
+                        </span>
+
+
+          </th>
+          <th scope="row" width="15%" class="text-align-center"><label>{{"Group"|translate}}</label></th>
+          <th scope="row" width="22%" class="text-align-center"><label>{{"Mobile"|translate}}</label></th>
+          <th scope="row" width="20%" class="text-align-center"><label>{{"Tracking"|translate}}</label></th>
+          <th width="20%"></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr
+          *ngFor="let employee of collection | paginate: { itemsPerPage: perPageItem, currentPage: p,totalItems: totalRows  }">
+          <td>
+            <img src="{{BASEIPURL}}{{ employee.icon_url }}"
+                 (error)="errorImgHandler($event)"
+                 class="table-image-design">
+            <ul class="emp-info-list">
+              <li>{{ employee.name }}</li>
+              <li>{{ employee.position }}</li>
+            </ul>
+            <div class="clearfix"></div>
+          </td>
+          <td class="text-align-center"> {{ employee.group }} </td>
+          <td class="text-align-center">{{ employee.msisdn }}</td>
+          <td class="text-align-center">
+
+            <ul class="emp-tracking-list">
+              <li
+                [ngStyle]="{'color':getColorCode(employee.last_location_status)}">{{ employee.last_location_status }}</li>
+              <li>{{ employee.last_location | date:'dd/MM/yy HH:mm'  }}</li>
+            </ul>
+          </td>
+          <td class="text-align-right">
+
+                        <span class="action-more-btn"
+                              dbempaction
+                              wrapperClass="actionWrapper"
+                              firstBtnName="blue_edit"
+                              secondBtnName="blue_message"
+                              thirdBtnName="blue_remove"
+                              thirdBtnMsg="Delete employee"
+                              outerWidthForDelete="155"
+                              (viewBtnClicked)="viewEmployeeInformation(employee.id)"
+                              (sendMsgbtnClicked)="sendMessageToEmployee(employee.id)"
+                              (deleteItemBtnClicked)="deleteEmployee(employee.id)">
+
+                        </span>
+
+
+            <!--                        <span class="tbl-action-grp">
+                                        <img src="assets/icons/Remove_Blue.svg" alt="">
+                                        <img src="assets/icons/Remove_Blue.svg" alt="">
+                                        <img src="assets/icons/Remove_Blue.svg" alt="">
+                                    </span>-->
+          </td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="pagination-wrapper">
+        <div *ngIf="!showExpandBtn && collection.length>0" class="custom-pagination">
+          <pagination-controls (pageChange)="pageChanged($event)" autoHide="true" previousLabel=""
+                               nextLabel=""></pagination-controls>
+        </div>
+        <div class="expand" *ngIf="showExpandBtn && perPageItem < totalRows && collection.length>0">
+          <hr>
+          <p (click)="expandTable()">{{"Expand Table" | translate}}</p>
+          <hr>
+        </div>
+
+        <div *ngIf="loader" class="loading-image"></div>
+
+      </div>
+
+    </ng-template>
+
+  </div>
+
+  <div class="col-lg-3" style="float: right">
+    <div *ngIf="laptopSize else employeeFilterForm"></div>
+    <div class="clearfix"></div>
+  </div>
+
+  <ng-template #employeeFilterForm>
+    <div class="st-panel-default">
+      <div class="st-panel-header">
+        <h4>{{"Filter"| translate}}</h4>
+        <div class="cross-icon-wrapper">
+            <span (click)="empSearchForm.reset()" (mouseover)="setCheckBoxHover(true)" (mouseout)="setCheckBoxHover(false)" class="panel-close"></span>
+            <span *ngIf="hoverCheckBox" class="drop-down-invalid-dialog check-box-toolpit"><invalid-message
+                      text="{{'Clear filters' | translate}}" type="message" width="120px"></invalid-message></span>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <div class="st-panel-body">
+            <form class="employee-add-form" [formGroup]="empSearchForm">
+
+              <div class="input-margin">
+                <label class="form-label">{{"Search by Name" | translate}}</label>
+                <app-search-icon-form [inputSearchFormGroup]="empSearchForm"
+                                      [inputSearchFormControl]="empSearchForm.controls.name"></app-search-icon-form>
+              </div>
+
+              <div class="input-margin">
+                <label class="form-label">{{"Search by Phone Number" | translate}}</label>
+                <app-search-icon-form [inputSearchFormGroup]="empSearchForm"
+                                      [inputSearchFormControl]="empSearchForm.controls.msisdn"></app-search-icon-form>
+              </div>
+
+              <div class="input-margin">
+                <label class="form-label">{{"Position" | translate}}</label>
+                <app-select-input selectorId="id" [selectInputGroup]="empSearchForm"
+                                  [selectInputControl]="empSearchForm.controls.position_id"
+                                  [selectOptions]="empPositionList" (dropDownScroll)="setPositionPageByScroll($event)"></app-select-input>
+              </div>
+
+              <div class="input-margin">
+                <label class="form-label">{{"Group" | translate}}</label>
+                <app-select-input selectorId="id" [selectInputGroup]="empSearchForm"
+                                  [selectInputControl]="empSearchForm.controls.group_id"
+                                  [selectOptions]="empGroupList" (dropDownScroll)="setGroupPageByScroll($event)"></app-select-input>
+              </div>
+
+              <button type="submit" class="sign-in-btn submit-btn-design"
+                      (click)="searchEmployee()">{{"Apply" | translate}}</button>
+
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>
+
+<router-outlet></router-outlet>

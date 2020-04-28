@@ -1,0 +1,282 @@
+.employee-list {
+  width: 23%;
+  /*height: 857px;*/
+  max-height: Calc(100vh - 80px);
+  background-color: white;
+  float: left;
+  border: 1px solid rgba(46, 91, 255, 0.08);
+  border-radius: 1px;
+  box-shadow: 0 10px 20px 0 rgba(46, 91, 255, 0.07);
+}
+
+.employee-info-data {
+  display: flex !important;
+  pointer-events: none;
+
+}
+
+.employee-info {
+  height: 90px;
+  width: 100%;
+  border-bottom: 1px solid #F4F6FC;
+}
+
+.active-employee-info {
+  background: #EFF3FF;
+}
+
+.emp-info-div .employee-info {
+  cursor: pointer;
+}
+
+.table-image-design {
+}
+
+.employee-list a {
+  cursor: pointer;
+}
+
+.btn-design {
+  height: 40px;
+  width: 200px;
+  margin: 0px;
+  background-color: #33AC2F;
+  font-size: 15px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 21px;
+  font-family: Rubik;
+  font-weight: 500;
+}
+
+.btn-padding {
+  padding: 23px 89px 0 89px;
+}
+
+.employee-padding {
+  padding: 21px 25px 21px 26px;
+}
+
+.image-design {
+  height: 40px;
+  width: 40px;
+  border-radius: 24px;
+}
+
+.employee-name {
+  font-size: 15px;
+  color: #2E384D;
+  letter-spacing: 0;
+  line-height: 22px;
+  font-family: Rubik;
+  font-weight: 500;
+  text-align: left;
+  margin: 0px;
+}
+
+.employee-message {
+  font-size: 15px;
+  color: #8798AD;
+  letter-spacing: 0;
+  line-height: 22px;
+  font-family: Rubik;
+  font-weight: 400;
+  text-align: left;
+  display: inline-block; /* <- Prevent <tr> in a display css */
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  /* end */
+  width: 100%; /* Space size limit */
+  overflow: hidden;
+}
+
+.employee-info-content-width {
+  width: 67%;
+}
+
+.employee-position {
+  font-size: 15px;
+  color: #8798AD;
+  letter-spacing: 0;
+  line-height: 22px;
+  font-family: Rubik;
+  font-weight: 400;
+  text-align: left;
+  width: 67%;
+}
+
+.employee-choose {
+  font-size: 15px;
+  color: #2E5BFF;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 21px;
+  font-family: Rubik;
+  font-weight: 500;
+  padding-top: 14px;
+}
+
+.employee-info-content {
+  width: 85%;
+  margin-left: 9px;
+}
+
+.active-min {
+  font-size: 15px;
+  color: #8798AD;
+  letter-spacing: 0;
+  line-height: 22px;
+  font-family: Rubik;
+  font-weight: 400;
+  float: right;
+
+}
+
+.employee-info-data:hover > .employee-name {
+  text-decoration: none !important;
+}
+
+.input-button-design {
+  width: 85%;
+  height: 40px;
+  float: left;
+  position: relative;
+}
+
+.input-button-design:after {
+  content: '';
+  background: url("../../../assets/icons/blue_search.svg");
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 7px;
+  right: 10px;
+}
+
+.input-design-button {
+  padding-right: 38px;
+  border: 1px solid #E0E7FF;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background: rgba(224, 231, 255, 0.2)
+}
+
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: 15px;
+  color: #B0BAC9;
+  letter-spacing: 0px;
+  line-height: 22px;
+  font: Rubik;
+  font-weight: 400;
+  font-style: Regular;
+  alignment: left;
+  letter-spacing: 0px;
+}
+
+.message-icon {
+  cursor: pointer;
+  float: right;
+  margin-top: 6px;
+}
+
+.view-icon {
+  display: none;
+}
+
+.avatar {
+  width: 34px;
+  height: 34px;
+  float: left;
+}
+
+.avatar-wrapper {
+  height: 40px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.avatar-carousel {
+  display: flex;
+  justify-content: space-between;
+}
+
+.slider-item {
+  /*height: 52px;*/
+  /*width: 52px;*/
+  /*background: #EEF3F5;*/
+  /*border-radius: 43px;*/
+  /*margin-right: 4px;*/
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  white-space: nowrap;
+  margin-top: 10px;
+}
+
+.slider-item-img-name {
+  position: absolute;
+  top: 42px;
+  right: 10px;
+  text-align: center;
+  font-size: 12px;
+  color: #8097B1;
+  letter-spacing: 0;
+  line-height: 22px;
+  font-family: Rubik;
+  font-weight: 400;
+  width: 32px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.slider-item img {
+  margin: 6px;
+}
+
+.emp-info-div {
+  overflow-y: auto;
+  height: Calc(100vh - 174px);
+  min-height: 764px;
+}
+
+.loading-image {
+  top: 77px;
+  left: 110px;
+  position: absolute;
+}
+
+@media (max-width: 767px) {
+
+  .employee-list {
+    width: 100%;
+  }
+
+  .input-button-design {
+    width: 60%;
+  }
+
+  .view-icon {
+    display: block;
+    margin-left: 7px;
+    cursor: pointer;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1300px) {
+  .view-icon {
+    display: block;
+    margin-left: 7px;
+    cursor: pointer;
+  }
+
+  .employee-list {
+    width: 40%;
+  }
+
+  .input-button-design {
+    width: 70%;
+  }
+
+}

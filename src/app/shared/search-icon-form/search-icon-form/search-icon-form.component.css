@@ -1,0 +1,53 @@
+.form-search-icon {
+    /* width: 208px; */
+    /*border: 1px solid #E0E7FF;*/
+    border-radius: 5px;
+    position: relative;
+}
+
+.form-search-icon .input-design {
+    height: 40px;
+    font-size: 15px;
+    padding-right: 30px;
+    border: 1px solid #E0E7FF;
+    color: #2E384D;
+    letter-spacing: 0;
+    font-family: Rubik;
+    font-weight: 400;
+    text-align: left;
+}
+
+.form-search-icon:after {
+    content: url("/assets/icons/blue_search.svg");
+    display: block;
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    top: 7px;
+    right: 5px;
+}
+
+.new-form-search-icon:after {
+    content: none !important;
+}
+
+.new-form-search-icon .input-design {
+    border-color: #D63649 !important;
+}
+
+.form-search-icon input {
+    width: 100%;
+}
+
+.new-form-search-icon .input-design + span {
+    height: 25px;
+    width: 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    background-image: url("data:image/svg+xml;charset=utf8,%3C?xml version='1.0' encoding='UTF-8'?%3E%3Csvg width='24px' height='24px' viewBox='0 0 24 24' version='1.1' xmlns='http://www.w3.org/2000/svg' xmlns:xlink='http://www.w3.org/1999/xlink'%3E%3C!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch --%3E%3Ctitle%3EStaff tracker/Icon/Red Attention%3C/title%3E%3Cdesc%3ECreated with Sketch.%3C/desc%3E%3Cg id='Staff-tracker/Icon/Red-Attention' stroke='none' stroke-width='1' fill='none' fill-rule='evenodd' stroke-linecap='round' stroke-linejoin='round'%3E%3Cg id='alert-circle' transform='translate(2.000000, 2.000000)' stroke='%23D63649' stroke-width='2'%3E%3Ccircle id='Oval' cx='10' cy='10' r='10'%3E%3C/circle%3E%3Cpath d='M10,6 L10,10' id='Shape'%3E%3C/path%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    bottom: 8px;
+    right: 5px;
+    cursor: pointer;
+
+}

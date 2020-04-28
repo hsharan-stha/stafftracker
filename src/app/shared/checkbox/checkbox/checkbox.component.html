@@ -1,0 +1,6 @@
+<div [formGroup]="checkBoxFormGroup" class="checkboxWrapper" (mouseover)="mouseOverCheckBox(true)"
+     (mouseout)="mouseOverCheckBox(false)">
+  <input [formControl]="checkBoxFormControl" type="checkbox" [id]="customID" class="form-control custom-checkbox"
+         (change)="checkAll($event)">
+  <label class="custom-checkbox-new" for='{{customID}}'></label>
+</div>

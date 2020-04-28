@@ -1,0 +1,69 @@
+<div class="employee-list">
+  <div class="employee-info employee-padding">
+    <div class="input-button-design">
+      <input type="" class="form-control input-design-button" placeholder="search" (keyup)="filterEmployeeData()" [(ngModel)]="searchField">
+    </div>
+    <div class="message-icon view-icon">
+      <img src="assets/icons/View_Blue.svg" (click)="viewEmployeeInfo()">
+    </div>
+    <div class="message-icon" *ngIf="!groupMessage">
+      <img src="assets/icons/Write_Blue.svg" (click)="callGroupMessage()">
+    </div>
+    <div class="message-icon" *ngIf="groupMessage">
+      <img src="assets/icons/Close_Blue.svg" (click)="closeGroupMessage()">
+    </div>
+  </div>
+  <div #mainDiv>
+    <div *ngIf="empLoader" class="loading-image"></div>
+    <div appScrollPagination (scrollPage)="setEmpPageByScroll($event)" *ngIf="!groupMessage" class="emp-info-div">
+      <div *ngFor="let data of employeeInfo" class="employee-info employee-padding"
+           (click)="clickEmployeeInfo($event,data)">
+        <div class="employee-info-data">
+          <div class="table-image-design">
+            <img src="{{this.imageUrl+data.icon_url}}" (error)="errorImgHandler($event)" class="image-design">
+          </div>
+
+          <div class="employee-info-content">
+            <h1 class="employee-name">
+              {{data.name}}
+              <span class="active-min">{{'2 min'}}</span>
+            </h1>
+            <div class="employee-message">
+              {{'this is area for message'}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div *ngIf="groupMessage" class="emp-info-div">
+      <div *ngFor="let data of userlist" class="employee-info employee-padding">
+
+        <div class="employee-info-data">
+          <div class="table-image-design">
+            <img src="{{this.imageUrl+data.icon_url}}" (error)="errorImgHandler($event)" class="image-design">
+          </div>
+
+          <div class="employee-info-content employee-info-content-width">
+            <h1 class="employee-name">
+              {{data.name}}
+            </h1>
+            <div class="employee-position">
+              {{data.position}}
+            </div>
+          </div>
+          <div class="employee-choose" (click)="groupMessageList(1)">
+            Choose
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<input-message-box [displayEmpInfo]="displayEmpInfo" [messageForChat]="messageForChat"
+                   [chatAreaLoader]="chatAreaLoader"
+                   [Employee]="Employee"
+                   (sendSMS)="sendSMS($event)"></input-message-box>
+
+
+
+

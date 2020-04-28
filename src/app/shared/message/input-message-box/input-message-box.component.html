@@ -1,0 +1,75 @@
+<div class="messaging-user">
+  <div class="message-box-area">
+    <div #scrollMe appScrollPagination (scrollPage)="setPageByScroll($event)" class="message-box-chat-list">
+      <div *ngFor="let data of messageForChat">
+        <div *ngIf="data.direction==='to_me'" class="message-box-sub">
+          <div class="chat-design-main">
+            <h6 [ngClass]="(!data.additional)?'visibility-hidden':'visibility-visible'" class="chat-name-design">
+              {{Employee.name}}</h6>
+            <div [ngClass]="(!data.additional)?'visibility-hidden':'visibility-visible'" class="image-design">
+              <img src="{{Employee.imageUrl+Employee.icon_url}}" class="image-width">
+            </div>
+            <div class="chat">
+              <div class="chat-message">
+                {{data.text}}
+              </div>
+              <div class="chat-sent-time">
+                {{data.time}}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div *ngIf="data.direction==='from_me'" class="message-box-sub">
+          <div class="chat-design-main-right">
+            <h6 [ngClass]="(!data.additional)?'visibility-hidden':'visibility-visible'" class="chat-name-design-right">
+              me</h6>
+            <div class="chat-sender">
+              <div class="chat-message white">
+                {{data.text}}
+              </div>
+              <div class="chat-sent-time">
+                {{data.time}}
+              </div>
+            </div>
+            <div [ngClass]="(!data.additional)?'visibility-hidden':'visibility-visible'"
+                 class="image-design-right float-right">
+              <img src="assets/user.jpg" class="image-width">
+            </div>
+          </div>
+          <div class="clearfix"></div>
+        </div>
+      </div>
+      <div *ngIf="chatAreaLoader" class="loading-image"></div>
+    </div>
+    <div class="message-input-button-design">
+      <input type="text" class="message-input-button " [(ngModel)]="message"
+             (keyup)="$event.keyCode == 13 && sendMessage()">
+    </div>
+  </div>
+
+  <div class="employee-info-right" *ngIf="displayEmpInfo">
+    <div *ngIf="Employee.length!==0">
+      <h4 class="employee-info-right-title">Employees Info</h4>
+      <div class="employee-info-detail">
+        <div class="employee-info-detail-image">
+          <img src="{{Employee.imageUrl+Employee.icon_url}}" class="employee-image-design">
+        </div>
+        <div class="employee-sub-info-right">
+          <ul style="list-style: none;padding-left: 10px">
+            <li class="employee-sub-info-right-name">{{Employee.name}}</li>
+            <li class="employee-sub-info-right-position">{{Employee.position}}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="margin-top-20">
+        <div class="employee-info-right-title">{{'Email' | translate}}</div>
+        <div class="employee-info-right-email">{{Employee.email}}</div>
+      </div>
+      <div class="margin-top-20">
+        <div class="employee-info-right-title">{{'MSISDN' | translate}}</div>
+        <div class="employee-info-right-phone">{{Employee.msisdn}}</div>
+      </div>
+    </div>
+  </div>
+
+</div>

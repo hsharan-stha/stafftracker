@@ -1,0 +1,131 @@
+h6 {
+  font-size: 12px;
+  color: #B0BAC9;
+  letter-spacing: 1.12px;
+  font-family: Rubik;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+p {
+  width: 150px;
+  font-size: 15px;
+  color: #2E384D;
+  letter-spacing: 0;
+  line-height: 22px;
+  font-family: Rubik;
+  font-weight: 400;
+  text-align: left;
+}
+
+.time {
+  font-size: 12px;
+  color: #BFC5D2;
+  letter-spacing: 0;
+  line-height: 22px;
+  font-family: Rubik;
+  font-weight: 400;
+  text-align: left;
+}
+
+.row {
+  width: 100%;
+  text-align: center;
+}
+
+.block {
+  padding-left: 20px;
+  vertical-align: middle;
+  display: inline-block;
+}
+
+.notification-icon span {
+  float: right;
+}
+
+.card-icon {
+  height: 49px;
+  width: 49px;
+  padding: 12px 12px;
+  margin-bottom: 29px;
+  float: left;
+  border-radius: 50px;
+  background: #EEF3F5;
+}
+
+.card-green .card-icon {
+  background-color: #33ac2e2b;
+}
+
+.intime-icon {
+  height: 100%;
+  background: transparent url(/assets/icons/intime.svg) no-repeat 0 0;
+  width: 100%;
+  /* background-size: 300px 100px; */
+}
+
+.late-icon {
+  height: 100%;
+  background: transparent url(/assets/icons/late.svg) no-repeat 0 0;
+  width: 100%;
+}
+
+.message-icon {
+  height: 100%;
+  background: transparent url(/assets/icons/blue_message.svg) no-repeat 0 0;
+  width: 100%;
+}
+
+.add_icon {
+  height: 100%;
+  background: transparent url(/assets/icons/blue_notif.svg) no-repeat 0 0;
+  width: 100%;
+}
+
+.remove_icon {
+  height: 100%;
+  background: transparent url(/assets/icons/red_warning.svg) no-repeat 0 0;
+  width: 100%;
+}
+
+.update_icon {
+  height: 100%;
+  background: transparent url(/assets/icons/Write_Blue.svg) no-repeat 0 0;
+  width: 100%;
+}
+
+.search_permission_icon {
+  height: 100%;
+  background: transparent url(/assets/icons/Icon_Green_check.svg) no-repeat 0 0;
+  width: 100%;
+}
+
+.search_forbidden_icon {
+  height: 100%;
+  background: transparent url(/assets/icons/Icon_Close_Red.svg) no-repeat 0 0;
+  width: 100%;
+}
+
+.search_location_icon {
+  height: 100%;
+  background: transparent url(/assets/icons/blue_rosshair.svg) no-repeat 0 0;
+  width: 100%;
+}
+
+.selected .selected-checked {
+  position: relative;
+}
+
+.selected-checked .checked {
+  position: absolute;
+  background: #33AC2E;
+  border-radius: 5px;
+  width: 7px;
+  height: 7px;
+  right: -8px;
+  top: -8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,44 @@
+<div class="sh-employee-dtl" *ngIf="coordinateDtl">
+  <div class="sh-emp-dtl-header">
+    <img *ngIf="coordinateDtl.type!=='geozone'" class="sh-emp-img" src="{{coordinateDtl.icon}}"
+         (error)="errorHandler($event)"/>
+    <span *ngIf="coordinateDtl.type==='geozone'" class="sh-emp-img" style="background: #EEF3F5">
+          <img class="sh-geo-img" src="./assets/icons/gray_geozone.svg" (error)="errorHandler($event)"/>
+    </span>
+    <span class="sh-emp-info">
+            <h2>{{(coordinateDtl.type == "group") ? coordinateDtl.value.emp_name : coordinateDtl.value.name}}</h2>
+            <p
+              *ngIf="coordinateDtl.type=='geozone'">{{(coordinateDtl.type == "geozone") ? "Now in geozone" : "" | translate}}
+              : {{coordinateDtl.value.emp_num}}</p>
+            <p>{{(coordinateDtl.type != "geozone") ? (coordinateDtl.value.position ? coordinateDtl.value.position : coordinateDtl.value.position_name) : ""}}</p>
+        </span>
+
+    <img class="sh-emp-close-icon" src="./assets/icons/closeX.svg" (click)="closeCard()">
+  </div>
+  <div class="sh-emp-dtl-body">
+    <label><p>INFO</p>
+      <hr/>
+    </label>
+
+    <ul class="info-list">
+      <li>
+                <span>
+                    <img class=""
+                         src='./assets/icons/{{(coordinateDtl.type=="geozone")?"blue_pin_fill":"blue_group"}}.svg'>
+                    <p>{{(coordinateDtl.type == "geozone") ? coordinateDtl.value.address : (coordinateDtl.type == "group") ? coordinateDtl.value.name : (coordinateDtl.value.group ? coordinateDtl.value.group : coordinateDtl.value.group_name)}}</p>
+                </span>
+        <button class="send-msg-btn"
+                (click)="sendMessage()">{{(coordinateDtl.type == "geozone") ? "Send SMS to all" : "Send message" | translate}}</button>
+      </li>
+      <li>
+                <span>
+                    <img class=""
+                         src='./assets/icons/{{(coordinateDtl.type=="geozone")?"blue_radius":"blue_phone"}}.svg'>
+                    <p>{{(coordinateDtl.type == "geozone") ? coordinateDtl.value.radius + ' m' : coordinateDtl.value.msisdn}}</p>
+                </span>
+        <button class="view-tracking-btn"
+                (click)="viewTracking(coordinateDtl.value.msisdn?coordinateDtl.value.msisdn:coordinateDtl.value.id+'-geozone')">{{(coordinateDtl.type == "geozone") ? "View visits" : "View tracking" | translate}}</button>
+      </li>
+    </ul>
+  </div>
+</div>

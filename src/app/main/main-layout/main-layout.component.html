@@ -1,0 +1,121 @@
+<section class="body">
+  <div class="inner-wrapper">
+    <!-- start: sidebar -->
+    <div id="sidebar" class="padding-top-27" [style.width]="getWidth()+'px'">
+      <!-- <div class="img-close"></div> -->
+      <div class="menu-toggle-icon" *ngIf="hideData == true">
+        <a (click)="toggleBar(hideData)"><img class="svg-img" src="./assets/icons/closeX.svg"></a>
+      </div>
+      <div class="" *ngIf="hideData == false">
+        <a (click)="toggleBar(hideData)"><img class="svg-img" src="./assets/icons/menu-bar1.JPG"></a>
+      </div>
+
+
+      <sidebar [hideData]="hideData" [isCompanyInfoActive]="isCompanyInfoActive"></sidebar>
+    </div>
+    <!-- end: sidebar -->
+
+    <section role="main" class="content-body">
+      <header class="page-header">
+        <div class="menu-toggle-icon">
+          <a *ngIf="hideData == true" (click)="toggleBar(hideData)"><img class="svg-img close-icon"
+                                                                         src="./assets/icons/closeX.svg"></a>
+          <a *ngIf="hideData == false" (click)="toggleBar(hideData)"><img class="svg-img"
+                                                                          src="./assets/icons/menu-bar1.JPG"></a>
+        </div>
+
+        <div class="main-logo">
+        </div>
+
+        <div class='dashboard-menu' [ngClass]="{'active-menu': !dashboardDisabled}">
+          <a class='' [routerLink]="['/main']" (click)="hideDashboardContent()">
+            <img src="./assets/icons/gray_dashboard.svg">
+            <span>Dashboard</span>
+          </a>
+        </div>
+
+        <div class="nav-menu">
+          <ul class="menu">
+            <li><a (click)="toggleUser(hideUserBar)"><img class="emp-profile-icon"
+                                                          src="assets/icons/punc_employee.JPG"/></a></li>
+            <span class="arrow-down-icon" (click)="displayEmpSubAction()"></span>
+
+            <div *ngIf="forExtraSmallScreen else empActionList"></div>
+          </ul>
+
+          <div class="list-sub-list" *ngIf="showEmpActionList">
+            <div *ngIf="!forExtraSmallScreen else empActionList"></div>
+          </div>
+
+          <ng-template #empActionList>
+            <li>
+              <app-translate></app-translate>
+            </li>
+            <li><a (click)="toggleNotification(hideNotificationBar)"><img class="notification-icon"
+                                                                          src="assets/icons/gray_bell.svg"/></a>
+            </li>
+            <li *ngIf="!forExtraSmallScreen">|</li>
+            <li><a href="#"><img class="" src="assets/icons/gray_help.svg"/></a></li>
+          </ng-template>
+
+
+        </div>
+      </header>
+      <sidebar *ngIf="hideData == true" customClass="mobile-menu"
+               [isCompanyInfoActive]="isCompanyInfoActive"></sidebar>
+
+      <!-- start: page -->
+      <div [ngClass]="{'expandMenu': hideData,'content-wrapper':!smsWindowDisplay}">
+        <div [ngClass]="{'content':!smsWindowDisplay}">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+      <!-- end: page -->
+    </section>
+  </div>
+
+</section>
+
+<div id="user-bar" #userPanelWrapper class="close-panel" closePanel targetClass="emp-profile-icon">
+  <div id="about">
+    <span><a href="#"><img class="" src="assets/icons/punc_employee.JPG" width="100" height="100"/></a></span>
+    <h1>Anna Black</h1>
+    <p>Sr. Customer Manager</p>
+    <button class="btn btn-success">Edit profile</button>
+    <button class="btn btn-primary" (click)="logOut()">Log out</button>
+  </div>
+  <hr/>
+  <div class="about-user">
+    <label>Role</label>
+    <p>Administrator</p>
+    <label>Email</label>
+    <p>example@example.com</p>
+    <label>Phone</label>
+    <p>+144-3412-4422</p>
+  </div>
+</div>
+
+<div id="notification-bar" #notifyPanelWrapper class="close-panel" closePanel targetClass="notification-icon">
+  <div class="timezone">
+
+
+    <div class="time">
+      <h1>{{todayTime}}</h1>
+      <p>{{location ? location : 'location...'}}</p>
+    </div>
+    <div>
+      <button type="button" class="btn btn-primary">Clear</button>
+    </div>
+  </div>
+  <hr/>
+  <ng-container *ngFor="let notification of notifications">
+    <notification-block [notification]="notification"></notification-block>
+  </ng-container>
+
+
+</div>
+
+
+
+
+

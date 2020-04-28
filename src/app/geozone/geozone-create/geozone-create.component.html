@@ -1,0 +1,100 @@
+<div class="geozone-wrapper">
+  <div class="title">
+    <h1>{{ PageTitle | translate}}</h1>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-12">
+      <div class="card">
+
+        <div class="geozone-content">
+          <div class="geozone-form-container">
+            <div class="geozone-form-header">
+              <div class="sub-title">
+                {{ BlockTitle | translate}}
+              </div>
+              <div *ngIf="loader" class="loading-image"></div>
+            </div>
+
+
+            <form class="create-form" [formGroup]="geozoneForm" (submit)="storeGeozone()">
+              <div class="para-section">
+                <p class="info-tag">
+                  {{'Use this page to register geozones regarding which employee movements will be monitored' | translate}}
+                </p>
+                <p class="info-tag">
+                  {{'The time spent by an employee in a geozone is recorded as work time' | translate}}
+                </p>
+              </div>
+              <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                  <div class="form-group custom-width">
+                    <label>{{"Name of the geozone"|translate}}</label>
+                    <input type="text" class="form-control" formControlName="geozone_name" placeholder="Geozone Name">
+                    <span invalidMessage [control]="geozoneForm.controls.geozone_name"></span>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                  <div class="form-group custom-width">
+                    <label>{{"Write your address"|translate}}</label>
+                    <div class="navigation-group">
+                      <div class="input-address">
+                        <app-search-icon-form [formSubmitted]="isSubmitted" [inputSearchFormGroup]="geozoneForm"
+                                              [inputSearchFormControl]="geozoneForm.controls.geozone_address"
+                                              [customPlaceholder]="'Geozone Address'">
+                        </app-search-icon-form>
+                      </div>
+                      <button type="button" class="btn-navigate" (click)="clickLocationMarker()">
+                        <img src="./assets/icons/white_pin.svg" width="24px" height="24px"/>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                  <div class="form-group custom-width">
+                    <label>{{"Radius"|translate}}</label>
+                    <div class="slider-container">
+                      <input type="range" min="100" max="10000" step="100" value="2500"
+                             class="slider-range dynamicCssClass form-control" formControlName="geozone_radius"
+                             (change)="radiusRangeChanged()"
+                      >
+                    </div>
+                    <span invalidMessage [control]="geozoneForm.controls.geozone_radius"></span>
+                    <span class="radius-value">{{ this.geozoneForm.value.geozone_radius }}</span>
+                    <span class="radius-unit">M</span>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12 geo-color-height">
+                  <div class="form-group custom-width">
+                    <color-picker label="Choose color for geozone"
+                                  [selectedColor]="this.geozoneForm.value.geozone_color"
+                                  (inputChanged)="selectedColor($event)"
+                                  [colors]="colors">
+                    </color-picker>
+                    <span invalidMessage [control]="geozoneForm.controls.geozone_color"></span>
+                  </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-12">
+                  <div class="geozone-form-footer">
+                    <button type="button" class="geozone-back-btn" (click)="btnBackClicked()">
+                      <img src="./assets/icons/red_arrow_left.svg"/>{{"Back"|translate}}</button>
+                    <button [disabled]="btnDisabled" class="btn-green" type="submit">{{BtnTitle |  translate}}</button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="geozone-map-container">
+            <map [enableMarker]=true (mapClickEvent)="singleClickOnMap($event)"></map>
+            <div class="info-card card" *ngIf="this.showAddressCard">
+              <div class="address-title">{{this.addressFirstLine}}</div>
+              <div class="address-subtitle">{{this.addressSecondLine}}</div>
+            </div>
+            <!-- <div class="plot-coordinate">
+              <img class="marker" src="./assets/icons/blue_pin_fill.svg" height="24px" width="24px" />
+            </div> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

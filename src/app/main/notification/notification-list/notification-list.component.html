@@ -1,0 +1,132 @@
+<div class="row">
+    <div class="col-md-12">
+        <h1 class="schedule-title">Notification settings
+            <span class="schedule-title-sub">{{notifyList.length}} Total</span>
+
+            <div class="clearfix"></div>
+        </h1>
+        <h2 class="title2 cus-mt-37 mb-0">Notification for employer</h2>
+         <table class="table tbl-main-schedule">
+            <thead>
+                <tr>
+                    <th width="47%">
+                        <label class="sdl-lbl-name">Type</label>
+                        <span class="down-arrow"></span>
+                    </th>
+                    <th width="15%" class="text-align-center th-schedule-list">
+                        <label>Status</label>
+                    </th>
+                    <th width="5%" class="text-align-center th-emp-counter">
+                        <label></label>
+                    </th>
+                    <th width="5%" class="text-align-center th-emp-counter">
+                        <label></label>
+                    </th>
+                    <th width="28%" class="text-align-center th-grp-counter">
+                        <label></label>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of notifyList">
+                    <td>
+                        <p class="shdl-name">{{item.position}}</p>
+                    </td>
+                    <td>
+                        <div class="emp-counter-grey">
+                            <span class="com-employee-grey"></span>
+                            <p>24</p>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="emp-counter-grey">
+                            <div class="com-message-grey"></div>
+                            <!-- <p>3</p> -->
+                            <div></div>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="emp-counter-grey">
+                            <div class="com-email-grey"></div>
+                            <!-- <p>3</p> -->
+                            <div></div>
+                        </div>
+                    </td>
+
+                    <td class="text-align-right">
+                            <!-- <span >
+                                    <a>
+                                        <img class="svg-img action-btn" src="./assets/icons/{{secondBtnName}}.svg" (click)="sendEmpMessage()" utooltips [message]="sendMessage" [containerWidth]="outerWidthForSMS"/>
+                                    </a>
+                                </span> -->
+                         <span class="action-more-btn"
+                              dbempaction
+                              wrapperClass ="scheduleActionWrapper"
+                              firstBtnName="blue_edit"
+                              outerWidth ="145"
+                              viewMessage="Edit notification"
+                              (viewBtnClicked)="editNotificationEmployeer()" ></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- <div class="expand">
+            <hr>
+            <p>Expand Table</p>
+            <hr>
+        </div> -->
+        <h2 class="title2 cus-mt-37 mb-0">Notification for employee</h2>
+         <table class="table tbl-main-schedule">
+            <thead>
+                <tr>
+                    <th width="47%">
+                        <label class="sdl-lbl-name">Type</label>
+                        <span class="down-arrow"></span>
+                    </th>
+                    <th width="15%" class="text-align-center th-schedule-list">
+                        <label>Status</label>
+                    </th>
+                    <th width="8%" class="text-align-center th-emp-counter">
+                        <label></label>
+                    </th>
+                    <th width="5%"></th>
+                    <th width="28%" class="text-align-center th-grp-counter">
+                        <label></label>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of notifyList2">
+                    <td>
+                        <p class="shdl-name">{{item.position}}</p>
+                    </td>
+                    <td>
+
+                        <div class="emp-counter-grey">
+                             <toggle-switch [customClass]="'width-38'" [isChecked]="true" (checkEvent)="onToggleChange($event)"></toggle-switch>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="emp-counter-grey schedule-container">
+                            <div class="com-grey-schedule mr-2"></div>
+                            <div>15m</div>
+                            <!-- <p>3</p> -->
+                        </div>
+                    </td>
+                    <td>
+
+                    </td>
+                    <td class="text-align-right">
+                         <span class="action-more-btn"
+                              dbempaction
+                              wrapperClass ="scheduleActionWrapper"
+                              firstBtnName="blue_edit"
+                              outerWidth ="145"
+                              viewMessage="Edit notification"
+                              (viewBtnClicked)="editNotificationEmployees()" ></span>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

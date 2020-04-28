@@ -1,0 +1,24 @@
+<div>
+    <div class="bg-hider"></div>
+
+    <div class="confirm-box" [style.width]="containerWidth">
+
+        <div class="card ">
+            <div class="card-header">
+                {{ title | translate }}
+            </div>
+            <div class="card-body">
+                <p> {{ body | translate }}</p>
+                <hr/>
+                <div class="btn">
+                    <div class="pull-right">
+                        <button type="button" (click)="cancelBtnClick()"><img src="./assets/icons/red_arrow_left.svg">Cancel
+                        </button>
+                        <button class="mr-2" (click)="confirmBtnClick()"> Delete</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

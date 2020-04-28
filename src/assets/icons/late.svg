@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Element/Icon/Late</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Element/Icon/Late" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="thumbs-down" transform="translate(2.000000, 2.000000)" stroke="#D63649" stroke-width="2">
+            <path d="M8,13 L8,17 C8,18.6568542 9.34314575,20 11,20 L15,11 L15,-0.000129660031 L3.72,-3.20273322e-16 C2.72271325,-0.0112743603 1.86953884,0.713923888 1.72,1.7 L0.34,10.7 C0.251943979,11.2801447 0.423102825,11.8696912 0.80814149,12.3124857 C1.19318016,12.7552801 1.7532483,13.0066446 2.34,13 L8,13 Z M15,8.60314424e-17 L17.67,8.60314424e-17 C18.8414896,-0.0207180613 19.8429457,0.838900919 20,2 L20,9 C19.8429457,10.1610991 18.8414896,11.0207181 17.67,11 L15,11 L15,8.60314424e-17 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>

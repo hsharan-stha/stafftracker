@@ -1,0 +1,21 @@
+.searched-employee span{
+    background-color:#2E5BFF;
+    border-radius: 50px;
+    float: left;
+}
+
+.searched-employee span img{
+    padding: 8px;
+}
+
+.searched-employee{
+    background-color:rgba(11,107,242,0.15);
+    border: 1px solid rgba(11,107,242,0.4);
+    padding: 24px;
+    border-radius: 50px;
+    float: left;
+    position: absolute;
+    cursor:pointer;
+/*    top: 25%;
+    left: 50%;*/
+}

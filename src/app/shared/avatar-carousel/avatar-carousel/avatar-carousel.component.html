@@ -1,0 +1,11 @@
+<div class="avatar-carousel-container">
+    <div class="slide-arrow slide-left" (click)="prev()"><img src="./assets/icons/blue_left_shift.svg" width="16px" height="16px"/></div>
+    <div #container class="avatar-list" >
+        <ng-content ></ng-content>
+    </div>
+    <div class="slide-arrow slide-right" (click)="next()"><img src="./assets/icons/blue_right_shift.svg" width="16px" height="16px"/></div>
+    <!-- <div *ngIf="!isScrollAtStart"  class="arrow prev" (click)="prev()">
+    </div>
+    <div *ngIf="!isScrollAtEnd" class=" arrow  next" (click)="next()">
+    </div> -->
+</div>

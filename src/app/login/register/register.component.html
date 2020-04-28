@@ -1,0 +1,34 @@
+<div class="register-form-wrapper">
+
+    <div class="col-sm-12">
+        <h1 class="register-form-title">{{ "Sign up" | translate }} <br />{{ "to Staff Tracker" | translate }} </h1>
+        <p class="register-form-tag">{{ "Please enter your MSISDN to proceed" | translate }}</p>
+    </div>
+
+    <div class="col-xl-12 col-lg-12 col-sm-12 activation-code-wrapper">
+        <form class="register-form" [formGroup]="signupForm">
+            <div class="form-group margin-bottom-20 custom-width">
+                <label>{{ "Phone number" | translate }}</label>
+                <input class="form-control" placeholder="06 XX XXX XXX" formControlName="phone_number"
+                    [textMask]="{mask: mask}" />
+                <span invalidMessage [control]="signupForm.controls.phone_number"
+                    [invalidMessages]="errorMessage"></span>
+            </div>
+            <div class="form-group">
+                <app-checkbox customID="custm-checkbox" [checkBoxFormGroup]="signupForm"
+                    [checkBoxFormControl]="signupForm.controls.userAgreement"></app-checkbox>
+                <label
+                    class="agreement-label">{{"I accept the " | translate }}<u>{{"terms of user agreement" | translate }}</u></label>
+            </div>
+
+            <div class="form-group custom-width">
+                <shared-button buttonType="submit" [disabledCondition]="!signupForm.valid" class="sign-in-btn"
+                    name="{{ 'Get activation code' | translate }}" (buttonClicked)="btnClicked()"></shared-button>
+            </div>
+        </form>
+
+        <div class="language">
+                <language-selector></language-selector>
+        </div>
+    </div>
+</div>

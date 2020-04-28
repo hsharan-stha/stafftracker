@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Staff tracker / Icons / Colored Icons / CI Bad 24x24 Copy</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Staff-tracker-/-Icons-/-Colored-Icons-/-CI-Bad-24x24-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group-2" transform="translate(2.000000, 2.000000)" stroke="#F7C137">
+            <path d="M10,12.6086957 C8.05391304,12.6086957 6.20069565,13.4330435 4.91513043,14.8693913 C4.72313043,15.0843478 4.7413913,15.4135652 4.95634783,15.606087 C5.056,15.6953043 5.18017391,15.7391304 5.30434783,15.7391304 C5.44782609,15.7391304 5.59026087,15.6806957 5.69356522,15.5653913 C6.78086957,14.3492174 8.35026087,13.6521739 10,13.6521739 C11.6450435,13.6521739 13.2154783,14.3497391 14.3074783,15.565913 C14.5,15.7808696 14.8302609,15.7975652 15.0441739,15.6055652 C15.2586087,15.4130435 15.2763478,15.0833043 15.0838261,14.8688696 C13.7935652,13.4325217 11.9413913,12.6086957 10,12.6086957 Z" id="Path" fill="#007AFF"></path>
+            <circle id="Oval" stroke-width="2" fill-rule="nonzero" cx="10" cy="10" r="11"></circle>
+            <circle id="Oval" fill-rule="nonzero" cx="6.5" cy="8.5" r="1"></circle>
+            <circle id="Oval-Copy" fill-rule="nonzero" cx="13.5" cy="8.5" r="1"></circle>
+        </g>
+    </g>
+</svg>

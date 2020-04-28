@@ -1,0 +1,134 @@
+<div class="row">
+  <div class="col-lg-9 position-tbl-wrapper">
+    <div class="title">
+      <div class="title-wrap">
+        <h1>{{"Staff Positions"|translate}}</h1>
+        <span>{{ countRow }} {{ "Total" | translate }}</span>
+      </div>
+      <button type="button" class="btn btn-add" (click)="addPositionView()">
+        <div class="btn-add-content">
+          <img class="position-add-btn-img" src="./assets/icons/White_add_user.svg" width="16px"
+               height="16px"/>
+          <span>{{ "Add Position" | translate }}</span>
+        </div>
+      </button>
+    </div>
+
+    <div *ngIf="!laptopSize else positionFilterForm"></div>
+
+    <div class="position-content">
+      <div class="card position-empty" *ngIf="countRow <= 0; else positionList">
+        <img class="emp-action-btn" src="./assets/icons/gray_docs.svg"/>
+        <p><span>{{ "Staff Positions" | translate }}</span> {{ "table is empty" |translate}}
+          <br>{{"Any new postions will appear here" |translate}}
+        </p>
+        <button type="button" class="btn btn-add" (click)="addPositionView()">
+          {{"Add Position" |translate}}
+        </button>
+      </div>
+      <ng-template #positionList>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="table-responsive">
+              <table #positionTable class='position-table'>
+                <thead>
+                <tr>
+                  <th width='70%' appDataList style="cursor: pointer"
+                      (currentSortOrder)="sortItems($event)"
+                      [attr.aria-name]="fieldName">
+                    {{"Positions"|translate}}
+                    <img class="position-title-img show" src="./assets/icons/blue_arrow_down.svg"
+                         width="16px"
+                         height="16px"/>
+                    <img class="position-title-img hide" src="./assets/icons/Icon_arrow up.svg"
+                         width="16px"
+                         height="16px"/>
+
+                  </th>
+                  <th width='30%'></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr
+                  *ngFor="let position of filteredPositions | paginate: { itemsPerPage: perPageItem, currentPage: p,totalItems: totalCount }">
+                  <td>
+                    <span>{{ position.name }}</span>
+                  </td>
+                  <td>
+                                    <span class="position-action-btn"
+                                          dbempaction
+                                          wrapperClass="actionWrapper"
+                                          firstBtnName="blue_edit"
+                                          secondBtnName="blue_remove"
+                                          (viewBtnClicked)="editPositionInformation(position.id)"
+                                          (sendMsgbtnClicked)="deletePosition(position.id)"
+                                          viewMessage="Edit position information" sendMessage="Delete position"
+                                          outerWidthForSMS="130">
+                                  </span>
+                  </td>
+                </tr>
+                </tbody>
+              </table>
+              <div class="pagination-wrapper">
+                <div *ngIf="!showExpandBtn" class="custom-pagination">
+                  <pagination-controls (pageChange)="pageNumber($event)" autoHide="true"
+                                       previousLabel=""
+                                       nextLabel=""></pagination-controls>
+                </div>
+
+                <div class="expand" *ngIf="showExpandBtn && perPageItem < countRow">
+                  <hr>
+                  <p (click)="expandTable()">{{"Expand Table" | translate}}</p>
+                  <hr>
+                </div>
+                <div *ngIf="loader" class="loading-image"></div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  <div class="col-lg-3">
+    <div *ngIf="laptopSize else positionFilterForm"></div>
+    <div class="clearfix"></div>
+  </div>
+  <ng-template #positionFilterForm>
+    <div class="position-search">
+      <div class="card">
+        <h3>{{"Filter"|translate}}</h3>
+        <div class="cross-icon-wrapper">
+            <span (click)="searchForm.reset()" (mouseover)="setCheckBoxHover(true)" (mouseout)="setCheckBoxHover(false)" class="panel-close"></span>
+            <span *ngIf="hoverCheckBox" class="drop-down-invalid-dialog check-box-toolpit"><invalid-message
+                      text="{{'Clear filters' | translate}}" type="message" width="120px"></invalid-message></span>
+        </div>
+        
+        <form class="form-position-search" [formGroup]="searchForm">
+          <div class="search-input">
+            <div class="form-group">
+              <label>{{"Search"|translate}}</label>
+              <div class="form-search-icon-wrapper">
+                <app-search-icon-form [inputSearchFormGroup]="searchForm"
+                                      [inputSearchFormControl]="searchForm.controls.position_name"
+                                      (inputChanged)="filterValue($event)"></app-search-icon-form>
+
+              </div>
+            </div>
+          </div>
+          <div class="search-input">
+            <div class="form-group">
+              <button class="btn btn-find" (click)="findPosition()">
+                {{"Find"|translate}}
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </ng-template>
+</div>
+<router-outlet></router-outlet>

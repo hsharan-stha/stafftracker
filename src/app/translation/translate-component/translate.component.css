@@ -1,0 +1,8 @@
+.dropdown{
+    right: 0px;
+    position: absolute;
+}
+
+a:hover{
+    cursor: pointer;
+}

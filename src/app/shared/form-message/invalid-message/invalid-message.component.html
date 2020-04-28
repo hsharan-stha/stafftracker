@@ -1,0 +1,10 @@
+<!--positionRight+'px'/-->
+<div class="tooltips-container" [ngClass]="{'positionAbs': (position=='topWithAbs')}" role="tooltip"
+     [style.right]="(position=='topWithAbs')?'0px':positionRight+'px'"
+     [style.bottom]="positionTopOrBottom+'px'">
+  <div [style.width]="width" [style.max-width]="maxWidth"
+       class="tooltips-body {{type==='message'?'message-tooltips-body message-tooltips-body-top':''}}"
+       [ngClass]="'tooltips-body-top'">
+    {{  text | translate}}
+  </div>
+</div>

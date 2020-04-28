@@ -1,0 +1,213 @@
+.register-form-wrapper {
+  /*margin-top:38%;200px;*/
+  margin-top: 45px;
+}
+
+.register-form-title {
+  font-size: 34px;
+  color: #2E384D;
+  letter-spacing: 0;
+  line-height: 40px;
+  font-family: Rubik;
+  font-weight: 300;
+  text-align: left;
+}
+
+.register-form-tag {
+  font-size: 15px;
+  color: #8798AD;
+  letter-spacing: 0;
+  line-height: 22px;
+  font-family: Rubik;
+  font-weight: 400;
+  text-align: left;
+}
+
+.register-form label {
+  font-size: 12px;
+  color: #B0BAC9;
+  letter-spacing: 1.12px;
+  font-family: Rubik;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.account-info-form-wrapper {
+  margin-top: 20px;
+}
+
+.register-form input {
+  border-radius: 5px;
+  opacity: 20%;
+  border: 1px solid #e0e7ff;
+  height: 40px;
+  font-size: 15px;
+  color: #2E384D;
+  letter-spacing: 0;
+  font-family: Rubik;
+  font-weight: 400;
+  text-align: left;
+  width: 320px;
+}
+
+.register-form input:disabled {
+  background-color: rgba(191, 197, 210, 0.2);
+  border: 1px solid #BFC5D2;
+  color: #8798AD;
+}
+
+.wizard-steps li:last-child p {
+  margin-left: -142%;
+}
+
+
+.slider-container {
+  width: 320px;
+  overflow: hidden;
+}
+
+.slider-container input {
+  border: none;
+  padding: 0px;
+  border-radius: 10px;
+}
+
+.slider-container input:focus {
+  border: none;
+}
+
+input.dynamicCssClass {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: none;
+  cursor: pointer;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  min-height: 30px;
+
+  width: 320px;
+  border-radius: 10px;
+
+}
+
+input.dynamicCssClass::-webkit-slider-thumb {
+  height: 16px;
+  width: 16px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #fff;
+  border-radius: 50%;
+  margin-top: -6px;
+  box-shadow: 5px 0 0 -12px #e0e7ff, 6px 0 0 -6px #e0e7ff, 7px 0 0 -6px #e0e7ff, 8px 0 0 -6px #e0e7ff, 9px 0 0 -6px #e0e7ff, 10px 0 0 -6px #e0e7ff, 11px 0 0 -6px #e0e7ff, 12px 0 0 -6px #e0e7ff, 13px 0 0 -6px #e0e7ff, 14px 0 0 -6px #e0e7ff, 15px 0 0 -6px #e0e7ff, 16px 0 0 -6px #e0e7ff, 17px 0 0 -6px #e0e7ff, 18px 0 0 -6px #e0e7ff, 19px 0 0 -6px #e0e7ff, 20px 0 0 -6px #e0e7ff, 21px 0 0 -6px #e0e7ff, 22px 0 0 -6px #e0e7ff, 23px 0 0 -6px #e0e7ff, 24px 0 0 -6px #e0e7ff, 25px 0 0 -6px #e0e7ff, 26px 0 0 -6px #e0e7ff, 27px 0 0 -6px #e0e7ff, 28px 0 0 -6px #e0e7ff, 29px 0 0 -6px #e0e7ff, 30px 0 0 -6px #e0e7ff, 31px 0 0 -6px #e0e7ff, 32px 0 0 -6px #e0e7ff, 33px 0 0 -6px #e0e7ff, 34px 0 0 -6px #e0e7ff, 35px 0 0 -6px #e0e7ff, 36px 0 0 -6px #e0e7ff, 37px 0 0 -6px #e0e7ff, 38px 0 0 -6px #e0e7ff, 39px 0 0 -6px #e0e7ff, 40px 0 0 -6px #e0e7ff, 41px 0 0 -6px #e0e7ff, 42px 0 0 -6px #e0e7ff, 43px 0 0 -6px #e0e7ff, 44px 0 0 -6px #e0e7ff, 45px 0 0 -6px #e0e7ff, 46px 0 0 -6px #e0e7ff, 47px 0 0 -6px #e0e7ff, 48px 0 0 -6px #e0e7ff, 49px 0 0 -6px #e0e7ff, 50px 0 0 -6px #e0e7ff, 51px 0 0 -6px #e0e7ff, 52px 0 0 -6px #e0e7ff, 53px 0 0 -6px #e0e7ff, 54px 0 0 -6px #e0e7ff, 55px 0 0 -6px #e0e7ff, 56px 0 0 -6px #e0e7ff, 57px 0 0 -6px #e0e7ff, 58px 0 0 -6px #e0e7ff, 59px 0 0 -6px #e0e7ff, 60px 0 0 -6px #e0e7ff, 61px 0 0 -6px #e0e7ff, 62px 0 0 -6px #e0e7ff, 63px 0 0 -6px #e0e7ff, 64px 0 0 -6px #e0e7ff, 65px 0 0 -6px #e0e7ff, 66px 0 0 -6px #e0e7ff, 67px 0 0 -6px #e0e7ff, 68px 0 0 -6px #e0e7ff, 69px 0 0 -6px #e0e7ff, 70px 0 0 -6px #e0e7ff, 71px 0 0 -6px #e0e7ff, 72px 0 0 -6px #e0e7ff, 73px 0 0 -6px #e0e7ff, 74px 0 0 -6px #e0e7ff, 75px 0 0 -6px #e0e7ff, 76px 0 0 -6px #e0e7ff, 77px 0 0 -6px #e0e7ff, 78px 0 0 -6px #e0e7ff, 79px 0 0 -6px #e0e7ff, 80px 0 0 -6px #e0e7ff, 81px 0 0 -6px #e0e7ff, 82px 0 0 -6px #e0e7ff, 83px 0 0 -6px #e0e7ff, 84px 0 0 -6px #e0e7ff, 85px 0 0 -6px #e0e7ff, 86px 0 0 -6px #e0e7ff, 87px 0 0 -6px #e0e7ff, 88px 0 0 -6px #e0e7ff, 89px 0 0 -6px #e0e7ff, 90px 0 0 -6px #e0e7ff, 91px 0 0 -6px #e0e7ff, 92px 0 0 -6px #e0e7ff, 93px 0 0 -6px #e0e7ff, 94px 0 0 -6px #e0e7ff, 95px 0 0 -6px #e0e7ff, 96px 0 0 -6px #e0e7ff, 97px 0 0 -6px #e0e7ff, 98px 0 0 -6px #e0e7ff, 99px 0 0 -6px #e0e7ff, 100px 0 0 -6px #e0e7ff, 101px 0 0 -6px #e0e7ff, 102px 0 0 -6px #e0e7ff, 103px 0 0 -6px #e0e7ff, 104px 0 0 -6px #e0e7ff, 105px 0 0 -6px #e0e7ff, 106px 0 0 -6px #e0e7ff, 107px 0 0 -6px #e0e7ff, 108px 0 0 -6px #e0e7ff, 109px 0 0 -6px #e0e7ff, 110px 0 0 -6px #e0e7ff, 111px 0 0 -6px #e0e7ff, 112px 0 0 -6px #e0e7ff, 113px 0 0 -6px #e0e7ff, 114px 0 0 -6px #e0e7ff, 115px 0 0 -6px #c2c7c7, 116px 0 0 -6px #e0e7ff, 117px 0 0 -6px #e0e7ff, 118px 0 0 -6px #e0e7ff, 119px 0 0 -6px #e0e7ff, 120px 0 0 -6px #e0e7ff, 121px 0 0 -6px #e0e7ff, 122px 0 0 -6px #e0e7ff, 123px 0 0 -6px #e0e7ff, 124px 0 0 -6px #e0e7ff, 125px 0 0 -6px #e0e7ff, 126px 0 0 -6px #e0e7ff, 127px 0 0 -6px #e0e7ff, 128px 0 0 -6px #e0e7ff, 129px 0 0 -6px #e0e7ff, 130px 0 0 -6px #e0e7ff, 131px 0 0 -6px #e0e7ff, 132px 0 0 -6px #e0e7ff, 133px 0 0 -6px #e0e7ff, 134px 0 0 -6px #e0e7ff, 135px 0 0 -6px #e0e7ff, 136px 0 0 -6px #e0e7ff, 137px 0 0 -6px #e0e7ff, 138px 0 0 -6px #e0e7ff, 139px 0 0 -6px #e0e7ff, 140px 0 0 -6px #e0e7ff, 141px 0 0 -6px #e0e7ff, 142px 0 0 -6px #e0e7ff, 143px 0 0 -6px #e0e7ff, 144px 0 0 -6px #e0e7ff, 145px 0 0 -6px #e0e7ff, 146px 0 0 -6px #e0e7ff, 147px 0 0 -6px #e0e7ff, 148px 0 0 -6px #e0e7ff, 149px 0 0 -6px #e0e7ff, 150px 0 0 -6px #e0e7ff, 151px 0 0 -6px #e0e7ff, 152px 0 0 -6px #e0e7ff, 153px 0 0 -6px #e0e7ff, 154px 0 0 -6px #e0e7ff, 155px 0 0 -6px #e0e7ff, 156px 0 0 -6px #e0e7ff, 157px 0 0 -6px #e0e7ff, 158px 0 0 -6px #e0e7ff, 159px 0 0 -6px #e0e7ff, 160px 0 0 -6px #e0e7ff, 161px 0 0 -6px #e0e7ff, 162px 0 0 -6px #e0e7ff, 163px 0 0 -6px #e0e7ff, 164px 0 0 -6px #e0e7ff, 165px 0 0 -6px #e0e7ff, 166px 0 0 -6px #e0e7ff, 167px 0 0 -6px #e0e7ff, 168px 0 0 -6px #e0e7ff, 169px 0 0 -6px #e0e7ff, 170px 0 0 -6px #e0e7ff, 171px 0 0 -6px #e0e7ff, 172px 0 0 -6px #e0e7ff, 173px 0 0 -6px #e0e7ff, 174px 0 0 -6px #e0e7ff, 175px 0 0 -6px #e0e7ff, 176px 0 0 -6px #e0e7ff, 177px 0 0 -6px #e0e7ff, 178px 0 0 -6px #e0e7ff, 179px 0 0 -6px #e0e7ff, 180px 0 0 -6px #e0e7ff, 181px 0 0 -6px #e0e7ff, 182px 0 0 -6px #e0e7ff, 183px 0 0 -6px #e0e7ff, 184px 0 0 -6px #e0e7ff, 185px 0 0 -6px #e0e7ff, 186px 0 0 -6px #e0e7ff, 187px 0 0 -6px #e0e7ff, 188px 0 0 -6px #e0e7ff, 189px 0 0 -6px #e0e7ff, 190px 0 0 -6px #e0e7ff, 191px 0 0 -6px #e0e7ff, 192px 0 0 -6px #e0e7ff, 193px 0 0 -6px #e0e7ff, 194px 0 0 -6px #e0e7ff, 195px 0 0 -6px #e0e7ff, 196px 0 0 -6px #e0e7ff, 197px 0 0 -6px #e0e7ff, 198px 0 0 -6px #e0e7ff, 199px 0 0 -6px #e0e7ff, 200px 0 0 -6px #e0e7ff, 201px 0 0 -6px #e0e7ff, 202px 0 0 -6px #e0e7ff, 203px 0 0 -6px #e0e7ff, 204px 0 0 -6px #e0e7ff, 205px 0 0 -6px #e0e7ff, 206px 0 0 -6px #e0e7ff, 207px 0 0 -6px #e0e7ff, 208px 0 0 -6px #e0e7ff, 209px 0 0 -6px #e0e7ff, 210px 0 0 -6px #e0e7ff, 211px 0 0 -6px #e0e7ff, 212px 0 0 -6px #e0e7ff, 213px 0 0 -6px #e0e7ff, 214px 0 0 -6px #e0e7ff, 215px 0 0 -6px #e0e7ff, 216px 0 0 -6px #e0e7ff, 217px 0 0 -6px #e0e7ff, 218px 0 0 -6px #e0e7ff, 219px 0 0 -6px #e0e7ff, 220px 0 0 -6px #e0e7ff, 221px 0 0 -6px #e0e7ff, 222px 0 0 -6px #e0e7ff, 223px 0 0 -6px #e0e7ff, 224px 0 0 -6px #e0e7ff, 225px 0 0 -6px #e0e7ff, 226px 0 0 -6px #e0e7ff, 227px 0 0 -6px #e0e7ff, 228px 0 0 -6px #e0e7ff, 229px 0 0 -6px #e0e7ff, 230px 0 0 -6px #e0e7ff, 231px 0 0 -6px #e0e7ff, 232px 0 0 -6px #e0e7ff, 233px 0 0 -6px #e0e7ff, 234px 0 0 -6px #e0e7ff, 235px 0 0 -6px #e0e7ff, 236px 0 0 -6px #e0e7ff, 237px 0 0 -6px #e0e7ff, 238px 0 0 -6px #e0e7ff, 239px 0 0 -6px #e0e7ff, 240px 0 0 -6px #e0e7ff, 241px 0 0 -6px #e0e7ff, 242px 0 0 -6px #e0e7ff, 243px 0 0 -6px #e0e7ff, 244px 0 0 -6px #e0e7ff, 245px 0 0 -6px #e0e7ff, 246px 0 0 -6px #e0e7ff, 247px 0 0 -6px #e0e7ff, 248px 0 0 -6px #e0e7ff, 249px 0 0 -6px #e0e7ff, 250px 0 0 -6px #e0e7ff, 251px 0 0 -6px #e0e7ff, 252px 0 0 -6px #e0e7ff, 253px 0 0 -6px #e0e7ff, 254px 0 0 -6px #e0e7ff, 255px 0 0 -6px #e0e7ff, 256px 0 0 -6px #e0e7ff, 257px 0 0 -6px #e0e7ff, 258px 0 0 -6px #e0e7ff, 259px 0 0 -6px #e0e7ff, 260px 0 0 -6px #e0e7ff, 261px 0 0 -6px #e0e7ff, 262px 0 0 -6px #e0e7ff, 263px 0 0 -6px #e0e7ff, 264px 0 0 -6px #e0e7ff, 265px 0 0 -6px #e0e7ff, 266px 0 0 -6px #e0e7ff, 267px 0 0 -6px #e0e7ff, 268px 0 0 -6px #e0e7ff, 269px 0 0 -6px #e0e7ff, 270px 0 0 -6px #e0e7ff, 271px 0 0 -6px #e0e7ff, 272px 0 0 -6px #e0e7ff, 273px 0 0 -6px #e0e7ff, 274px 0 0 -6px #e0e7ff, 275px 0 0 -6px #e0e7ff, 276px 0 0 -6px #e0e7ff, 277px 0 0 -6px #e0e7ff, 278px 0 0 -6px #e0e7ff, 279px 0 0 -6px #e0e7ff, 280px 0 0 -6px #e0e7ff, 281px 0 0 -6px #e0e7ff, 282px 0 0 -6px #e0e7ff, 283px 0 0 -6px #e0e7ff, 284px 0 0 -6px #e0e7ff, 285px 0 0 -6px #e0e7ff, 286px 0 0 -6px #e0e7ff, 287px 0 0 -6px #e0e7ff, 288px 0 0 -6px #e0e7ff, 289px 0 0 -6px #e0e7ff, 290px 0 0 -6px #e0e7ff, 291px 0 0 -6px #e0e7ff, 292px 0 0 -6px #e0e7ff, 293px 0 0 -6px #e0e7ff, 294px 0 0 -6px #e0e7ff, 295px 0 0 -6px #e0e7ff, 296px 0 0 -6px #e0e7ff, 297px 0 0 -6px #e0e7ff, 298px 0 0 -6px #e0e7ff, 299px 0 0 -6px #e0e7ff, 300px 0 0 -6px #e0e7ff, 301px 0 0 -6px #e0e7ff, 302px 0 0 -6px #e0e7ff, 303px 0 0 -6px #e0e7ff, 304px 0 0 -6px #e0e7ff, 305px 0 0 -6px #e0e7ff, 306px 0 0 -6px #e0e7ff, 307px 0 0 -6px #e0e7ff, 308px 0 0 -6px #e0e7ff, 309px 0 0 -6px #e0e7ff, 310px 0 0 -6px #e0e7ff, 311px 0 0 -6px #e0e7ff, 312px 0 0 -6px #e0e7ff, 313px 0 0 -6px #e0e7ff, 314px 0 0 -6px #e0e7ff, 315px 0 0 -6px #e0e7ff, 316px 0 0 -6px #e0e7ff, 317px 0 0 -6px #e0e7ff, 318px 0 0 -6px #e0e7ff, 319px 0 0 -6px #e0e7ff, 320px 0 0 -6px #e0e7ff;
+  border: 4px solid #2E5BFF;
+}
+
+input.dynamicCssClass::-moz-range-track {
+  width: 320px;
+  height: 4px;
+  border-radius: 10px;
+}
+
+input.dynamicCssClass::-webkit-slider-runnable-track {
+  background: #2E5BFF;
+  content: '';
+  height: 4px;
+  pointer-events: none;
+  border-radius: 10px;
+}
+
+input.dynamicCssClass::-moz-range-thumb {
+  height: 28px;
+  width: 28px;
+  background: #fff;
+  position: relative;
+}
+
+input.dynamicCssClass::-moz-range-progress {
+  height: 4px;
+  border: 0;
+  margin-top: 0;
+}
+
+input.dynamicCssClass::-ms-track {
+  height: 5px;
+  color: transparent;
+  width: 320px;
+}
+
+
+.radius-value {
+  font-size: 28px;
+  color: #2E384D;
+  letter-spacing: 0;
+  text-align: center;
+  line-height: 32px;
+  font-family: Rubik;
+  font-weight: 300;
+  margin-right: 5px;
+  margin-left: 32%;
+}
+
+.radius-unit {
+  font-size: 12px;
+  color: #B0BAC9;
+  letter-spacing: 1.12px;
+  font-family: Rubik;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-align: left;
+}
+
+.geozone-icon {
+  width: 40px;
+  height: 40px;
+  float: left;
+  background-color: #2E5BFF;
+  border-radius: 5px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.geozone-address {
+  width: 100%;
+  float: left;
+  margin-bottom: 1rem;
+}
+
+.geozone-address input {
+  width: 270px;
+  float: left;
+  margin-right: 10px;
+}
+
+.geozone-icon i {
+  background-image: url(/assets/icons/white_pin.svg);
+  height: 22px;
+  width: 18px;
+  background-size: auto 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  float: left;
+}
+
+
+.wizard-progress .steps-progress {
+  margin: 0px 69px 0px 3px;
+}
+
+.col, [class*="col-"] {
+  padding-right: 0px !important;
+  padding-left: 0px !important;
+}
+
+@media (min-width: 1900px) {
+  .register-form-wrapper {
+    margin-top: 35%;
+  }
+}

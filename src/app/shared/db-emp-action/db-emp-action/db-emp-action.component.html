@@ -1,0 +1,26 @@
+<span [ngClass]="['table-action', wrapperClass]">
+    <ul>
+        <li *ngIf="firstBtnName">
+            <span >
+                <a>
+                    <img class="svg-img action-btn" utooltips [message]="viewMessage" [containerWidth]="outerWidth" src="./assets/icons/{{firstBtnName}}.svg" (click)="viewEmpDetail()"/>
+                </a>
+            </span>
+        </li>
+        <li *ngIf="secondBtnName">
+            <span >
+                <a>
+                    <img class="svg-img action-btn" src="./assets/icons/{{secondBtnName}}.svg" (click)="sendEmpMessage()" utooltips [message]="sendMessage" [containerWidth]="outerWidthForSMS"/>
+                </a>
+            </span>
+        </li>
+
+        <li *ngIf="thirdBtnName">
+            <span >
+                <a>
+                    <img class="svg-img action-btn" src="./assets/icons/{{thirdBtnName}}.svg" (click)="deleteItem()" utooltips [message]="thirdBtnMsg" [containerWidth]="outerWidthForDelete"/>
+                </a>
+            </span>
+        </li>
+    </ul>
+</span>

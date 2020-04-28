@@ -1,0 +1,108 @@
+<div class="row">
+  <div class="col-lg-12">
+    <div class="title">
+      <h1>{{ "Movement tracking" | translate }}</h1>
+    </div>
+    <div class="export-wrap">
+      <button class="btn btn-export" (click)="exportData()">
+        {{ "Export" | translate }}
+      </button>
+    </div>
+
+    <div class="row map-container db-bottom-wrapper margin-top-15" #mapWrapper *ngIf="showActivityMap">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="search-wrapper">
+            <div class="dh-search-form-wrapper" [ngClass]="{'box-shadow':!hideSearchForm}">
+              <div class="hidden-search-form row">
+                <form class="form-inline form-tracking" *ngIf="!hideSearchForm" [formGroup]="trackMovementForm"
+                  (ngSubmit)="getTrackedMovements()">
+                  <div class="search-input">
+                    <div class="form-group">
+                      <label>{{ "Choose Employee" | translate }}</label>
+                      <div class="form-search-icon-wrapper">
+                        <type-ahead [formName]="trackMovementForm" (click)="getInputChange()"
+                          [form_control_name]="trackMovementForm.controls.employee" dataGroupName="Employee"
+                          [image_path]="imageURL()" [isValid]="trackMovementForm.controls.employee.valid + isvalid"
+                          [allowedMaxItem]="1" [placeholder]="''">
+                        </type-ahead>
+                        <span invalidMessage [control]="trackMovementForm.controls.employee"></span>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="search-input">
+                    <div class="form-group">
+                      <label>{{ "Choose Date" | translate }}</label>
+                      <div class="form-search-icon-wrapper">
+                        <date-picker [inputFormGroup]="trackMovementForm" [formSubmitted]="isvalid"
+                          [inputFormControl]="trackMovementForm.controls.date">
+                        </date-picker>
+                        <span invalidMessage [control]="trackMovementForm.controls.date"></span>
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="search-input">
+                    <div class="form-group search-input-btn">
+                      <button class="btn btn-search" [disabled]="mapLoader" type="submit">
+                        {{ "Get data" | translate }}
+                      </button>
+                    </div>
+                  </div>
+                </form>
+              </div>
+
+              <span class="show-hide-label">
+                <a (click)="showSearchForm()">
+                  <label>{{hideSearchForm ? "Search bar" : "Hide" | translate}}</label>
+                  <img [ngClass]="{'array-down': hideSearchForm, 'array-up': !hideSearchForm}"
+                    src="./assets/icons/gray_arrow_up.svg">
+                </a>
+              </span>
+            </div>
+          </div>
+          <ng-template #events>
+            <div class="list-title">
+              <img *ngIf="!showMovementDetails; else closeMovementDetails"
+                (click)="showMovementDetails=!showMovementDetails" src="./assets/icons/blue_hamburger.svg">
+              <ng-template #closeMovementDetails>
+                <img (click)="showMovementDetails=!showMovementDetails" src="./assets/icons/blue_close.svg">
+              </ng-template>
+              <h3>{{ "List of Movements Track" | translate }}</h3>
+            </div>
+          </ng-template>
+          <div class="map-content" [style.height]="mapHeight">
+            <div class="event-container" *ngIf="trackedMovements"
+              [ngClass]="{'top-61':!hideSearchForm,'height-plus-60':this.addSeideBarHeight}">
+              <!--              [ngStyle]="{'overflow-y': setScroll?'auto':'unset'}"-->
+              <div class="event-item" *ngFor="let movement of movementLists">
+                <div *ngIf="movement.id!==1" class="verticle-line"></div>
+                <div class="event-icon" (mouseover)="setOverlay(movement,$event)" (mouseout)="unsetOverlay()">
+                  <!--                  <img src="./assets/icons/blue_navigate.svg">-->
+                  <span></span>
+
+                </div>
+                <!--                <div class="event-detail"-->
+                <!--                     [ngStyle]="{'display': showMovementDetails ? 'flex' : '', 'width': showMovementDetails ? '240px' : ''}">-->
+                <!--                  <div-->
+                <!--                    class="event-name">{{movement.id === 1 ? ('Worked Started' | translate) : (movement.id === movementLists.length ? ('Finished Work' | translate) : (movement.address ? movement.address : movement.name))}}</div>-->
+                <!--                  <div class="event-time">{{ movement.time }}</div>-->
+                <!--                </div>-->
+              </div>
+            </div>
+            <div class="event-detail" *ngIf="setScroll" [ngStyle]="{'top':top+'px'}">
+              <div class="event-name">
+                {{recentMoment.id === 1 ? ('Worked Started' | translate) : (recentMoment.id === movementLists.length ? ('Finished Work' | translate) : (recentMoment.address ? recentMoment.address : recentMoment.name))}}
+              </div>
+              <div class="event-time">{{ recentMoment.time }}</div>
+            </div>
+            <map *ngIf="isMapShow"></map>
+            <div *ngIf="mapLoader" class="map-round-loading-image"></div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

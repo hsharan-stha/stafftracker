@@ -1,0 +1,23 @@
+<div class="form-search-icon" [formGroup]="selectInputGroup"
+     [ngClass]="{'form-group-invalid':(selectInputControl.invalid && (selectInputControl.dirty || selectInputControl.touched || formSubmitted))}">
+    <input type="text" class="form-control input-design" placeholder="Select" [formControl]="selectInputControl"
+           (click)="showOption = !showOption">
+    <!-- <option value="">Select</option> -->
+    <!-- <option *ngFor="let option of selectOptions" value="{{option.id}}">{{ option.name }}</option> -->
+    <!-- </select> -->
+
+    <div class="form-control input-design"
+         [ngClass]="{'select-control-invalid':(selectInputControl.invalid && (selectInputControl.dirty || selectInputControl.touched || formSubmitted))}"
+         (click)="showOption = !showOption">
+        <div *ngIf="selectedValue; else selectedPlaceholder" class="option">{{selectedValue.name}}</div>
+        <ng-template #selectedPlaceholder>{{"Select" | translate}}</ng-template>
+    </div>
+</div>
+
+<div class="dropdown" *ngIf="showOption">
+    <ul class="dropdown-menu"  appScrollPagination
+        (scrollPage)="setPageByScroll($event)">
+        <li *ngIf="emptySelectOption" class="select-item" (click)="select('')">{{"Select" | translate}}</li>
+        <li class="select-item" *ngFor="let option of selectOptions" (click)="select(option)">{{option.name}}</li>
+    </ul>
+</div>

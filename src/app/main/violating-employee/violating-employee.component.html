@@ -1,0 +1,90 @@
+<div *ngIf="showTopViolators">
+
+  <div class="row top-violators-wrapper">
+    <div class="col-md-12">
+      <h3>{{"Top Violators" | translate }}</h3>
+      <div class="panel">
+        <div class="row">
+          <div *ngFor="let d of limitedViolatingEmployees" class="col-12 col-sm-6 col-md-6 col-lg-3">
+            <section class="card-wrapper" [ngStyle]="{'pointer-events':loading?'none':''}" (click)="getLocation(d)">
+
+              <div class="bordered-card {{d.msisdn===selectedMsisdn?'active-bordered-card':''}}"
+                   [ngClass]="d.num===1 ?(d.msisdn===selectedMsisdn?'active-bordered-card':'top-list'):''">
+                <span class="violators-percentage">{{d.punctual_percent + '%'}}</span>
+                <div class="bordered-card-icon">
+                  <img class="svg-img" src="{{imageURL()+d.icon_url }}" (error)="errorHandler($event)"/>
+                </div>
+                <div class="bordered-card-body">
+                  <h2>{{d.name}}</h2>
+                  <p>{{d.position_name}}</p>
+                </div>
+                <span *ngIf="d.num===1" class="violators-tag">{{ "Top Violators" | translate }}</span>
+              </div>
+            </section>
+          </div>
+          <div class="col-md-12">
+            <div *ngIf="loaderTop" class="loading-image"></div>
+            <button [disabled]="loaderTop || loading" class="btn-view-violators" (click)="toggleViolatorsList()"
+                    *ngIf="!showViolatorsList">{{"View All" | translate }}</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <div #employeeTable>
+    <div class="row" *ngIf="showViolatorsList">
+      <div class="col-md-12">
+        <table class='violators-table'>
+          <thead>
+          <tr>
+            <th width="10%"></th>
+            <th width="25%"></th>
+            <th width="15%"></th>
+            <th width="25%"></th>
+            <th width="10%"></th>
+            <th width="15%"></th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr
+            *ngFor="let item of violatingEmployees | paginate: {itemsPerPage: perPageItem, currentPage: p,totalItems: countRow  }">
+            <td class="serial-number">#{{ item.id }}</td>
+            <td>
+              <img src="{{imageURL()+item.icon_url }}" (error)="errorHandler($event)" class="table-image-design">
+              <ul class="emp-info-list">
+                <li>{{item.name}}</li>
+                <li>{{item.position_name}}</li>
+              </ul>
+              <div class="clearfix"></div>
+            </td>
+            <td>{{item.group_name}}</td>
+            <td>{{item.msisdn}}</td>
+            <td class="violators-per-dtl">{{item.punctual_percent}}%</td>
+            <td class="text-align-right">
+                            <span class="emp-action-btn"
+                                  dbempaction
+                                  wrapperClass="actionWrapper"
+                                  firstBtnName="blue_view"
+                                  secondBtnName="blue_message"
+                                  (viewBtnClicked)="viewEmployeeInformation(item.id)"
+                                  (sendMsgbtnClicked)="sendMessageToEmployee()">
+                            </span>
+            </td>
+          </tr>
+
+          </tbody>
+        </table>
+        <div class="pagination-wrapper">
+          <div class="custom-pagination">
+            <pagination-controls (pageChange)="pageNumber($event)" autoHide="true" previousLabel=""
+                                 nextLabel=""></pagination-controls>
+
+          </div>
+          <div *ngIf="loader" class="loading-image"></div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

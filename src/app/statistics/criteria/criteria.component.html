@@ -1,0 +1,92 @@
+<div class="row">
+    <div class="col-lg-9 criteria-wrapper" style="float: left">
+        <h1 class="criteria-title">General Statistics
+            <div class="clearfix"></div>
+        </h1>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+        <section class="card-wrapper">
+            <div class="card" (click)="employeeDataReport()">
+                <div class="card-icon">
+                    <img class="svg-img" src="./assets/icons/gray_pie_chart.svg"/>
+                </div>
+                <div class="card-body">
+                    <h2>{{"Data of Employee"| translate}}</h2>
+                    <p>Obtaining information on the number of late arrivals, time of</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+        <section class="card-wrapper">
+            <div class="card" (click)="timeTrackingReport()">
+                <div class="card-icon">
+                    <img class="svg-img" src="./assets/icons/gray_bar_chart.svg"/>
+                </div>
+                <div class="card-body">
+                    <h2>Worked time tracking</h2>
+                    <p>Obtaining information on the number of late arrivals, time of</p>
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+        <section class="card-wrapper">
+            <div class="card" (click)="movementMonitoring()">
+                <div class="card-icon">
+                    <img class="svg-img" src="./assets/icons/gray_tranding.svg"/>
+                </div>
+                <div class="card-body">
+                    <h2>Movements monitoring</h2>
+                    <p>Obtaining details information on a employee’s movements, during</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+        <section class="card-wrapper">
+            <div class="card" (click)="controlGeozoneVisits()">
+                <div class="card-icon">
+                    <img class="svg-img" src="./assets/icons/gray_bar_chart.svg"/>
+                </div>
+                <div class="card-body">
+                    <h2>Control of Geozones visits</h2>
+                    <p>Information on employees’ movements according to the</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+        <section class="card-wrapper">
+            <div class="card" (click)="notificationExplanatoryReport()">
+                <div class="card-icon">
+                    <img class="svg-img" src="./assets/icons/gray_pie_chart.svg"/>
+                </div>
+                <div class="card-body">
+                    <h2>Notifications & explanatory notes</h2>
+                    <p>Viewing of notices sent to employees, who violated the</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <div class="col-sm-12 col-md-6 col-lg-6 col-xl-4">
+        <section class="card-wrapper">
+            <div class="card" (click)="movementTrackingReport()">
+                <div class="card-icon">
+                    <img class="svg-img" src="./assets/icons/gray_tranding.svg"/>
+                </div>
+                <div class="card-body">
+                    <h2>Employees’ movements tracks</h2>
+                    <p>Intended for viewing Employee movement track for a selected</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+</div>

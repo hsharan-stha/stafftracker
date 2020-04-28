@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.5 (67469) - http://www.bohemiancoding.com/sketch -->
+    <title>Staff tracker/Icon/Grey Help</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Staff-tracker/Icon/Grey-Help" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+        <g id="help-circle" transform="translate(2.000000, 2.000000)" stroke="#BFC5D2" stroke-width="2">
+            <path d="M7.09,7 C7.57543688,5.62004444 8.98538362,4.79140632 10.4271763,5.0387121 C11.868969,5.28601788 12.9221794,6.53715293 12.92,8 C12.92,10 9.92,11 9.92,11" id="Shape"></path>
+            <circle id="Oval" cx="10" cy="10" r="10"></circle>
+        </g>
+    </g>
+</svg>

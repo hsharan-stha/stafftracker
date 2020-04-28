@@ -1,0 +1,216 @@
+<div class="row company-info-wrapper">
+    <div class="col-md-12">
+        <h3 class="company-info-header">{{ "Company Card" | translate }}</h3>
+        <div class="st-panel-default">
+            <div class="st-panel-header">
+                <h4 class="com-info-sub-header">{{ "Personal data" | translate }}</h4>
+                <span class="panel-close"></span>
+                <div *ngIf="loader" class="loading-image"></div> 
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="com-info-content">
+                        <p class="com-info-tag">{{ "Use this page to update your contact information and change your password" | translate }}. </p>
+                        
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <span class="label-wid-line">
+                                    <p>{{ "Main Info" | translate }}</p><hr>
+                                </span>
+                            </div>
+                        </div>
+                        <form class="company-info-form" [formGroup]="companyInfoForm" (submit)="btnNextClicked()">
+                            <div class="row mn-top-5">
+                                <div class="col-lg-4 col-sm-12 col-md-6">
+                                    <div class="form-group max-input-wrapper-width">
+                                        <label>{{ "Logo" | translate }}</label>
+                                        <app-image-upload [formSubmitted]="isSubmited" [form_group_name]="companyInfoForm" [form_control_name]="companyInfoForm.controls.image" [imgUrl]="avatarUrl" (inputChanged)="changeAvatar($event)" customID="select_file" detailLabel="{{'File format .png.jpg Max upload file size 5MB' | translate}}" labelUpload="{{'Choose file'| translate}}"></app-image-upload>
+                                        <span invalidMessage position="topWithAbs" [control]="companyInfoForm.controls.image"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-12 col-md-6">
+                                    <div class="form-group max-input-wrapper-width">
+                                        <label>{{ "Phone Number" | translate }}</label>
+                                        <input class="form-control" placeholder="06 XX XXX XXX" formControlName="msisdn" [textMask]="{mask: mask}"/>
+                                        <span invalidMessage [control]="companyInfoForm.controls.msisdn"></span>       
+                                    </div>
+                                    <div class="form-group max-input-wrapper-width">
+                                        <label>{{ "Email" | translate }}</label>
+                                        <input class="form-control" formControlName="email"/>
+                                        <span invalidMessage [control]="companyInfoForm.controls.email"></span>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 col-sm-12 col-md-6">
+                                    <div class="form-group max-input-wrapper-width">
+                                        <label>{{ "Company Name" | translate }}</label>
+                                        <input class="form-control" value="Takamaru Ayako" formControlName="name"/>
+                                        <span invalidMessage [control]="companyInfoForm.controls.name"></span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        
+                        
+                            <div class="row top-wrapper">
+                                <div class="col-sm-12">
+                                    <span class="label-wid-line">
+                                        <p>{{ "Schedule by default" | translate }}</p><hr>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div class="row mn-top-5">
+                                <div class="col-md-12">
+                                    <table class="tbl-schedule">
+                                        <thead>
+                                            <tr>
+                                                <th width="15%">
+                                                    <label class="sdl-lbl-name">{{ "Name" | translate }}</label>
+                                                    <span class="down-arrow"></span>
+                                                </th>
+                                                <th width="15%" class="text-align-center">
+                                                    <label>{{ "Schedule" | translate }}</label>
+                                                </th>
+                                                <th width="15%" class="text-align-center th-emp-counter">
+                                                    <label>{{ "Employees" | translate }}</label>
+                                                </th>
+                                                <th width="15%" class="text-align-center">
+                                                    <label>{{ "Groups" | translate }}</label>
+                                                </th>
+                                                <th width="25%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <p class="shdl-name">{{(schedule.name)?schedule.name:""}}</p>
+                                                </td>
+                                                <td>
+                                                    <ul class="schedule-list">
+                                                        <li>
+                                                            <span class="calender"></span>
+                                                            <p>
+                                                                {{ (schedule.days)  ? ((schedule.days).includes("1")?"Mo," : '') : ''}}
+                                                                {{ (schedule.days)  ? ((schedule.days).includes("2")?"Tu," : '') : ''}}
+                                                                {{ (schedule.days)  ? ((schedule.days).includes("3")?"We," : '') : ''}}
+                                                                {{ (schedule.days)  ? ((schedule.days).includes("4")?"Th," : '') : ''}}
+                                                                {{ (schedule.days)  ? ((schedule.days).includes("5")?"Fr," : '') : ''}}
+                                                                {{ (schedule.days)  ? ((schedule.days).includes("6")?"Sa," : '') : ''}}
+                                                                {{ (schedule.days)  ? ((schedule.days).includes("7")?"Su," : '') : ''}}
+                                                               
+                                                            </p>
+                                                        </li>
+                                                        <li>
+                                                            <span class="clock"></span>
+                                                            <p>{{(schedule.start_work)?schedule.start_work:""}} - {{(schedule.end_work)?schedule.end_work:""}}</p>
+                                                        </li>
+                                                    </ul>
+                                                </td>
+                                                <td>
+                                                    <div class="emp-counter">
+                                                        <span class="com-employee"></span>
+                                                        <p>{{(schedule.nr_employees)?schedule.nr_employees:""}}</p>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="emp-counter">
+                                                        <span class="com-employee-group"></span>
+                                                        <p>{{(schedule.nr_groups)?schedule.nr_groups:""}}</p>
+                                                    </div>
+                                                </td>
+                                                <td class="text-align-right">
+                                                    <span class="action-more-btn" 
+                                                          dbempaction 
+                                                          secondBtnName="blue_edit" 
+                                                          sendMessage="Edit schedule"
+                                                          wrapperClass ="actionWrapper"
+                                                          (sendMsgbtnClicked)="editSchedule(schedule.id)"></span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="row mn-top-15">
+                                <div class="col-sm-12">
+                                    <span class="label-wid-line">
+                                        <p>{{ "Geozone by default" | translate }}</p><hr>
+                                    </span>
+                                </div>
+                            </div>
+                            
+                            <div class="row mn-top-5">
+                                <div class="col-md-12">
+                                    <table class="tbl-geozone">
+                                        <thead>
+                                            <tr>
+                                                <th width="41%">
+                                                    <label class="geozone-lbl-name">{{ "Geozone name and address" | translate }}</label>
+                                                    <span class="down-arrow"></span>
+                                                </th>
+                                                <th width="30%">
+                                                    <label>{{ "Radius" | translate }}</label>
+                                                </th>
+                                                <th width="30%"></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <span class="com-info-geozone-icon"></span>
+                                                    <span class="geozone-info">
+                                                        <h2>{{ (geozone.name)?geozone.name:"" }}</h2>
+                                                        <p>{{ (geozone.address)?geozone.address:"" }}</p>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="radius-icon"></span>
+                                                    <p class="radius-text">{{ (geozone.radius)?geozone.radius:"" }} km</p>
+                                                </td>
+                                                <td class="text-align-right">
+                                                    <span class="action-more-btn" 
+                                                          dbempaction 
+                                                          secondBtnName="blue_edit" 
+                                                          sendMessage="Edit geozone"
+                                                          wrapperClass ="actionWrapper"
+                                                          (sendMsgbtnClicked)="editGeozone(geozone.id)"></span>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            
+                            
+                            <div class="row mn-top-15">
+                                <div class="col-sm-12">
+                                    <div class="info-icon-wrapper">
+                                        <span class="info-icon"></span>
+                                    </div>
+                                    <p class="info-dtl">
+                                        {{ "The default work schedule will be applied to all employees added" | translate }}.<br/>
+                                        {{ "In order to change the schedule for an employee, add him to a" | translate }} <b>{{ "Group" | translate}}</b> {{ "working on a different schedule or" | translate}}
+                                        {{ "go to the page" | translate }} <b class="color-blue">{{ "Schedule" | translate }}</b> 
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="row button-wrapper">
+                                <div class="col-md-12 text-align-right">
+                                    <shared-button buttonType="button" class="company-info-back-btn" iconClass="icon-back-red" name="{{ 'Back' | translate}}" (buttonClicked)="btnBackClicked()"></shared-button>
+                                    <shared-button buttonType="submit" [disabledCondition]="btnDisabled" class="company-info-next-btn" name="{{'Save'|translate}}"></shared-button>
+                                </div>
+                            </div>
+                            
+                            
+                        </form>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+</div>

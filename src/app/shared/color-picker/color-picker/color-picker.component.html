@@ -1,0 +1,35 @@
+<div class="color-picker-container">
+
+    <div class="color-picker-label">{{ label | translate}}</div>
+    <div #container class="color-list" >
+        <span #colorSpan *ngFor="let color of colors" [ngClass]="selectedId == color.id ? 'selected':''"
+              [style.background]= "color.code"
+              (click)="selected(color)"
+                [style.border-color]="selectedColor" [style.box-shadow]="(selectedColor == color.code)?'0 0 5px '+selectedColor : null"></span>
+
+
+    </div>
+
+
+
+    <div *ngIf="!isScrollAtStart"  class="arrow prev" (click)="prev()">
+        <svg width="12px" height="14px" viewBox="0 0 24 24" version="1.1" preserveAspectRatio="xMaxYMax meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+            <g id="Icon/arrow-down-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+                <g id="chevron-down" transform="translate(8.000000, 10.000000)" stroke="#2E5BFF" stroke-width="2">
+                    <polyline id="Shape" points="0 0 4 4 8 0"></polyline>
+                </g>
+            </g>
+        </svg>
+    </div>
+    <div *ngIf="!isScrollAtEnd" class=" arrow  next" (click)="next()">
+        <svg width="12px" height="14px" viewBox="0 0 24 24" version="1.1" preserveAspectRatio="xMaxYMax meet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+            <g id="Icon/arrow-down-Copy" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round">
+                <g id="chevron-down" transform="translate(8.000000, 10.000000)" stroke="#2E5BFF" stroke-width="2">
+                    <polyline id="Shape" points="0 0 4 4 8 0"></polyline>
+                </g>
+            </g>
+        </svg>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div #input [formGroup]="formName" class="form-search-icon"
+     [ngStyle]="{'border':!searchIcon?'solid 1px #D63649':'','pointer-events':loader?'none':''}">
+  <tag-input [formControl]="form_control_name" [onlyFromAutocomplete]="onlyFromAutocomplete" [onTextChangeDebounce]='5'
+             [identifyBy]="'id'" [displayBy]="'name'" [validators]="validators" (keyup)="setFilterText($event)"
+             (focusin)="emptyFilterValue()" [placeholder]="placeholder" [secondaryPlaceholder]="secondaryPlaceholder"
+             [clearOnBlur]="true" (onAdd)="inputValueChanged($event)" (onRemove)="onRemove($event)"
+             [maxItems]="allowedMaxItem">
+
+
+    <tag-input-dropdown [showDropdownIfEmpty]="true" [keepOpen]="false" [focusFirstElement]="false" [identifyBy]="'id'"
+                        [displayBy]="'name'" [autocompleteItems]="statesWithFlags" [minimumTextLength]="1"
+                        [offset]="'45 4'"
+                        [appendToBody]="false"
+                        [ngClass]="{'isPositionWidth': this.dataGroupName =='Position' || this.dataGroupName =='ChooseEmployee'}">
+
+      <ng-template let-item="item" let-index="index">
+        <div
+          [ngClass]="item.rejected_tracking==='1' && (dataGroupName==='Employee'  || dataGroupName==='Group')?'drop-down-invalid-case':''">
+          <span *ngIf="!(this.dataGroupName =='Position'|| this.dataGroupName =='ChooseEmployee')"
+                [ngClass]="{'dp-img-wrapper':dataGroupName=='Geozone' || dataGroupName=='Group'}">
+            <img src="{{item.icon_url?image_path+item.icon_url:'./assets/icons/gray_geozone.svg'}}"
+                 (error)="errorHandler($event)">
+          </span>
+          {{item.name}}
+          <span (mouseover)="displayMessage()" (mouseleave)="displayMessage()" (click)="displayMessage()"
+                *ngIf="item.rejected_tracking==='1' && (dataGroupName==='Employee' || dataGroupName==='Group')"
+                class="invalid-icon" [ngClass]="dataGroupName ==='Group'?'margin-top-m-5':''">
+          </span>
+        </div>
+      </ng-template>
+
+    </tag-input-dropdown>
+  </tag-input>
+
+
+  <span *ngIf="searchIcon" (click)="clickSearchIcon()" class="searchIcon"></span>
+  <span *ngIf="invalidMessageBox" class="drop-down-invalid-dialog">
+    <invalid-message text="{{this.dataGroupName =='Employee'?'' +
+   ('This employee refused to provide information about his whereabouts' | translate):
+   ('In this group, there are workers who have Forbidden to monitor their movements' | translate)}}"></invalid-message>
+  </span>
+</div>

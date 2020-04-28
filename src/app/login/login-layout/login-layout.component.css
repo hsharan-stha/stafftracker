@@ -1,0 +1,35 @@
+.img-layout{
+    height: 100%;
+    background: transparent url(/assets/zac-ong-394558-unsplash-min.png) no-repeat 0 0;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+
+.logo-header{
+    font-size: 19px; 
+    color: #2E384D; 
+    letter-spacing: -0.47px; 
+    font-family: Rubik; 
+    font-weight: 500; 
+    text-transform: lowercase; 
+    text-align: left;
+}
+
+.logo{
+    height: 23px;
+    background: transparent url(/assets/Logo.svg) no-repeat 0 0;
+    margin-top:37px;
+}
+
+.col:not(.left-side-wrapper), [class*="col-"]:not(.left-side-wrapper){
+    padding-right: 0px !important;
+    padding-left:  0px !important;
+}
+
+.row{
+    margin-right: 0px !important;
+    margin-left:  0px !important;
+}

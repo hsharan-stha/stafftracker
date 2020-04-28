@@ -1,0 +1,23 @@
+<div class="container-fluid  main-layout">
+    <div class="row height-100">
+        <div class="col-lg-5 col-md-6 col-sm-12">
+            <div class="row bg-color padding-left-15">
+                <div class="col-xl-8 offset-xl-4 col-lg-11 offset-lg-1 col-md-11 offset-md-1 col-sm-6 offset-sm-3 left-side-wrapper">
+                    <div class="logo">
+                    </div>
+
+                    <div class="row">
+                        <router-outlet></router-outlet>
+                       
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-7 col-md-6 img-layout-wrapper">
+                <div *ngIf="!isGeozones"  class="img-layout"></div>
+                <div *ngIf="isGeozones" class="map-wrapper bg-color">
+                    <map [enableMarker]=true *ngIf="isMapShow"></map>
+                </div>
+        </div>
+    </div>
+</div>

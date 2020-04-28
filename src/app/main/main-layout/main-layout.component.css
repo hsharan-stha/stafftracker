@@ -1,0 +1,441 @@
+* {
+    font-family: Rubik;
+}
+
+.main-logo {
+    height: 23px;
+    background: transparent url(/assets/Logo.svg) no-repeat 0 0;
+    margin-top: 26px;
+    margin-left: 34px;
+    width: 150px;
+    float: left;
+}
+
+/**{
+    margin: 0;
+    padding: 0;
+    font-family: Rubik;
+}*/
+
+#sidebar {
+    background-color: white;
+    position: fixed;
+    vertical-align: top;
+    width: 216px;
+    min-height: 100vh;
+    z-index: 900;
+    top: 0px;
+}
+
+.img-close {
+    height: 100%;
+    background: transparent url(/assets/icons/closeX.svg) no-repeat 0 0;
+    width: 100%;
+}
+
+.svg-img {
+    padding: 0 12px 0 24px;
+}
+
+.logo {
+    width: 32px;
+    height: 32px;
+    float: left;
+    border-radius: 5px;
+}
+
+.padding-top-27 {
+    padding-top: 27px;
+}
+
+.margin-top49-bottom31 {
+    margin-top: 53px;
+    margin-bottom: 31px;
+}
+
+.padding-left-24 {
+    padding-left: 24px;
+}
+
+.fnt-size-15 {
+    font-size: 15px;
+}
+
+.line-h-16 {
+    line-height: 16px;
+}
+
+.dark-grey {
+    color: #2E384D;
+}
+
+.light-grey {
+    color: #BFC5D2;
+}
+
+ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+}
+
+.dashboard-menu {
+    float: left;
+    margin-top: 26px;
+    margin-left: 46px;
+    padding-bottom: 16px;
+    width: 160px;
+    padding-left: 10px;
+}
+
+.dashboard-menu img {
+    height: 24px;
+    width: 24px;
+}
+
+.dashboard-menu span {
+    font-size: 15px;
+    color: #B0BAC9;
+    letter-spacing: 0;
+    text-align: center;
+    font-family: Rubik;
+    font-weight: 400;
+    margin-left: 22px;
+}
+
+.dashboard-menu a:hover {
+    text-decoration: none;
+}
+
+.active-menu {
+    border-bottom: 3px solid #2E5BFF;
+}
+
+.active-menu span {
+    color: #2E5BFF;
+}
+
+#sidebar .menu-toggle-icon {
+    height: 31px;
+}
+
+.nav-menu {
+    float: right;
+    margin-top: 17px;
+    margin-right: 90px;
+}
+
+.menu {
+    display: inline-block;
+    margin-bottom: 0px;
+    float: right;
+    margin-right: 10px;
+    padding-left: 0px;
+}
+
+.menu li {
+    display: inline;
+    margin: 7px;
+    color: #BFC5D2;
+}
+
+#user-bar {
+    width: 357px;
+    /*height: 1086px;*/
+    background-color: white;
+    float: right;
+    display: block;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    z-index: 10;
+}
+
+#about {
+    margin-top: 10%;
+    text-align: center;
+}
+
+#about button {
+    margin: 9px;
+    width: 140px;
+}
+
+.about-user {
+    margin-left: 30px;
+    align-self: auto;
+}
+
+.about-user label {
+    font-size: 12px;
+    color: #B0BAC9;
+    letter-spacing: 1.12px;
+    font-family: Rubik;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: left;
+}
+
+.about-user p {
+    font-size: 15px;
+    color: #2E384D;
+    letter-spacing: 0;
+    line-height: 22px;
+    font-family: Rubik;
+    font-weight: 400;
+    text-align: left;
+}
+
+hr {
+    width: 85%;
+}
+
+#notification-bar {
+    width: 281px;
+    max-height: Calc(100vh - 80px);
+    overflow-y: auto;
+    background-color: white;
+    float: right;
+    display: block;
+    position: absolute;
+    top: 80px;
+    right: 0;
+    z-index: 10;
+}
+
+/* for scrollbar */
+/* width */
+#notification-bar::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+
+}
+
+/* Track */
+#notification-bar::-webkit-scrollbar-track {
+    background: rgba(46, 91, 255, 0.08);
+    border-radius: 1px;
+}
+
+/* Handle */
+#notification-bar::-webkit-scrollbar-thumb {
+    background: #2E5BFF;
+    border-radius: 1px;
+}
+
+.timezone {
+    display: inline-flex;
+    line-height: 65px;
+}
+
+.timezone div:first-child {
+    width: 123.7px;
+}
+
+.timezone div {
+    margin: 18px 0 0 29px;
+}
+
+.time h1 {
+    font-size: 28px;
+    color: #2E384D;
+    letter-spacing: 0;
+    line-height: 32px;
+    font-family: Rubik;
+    font-weight: 300;
+    text-align: left;
+}
+
+.time p {
+    font-size: 15px;
+    color: #8798AD;
+    letter-spacing: 0;
+    line-height: 22px;
+    font-family: Rubik;
+    font-weight: 400;
+    text-align: left;
+}
+
+
+.notification-toggle {
+    padding-left: 0px;
+}
+
+@media (max-width: 767px) {
+    #notification-bar, #user-bar {
+        /*top: 145px;*/
+    }
+}
+
+@media (min-width: 768px) {
+    #notification-bar, #user-bar {
+        top: 80px;
+    }
+}
+
+@media (max-width: 767px) {
+    #sidebar {
+        display: none;
+    }
+
+    .content-body {
+        padding-left: 0px;
+    }
+
+    .nav-menu {
+        display: show;
+        margin-right: 0px;
+    }
+
+    .page-header {
+        padding-bottom: 16px !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .page-header .menu-toggle-icon {
+        display: none;
+    }
+
+    .expandMenu {
+        /* padding-left:208px; */
+        margin-left: 172px;
+    }
+
+    .mobile-menu {
+        display: none;
+    }
+}
+
+.dashboard-menu a {
+    cursor: pointer;
+}
+
+.mobile-menu {
+    box-shadow: 0 10px 20px 0 rgba(196, 202, 226, 0.53);
+    width: 80%;
+    margin-left: 36px;
+    position: fixed;
+    border-left: 1px solid rgb(228, 232, 240);
+    border-right: 1px solid rgb(228, 232, 240);
+    border-bottom: 1px solid rgb(228, 232, 240);
+    z-index: 99;
+}
+
+.close-icon {
+    padding: 0 21px 0 24px;
+}
+
+.page-header .menu-toggle-icon {
+    float: left;
+    margin-top: 27px;
+}
+
+.arrow-down-icon {
+    content: url(/assets/icons/gray_arrow_up.svg);
+    transform: rotate(180deg);
+    float: left;
+    margin-top: 10px;
+    display: none;
+    cursor: pointer;
+}
+
+
+@media (max-width: 745px) {
+    .dashboard-menu {
+        margin-left: 15px !important;
+    }
+
+}
+
+
+@media (max-width: 655px) {
+    .dashboard-menu {
+        margin-left: 10px !important;
+    }
+
+    .menu li {
+        margin: 3px;
+    }
+}
+
+@media (max-width: 620px) {
+    .main-logo {
+        margin-left: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .main-logo {
+        margin-left: 5px;
+    }
+}
+
+@media (max-width: 588px) {
+    .dashboard-menu {
+        width: 150px;
+    }
+
+    .dashboard-menu {
+        margin-left: 0px !important;
+    }
+}
+
+@media (max-width: 570px) {
+    .dashboard-menu span {
+        display: none;
+    }
+
+    .dashboard-menu {
+        width: 50px;
+    }
+}
+
+@media (max-width: 460px) {
+    .dashboard-menu {
+        margin-left: 0px !important;
+    }
+
+    .emp-profile-icon {
+        float: left;
+    }
+
+    .arrow-down-icon {
+        display: block;
+    }
+
+    .list-sub-list li {
+        list-style: none;
+        margin-bottom: 10px;
+    }
+
+    .list-sub-list {
+        position: absolute;
+        right: 20px;
+        top: 60px;
+    }
+}
+
+@media (max-width: 370px) and (min-width: 345px) {
+    .menu {
+        margin-right: 0px !important;
+    }
+
+    .menu li {
+        margin-right: 0px !important;
+    }
+}
+
+@media (max-width: 375px) {
+    .svg-img {
+        padding-left: 10px;
+    }
+}
+
+.menu li a {
+    cursor: pointer;
+}
+
+.notification-icon {
+    cursor: pointer;
+}
